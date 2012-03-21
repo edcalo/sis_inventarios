@@ -1,0 +1,2522 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.3
+-- Dumped by pg_dump version 9.1.3
+-- Started on 2012-03-20 21:07:37
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 206 (class 3079 OID 11639)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2151 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 162 (class 1259 OID 16708)
+-- Dependencies: 5
+-- Name: almacenes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE almacenes (
+    id integer NOT NULL,
+    nombre_almacen character varying(50),
+    descripcion_almacen character varying(255),
+    direccion_almacen character varying(255)
+);
+
+
+ALTER TABLE public.almacenes OWNER TO postgres;
+
+--
+-- TOC entry 161 (class 1259 OID 16706)
+-- Dependencies: 162 5
+-- Name: almacenes_id_almacen_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE almacenes_id_almacen_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.almacenes_id_almacen_seq OWNER TO postgres;
+
+--
+-- TOC entry 2152 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: almacenes_id_almacen_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE almacenes_id_almacen_seq OWNED BY almacenes.id;
+
+
+--
+-- TOC entry 2153 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: almacenes_id_almacen_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('almacenes_id_almacen_seq', 1, false);
+
+
+--
+-- TOC entry 164 (class 1259 OID 16720)
+-- Dependencies: 5
+-- Name: clientes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE clientes (
+    id integer NOT NULL,
+    nit_ci character varying(10),
+    nombres character varying(30),
+    apellido_paterno character varying(50),
+    apellido_materno character varying(50),
+    telefono integer,
+    email character varying(50)
+);
+
+
+ALTER TABLE public.clientes OWNER TO postgres;
+
+--
+-- TOC entry 163 (class 1259 OID 16718)
+-- Dependencies: 5 164
+-- Name: clientes_id_cliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE clientes_id_cliente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.clientes_id_cliente_seq OWNER TO postgres;
+
+--
+-- TOC entry 2154 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: clientes_id_cliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE clientes_id_cliente_seq OWNED BY clientes.id;
+
+
+--
+-- TOC entry 2155 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: clientes_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('clientes_id_cliente_seq', 1, false);
+
+
+--
+-- TOC entry 166 (class 1259 OID 16729)
+-- Dependencies: 5
+-- Name: compras; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE compras (
+    id_compra integer NOT NULL,
+    id_credito integer,
+    identificador integer NOT NULL,
+    id_proveedor integer NOT NULL,
+    fecha_compra date,
+    monto_total integer
+);
+
+
+ALTER TABLE public.compras OWNER TO postgres;
+
+--
+-- TOC entry 165 (class 1259 OID 16727)
+-- Dependencies: 5 166
+-- Name: compras_id_compra_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE compras_id_compra_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.compras_id_compra_seq OWNER TO postgres;
+
+--
+-- TOC entry 2156 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: compras_id_compra_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE compras_id_compra_seq OWNED BY compras.id_compra;
+
+
+--
+-- TOC entry 2157 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: compras_id_compra_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('compras_id_compra_seq', 1, false);
+
+
+--
+-- TOC entry 168 (class 1259 OID 16741)
+-- Dependencies: 5
+-- Name: compras_items; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE compras_items (
+    identificador_compra integer NOT NULL,
+    id_articulo integer NOT NULL,
+    id_compra integer NOT NULL,
+    precio_de_compra numeric(10,2),
+    recio_referencial_de_vewnta numeric(10,2),
+    garantia integer
+);
+
+
+ALTER TABLE public.compras_items OWNER TO postgres;
+
+--
+-- TOC entry 167 (class 1259 OID 16739)
+-- Dependencies: 168 5
+-- Name: compras_items_identificador_compra_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE compras_items_identificador_compra_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.compras_items_identificador_compra_seq OWNER TO postgres;
+
+--
+-- TOC entry 2158 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: compras_items_identificador_compra_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE compras_items_identificador_compra_seq OWNED BY compras_items.identificador_compra;
+
+
+--
+-- TOC entry 2159 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: compras_items_identificador_compra_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('compras_items_identificador_compra_seq', 1, false);
+
+
+--
+-- TOC entry 170 (class 1259 OID 16752)
+-- Dependencies: 5
+-- Name: creditos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE creditos (
+    id_credito integer NOT NULL,
+    id_venta integer NOT NULL,
+    cuota_inicial numeric(10,2)
+);
+
+
+ALTER TABLE public.creditos OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 16750)
+-- Dependencies: 170 5
+-- Name: creditos_id_credito_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE creditos_id_credito_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.creditos_id_credito_seq OWNER TO postgres;
+
+--
+-- TOC entry 2160 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: creditos_id_credito_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE creditos_id_credito_seq OWNED BY creditos.id_credito;
+
+
+--
+-- TOC entry 2161 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: creditos_id_credito_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('creditos_id_credito_seq', 1, false);
+
+
+--
+-- TOC entry 172 (class 1259 OID 16762)
+-- Dependencies: 5
+-- Name: cuentas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cuentas (
+    id_cuenta integer NOT NULL,
+    identificador integer NOT NULL,
+    id_rol integer NOT NULL,
+    nombre_usuario character varying(15),
+    password character(32),
+    fecha_inicio_valides date,
+    fecha_final_valides date
+);
+
+
+ALTER TABLE public.cuentas OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 16760)
+-- Dependencies: 172 5
+-- Name: cuentas_id_cuenta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cuentas_id_cuenta_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cuentas_id_cuenta_seq OWNER TO postgres;
+
+--
+-- TOC entry 2162 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: cuentas_id_cuenta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cuentas_id_cuenta_seq OWNED BY cuentas.id_cuenta;
+
+
+--
+-- TOC entry 2163 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: cuentas_id_cuenta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cuentas_id_cuenta_seq', 1, false);
+
+
+--
+-- TOC entry 174 (class 1259 OID 16773)
+-- Dependencies: 5
+-- Name: cuotas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cuotas (
+    id_cuota integer NOT NULL,
+    id_plan_de_pago integer NOT NULL,
+    monto_capital numeric(4,2),
+    monto_interes numeric(4,2),
+    numero_cuota integer,
+    fecha_pago date
+);
+
+
+ALTER TABLE public.cuotas OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16771)
+-- Dependencies: 5 174
+-- Name: cuotas_id_cuota_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cuotas_id_cuota_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cuotas_id_cuota_seq OWNER TO postgres;
+
+--
+-- TOC entry 2164 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: cuotas_id_cuota_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cuotas_id_cuota_seq OWNED BY cuotas.id_cuota;
+
+
+--
+-- TOC entry 2165 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: cuotas_id_cuota_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cuotas_id_cuota_seq', 1, false);
+
+
+--
+-- TOC entry 176 (class 1259 OID 16783)
+-- Dependencies: 5
+-- Name: descuentos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE descuentos (
+    id_descuento integer NOT NULL,
+    nombre_descuento character varying(50),
+    fecha_incicio_descuento date,
+    fecha_fin_descuento date,
+    cuota_inicial numeric(10,2),
+    tipo character varying(10),
+    descripcion_descuento character varying(255)
+);
+
+
+ALTER TABLE public.descuentos OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 16781)
+-- Dependencies: 176 5
+-- Name: descuentos_id_descuento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE descuentos_id_descuento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.descuentos_id_descuento_seq OWNER TO postgres;
+
+--
+-- TOC entry 2166 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: descuentos_id_descuento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE descuentos_id_descuento_seq OWNED BY descuentos.id_descuento;
+
+
+--
+-- TOC entry 2167 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: descuentos_id_descuento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('descuentos_id_descuento_seq', 1, false);
+
+
+--
+-- TOC entry 178 (class 1259 OID 16792)
+-- Dependencies: 5
+-- Name: detalle_nota_venta; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE detalle_nota_venta (
+    registro integer NOT NULL,
+    id_articulo integer NOT NULL,
+    id_nota integer,
+    cantidad integer,
+    precio_venta numeric(10,2)
+);
+
+
+ALTER TABLE public.detalle_nota_venta OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 16790)
+-- Dependencies: 5 178
+-- Name: detalle_nota_venta_registro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE detalle_nota_venta_registro_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.detalle_nota_venta_registro_seq OWNER TO postgres;
+
+--
+-- TOC entry 2168 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: detalle_nota_venta_registro_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE detalle_nota_venta_registro_seq OWNED BY detalle_nota_venta.registro;
+
+
+--
+-- TOC entry 2169 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: detalle_nota_venta_registro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('detalle_nota_venta_registro_seq', 1, false);
+
+
+--
+-- TOC entry 180 (class 1259 OID 16803)
+-- Dependencies: 5
+-- Name: dosificaciones; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE dosificaciones (
+    id_dosificacion integer NOT NULL,
+    codigo_dosificacion character(20),
+    fecha_inicio_emicion date,
+    fecha_limite_emision date,
+    numero_de_autorizacion integer,
+    numero_de_factura integer
+);
+
+
+ALTER TABLE public.dosificaciones OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 16801)
+-- Dependencies: 5 180
+-- Name: dosificaciones_id_dosificacion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE dosificaciones_id_dosificacion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dosificaciones_id_dosificacion_seq OWNER TO postgres;
+
+--
+-- TOC entry 2170 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: dosificaciones_id_dosificacion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE dosificaciones_id_dosificacion_seq OWNED BY dosificaciones.id_dosificacion;
+
+
+--
+-- TOC entry 2171 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: dosificaciones_id_dosificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('dosificaciones_id_dosificacion_seq', 1, false);
+
+
+--
+-- TOC entry 182 (class 1259 OID 16812)
+-- Dependencies: 5
+-- Name: empleados; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE empleados (
+    identificador integer NOT NULL,
+    doc_identidad character varying(20),
+    nombres character varying(30),
+    apellido_paterno character varying(50),
+    apellido_materno character varying(50),
+    fecha_ingreso date,
+    contacto character varying(255),
+    telefono integer,
+    email character varying(50),
+    tipo_doc_identidad character(20)
+);
+
+
+ALTER TABLE public.empleados OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 16810)
+-- Dependencies: 5 182
+-- Name: empleados_identificador_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE empleados_identificador_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.empleados_identificador_seq OWNER TO postgres;
+
+--
+-- TOC entry 2172 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: empleados_identificador_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE empleados_identificador_seq OWNED BY empleados.identificador;
+
+
+--
+-- TOC entry 2173 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: empleados_identificador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('empleados_identificador_seq', 1, false);
+
+
+--
+-- TOC entry 186 (class 1259 OID 16832)
+-- Dependencies: 5
+-- Name: factura_items; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE factura_items (
+    identificador_venta integer NOT NULL,
+    id_articulo integer NOT NULL,
+    id_dosificacion integer NOT NULL,
+    id_factura integer NOT NULL,
+    cantidad integer,
+    precio_venta numeric(10,2)
+);
+
+
+ALTER TABLE public.factura_items OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 16830)
+-- Dependencies: 186 5
+-- Name: factura_items_identificador_venta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE factura_items_identificador_venta_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.factura_items_identificador_venta_seq OWNER TO postgres;
+
+--
+-- TOC entry 2174 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: factura_items_identificador_venta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE factura_items_identificador_venta_seq OWNED BY factura_items.identificador_venta;
+
+
+--
+-- TOC entry 2175 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: factura_items_identificador_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('factura_items_identificador_venta_seq', 1, false);
+
+
+--
+-- TOC entry 184 (class 1259 OID 16821)
+-- Dependencies: 5
+-- Name: facturas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE facturas (
+    id_dosificacion integer NOT NULL,
+    id_factura integer NOT NULL,
+    id_venta integer NOT NULL,
+    fecha_factura date,
+    monto_total integer
+);
+
+
+ALTER TABLE public.facturas OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 16819)
+-- Dependencies: 184 5
+-- Name: facturas_id_factura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE facturas_id_factura_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.facturas_id_factura_seq OWNER TO postgres;
+
+--
+-- TOC entry 2176 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: facturas_id_factura_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE facturas_id_factura_seq OWNED BY facturas.id_factura;
+
+
+--
+-- TOC entry 2177 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: facturas_id_factura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('facturas_id_factura_seq', 1, false);
+
+
+--
+-- TOC entry 188 (class 1259 OID 16843)
+-- Dependencies: 5
+-- Name: grupos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE grupos (
+    id_grupo integer NOT NULL,
+    gru_id_grupo integer,
+    nombre_grupo character varying(50),
+    descripcion_grupo character varying(255)
+);
+
+
+ALTER TABLE public.grupos OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 16841)
+-- Dependencies: 5 188
+-- Name: grupos_id_grupo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE grupos_id_grupo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.grupos_id_grupo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2178 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: grupos_id_grupo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE grupos_id_grupo_seq OWNED BY grupos.id_grupo;
+
+
+--
+-- TOC entry 2179 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: grupos_id_grupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('grupos_id_grupo_seq', 1, false);
+
+
+--
+-- TOC entry 190 (class 1259 OID 16853)
+-- Dependencies: 5
+-- Name: industrias; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE industrias (
+    id integer NOT NULL,
+    nombre_industria character varying(100),
+    descripcion_industria character varying(255)
+);
+
+
+ALTER TABLE public.industrias OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16851)
+-- Dependencies: 190 5
+-- Name: industrias_id_industria_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE industrias_id_industria_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.industrias_id_industria_seq OWNER TO postgres;
+
+--
+-- TOC entry 2180 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: industrias_id_industria_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE industrias_id_industria_seq OWNED BY industrias.id;
+
+
+--
+-- TOC entry 2181 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: industrias_id_industria_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('industrias_id_industria_seq', 1, false);
+
+
+--
+-- TOC entry 192 (class 1259 OID 16862)
+-- Dependencies: 5
+-- Name: items; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE items (
+    id integer NOT NULL,
+    marca_id integer NOT NULL,
+    grupo_id integer NOT NULL,
+    industria_id integer NOT NULL,
+    almacen_id integer NOT NULL,
+    nombre_articulo character varying(100),
+    descripcion character varying(255),
+    numero_de_serie character varying(100),
+    codigo character varying(10)
+);
+
+
+ALTER TABLE public.items OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 16860)
+-- Dependencies: 5 192
+-- Name: items_id_articulo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE items_id_articulo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.items_id_articulo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2182 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: items_id_articulo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE items_id_articulo_seq OWNED BY items.id;
+
+
+--
+-- TOC entry 2183 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: items_id_articulo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('items_id_articulo_seq', 1, false);
+
+
+--
+-- TOC entry 194 (class 1259 OID 16875)
+-- Dependencies: 5
+-- Name: marcas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE marcas (
+    id_marca integer NOT NULL,
+    nombre_marca character varying(50),
+    descripcion_marca character varying(255)
+);
+
+
+ALTER TABLE public.marcas OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 16873)
+-- Dependencies: 194 5
+-- Name: marcas_id_marca_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE marcas_id_marca_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.marcas_id_marca_seq OWNER TO postgres;
+
+--
+-- TOC entry 2184 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: marcas_id_marca_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE marcas_id_marca_seq OWNED BY marcas.id_marca;
+
+
+--
+-- TOC entry 2185 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: marcas_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('marcas_id_marca_seq', 1, false);
+
+
+--
+-- TOC entry 195 (class 1259 OID 16882)
+-- Dependencies: 5
+-- Name: nota_de_venta; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE nota_de_venta (
+    id_nota integer NOT NULL,
+    id_venta integer NOT NULL,
+    fecha_nota_venta date,
+    monto_total integer
+);
+
+
+ALTER TABLE public.nota_de_venta OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 16891)
+-- Dependencies: 5
+-- Name: piezas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE piezas (
+    id_pieza integer NOT NULL,
+    id_articulo integer NOT NULL,
+    nombre_pieza character varying(50),
+    numero_de_serie character varying(100),
+    descripcion_pieza character varying(255)
+);
+
+
+ALTER TABLE public.piezas OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16889)
+-- Dependencies: 5 197
+-- Name: piezas_id_pieza_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE piezas_id_pieza_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.piezas_id_pieza_seq OWNER TO postgres;
+
+--
+-- TOC entry 2186 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: piezas_id_pieza_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE piezas_id_pieza_seq OWNED BY piezas.id_pieza;
+
+
+--
+-- TOC entry 2187 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: piezas_id_pieza_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('piezas_id_pieza_seq', 1, false);
+
+
+--
+-- TOC entry 199 (class 1259 OID 16901)
+-- Dependencies: 5
+-- Name: plan_pagos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE plan_pagos (
+    id_plan_de_pago integer NOT NULL,
+    id_credito integer NOT NULL,
+    fecha_inicio_pagos date,
+    numero_de_cuotas integer,
+    tipo character varying(10),
+    interes numeric(4,2),
+    numero_de_dias integer,
+    tolerancia integer
+);
+
+
+ALTER TABLE public.plan_pagos OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16899)
+-- Dependencies: 5 199
+-- Name: plan_pagos_id_plan_de_pago_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE plan_pagos_id_plan_de_pago_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plan_pagos_id_plan_de_pago_seq OWNER TO postgres;
+
+--
+-- TOC entry 2188 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: plan_pagos_id_plan_de_pago_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE plan_pagos_id_plan_de_pago_seq OWNED BY plan_pagos.id_plan_de_pago;
+
+
+--
+-- TOC entry 2189 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: plan_pagos_id_plan_de_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('plan_pagos_id_plan_de_pago_seq', 1, false);
+
+
+--
+-- TOC entry 201 (class 1259 OID 16911)
+-- Dependencies: 5
+-- Name: proveedores; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE proveedores (
+    id_proveedor integer NOT NULL,
+    nombre_proveedor character varying(100),
+    direccion_proveedor character varying(255),
+    telefono integer,
+    contacto character varying(255),
+    email character varying(50),
+    email_contacto character varying(100)
+);
+
+
+ALTER TABLE public.proveedores OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16909)
+-- Dependencies: 5 201
+-- Name: proveedores_id_proveedor_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE proveedores_id_proveedor_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.proveedores_id_proveedor_seq OWNER TO postgres;
+
+--
+-- TOC entry 2190 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: proveedores_id_proveedor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE proveedores_id_proveedor_seq OWNED BY proveedores.id_proveedor;
+
+
+--
+-- TOC entry 2191 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: proveedores_id_proveedor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('proveedores_id_proveedor_seq', 1, false);
+
+
+--
+-- TOC entry 203 (class 1259 OID 16923)
+-- Dependencies: 5
+-- Name: roles; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE roles (
+    id_rol integer NOT NULL,
+    nombre_rol character varying(20),
+    descripcion character varying(255)
+);
+
+
+ALTER TABLE public.roles OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16921)
+-- Dependencies: 5 203
+-- Name: roles_id_rol_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE roles_id_rol_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.roles_id_rol_seq OWNER TO postgres;
+
+--
+-- TOC entry 2192 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: roles_id_rol_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE roles_id_rol_seq OWNED BY roles.id_rol;
+
+
+--
+-- TOC entry 2193 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: roles_id_rol_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('roles_id_rol_seq', 1, false);
+
+
+--
+-- TOC entry 205 (class 1259 OID 16932)
+-- Dependencies: 5
+-- Name: venta; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE venta (
+    id_venta integer NOT NULL,
+    id_cliente integer NOT NULL,
+    id_descuento integer,
+    identificador integer NOT NULL,
+    fecha_venta date,
+    pagado boolean
+);
+
+
+ALTER TABLE public.venta OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16930)
+-- Dependencies: 5 205
+-- Name: venta_id_venta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE venta_id_venta_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.venta_id_venta_seq OWNER TO postgres;
+
+--
+-- TOC entry 2194 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: venta_id_venta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE venta_id_venta_seq OWNED BY venta.id_venta;
+
+
+--
+-- TOC entry 2195 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: venta_id_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('venta_id_venta_seq', 1, false);
+
+
+--
+-- TOC entry 1980 (class 2604 OID 16711)
+-- Dependencies: 161 162 162
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY almacenes ALTER COLUMN id SET DEFAULT nextval('almacenes_id_almacen_seq'::regclass);
+
+
+--
+-- TOC entry 1981 (class 2604 OID 16723)
+-- Dependencies: 163 164 164
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY clientes ALTER COLUMN id SET DEFAULT nextval('clientes_id_cliente_seq'::regclass);
+
+
+--
+-- TOC entry 1982 (class 2604 OID 16732)
+-- Dependencies: 165 166 166
+-- Name: id_compra; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras ALTER COLUMN id_compra SET DEFAULT nextval('compras_id_compra_seq'::regclass);
+
+
+--
+-- TOC entry 1983 (class 2604 OID 16744)
+-- Dependencies: 168 167 168
+-- Name: identificador_compra; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras_items ALTER COLUMN identificador_compra SET DEFAULT nextval('compras_items_identificador_compra_seq'::regclass);
+
+
+--
+-- TOC entry 1984 (class 2604 OID 16755)
+-- Dependencies: 170 169 170
+-- Name: id_credito; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY creditos ALTER COLUMN id_credito SET DEFAULT nextval('creditos_id_credito_seq'::regclass);
+
+
+--
+-- TOC entry 1985 (class 2604 OID 16765)
+-- Dependencies: 172 171 172
+-- Name: id_cuenta; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuentas ALTER COLUMN id_cuenta SET DEFAULT nextval('cuentas_id_cuenta_seq'::regclass);
+
+
+--
+-- TOC entry 1986 (class 2604 OID 16776)
+-- Dependencies: 173 174 174
+-- Name: id_cuota; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuotas ALTER COLUMN id_cuota SET DEFAULT nextval('cuotas_id_cuota_seq'::regclass);
+
+
+--
+-- TOC entry 1987 (class 2604 OID 16786)
+-- Dependencies: 176 175 176
+-- Name: id_descuento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY descuentos ALTER COLUMN id_descuento SET DEFAULT nextval('descuentos_id_descuento_seq'::regclass);
+
+
+--
+-- TOC entry 1988 (class 2604 OID 16795)
+-- Dependencies: 178 177 178
+-- Name: registro; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY detalle_nota_venta ALTER COLUMN registro SET DEFAULT nextval('detalle_nota_venta_registro_seq'::regclass);
+
+
+--
+-- TOC entry 1989 (class 2604 OID 16806)
+-- Dependencies: 180 179 180
+-- Name: id_dosificacion; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dosificaciones ALTER COLUMN id_dosificacion SET DEFAULT nextval('dosificaciones_id_dosificacion_seq'::regclass);
+
+
+--
+-- TOC entry 1990 (class 2604 OID 16815)
+-- Dependencies: 182 181 182
+-- Name: identificador; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY empleados ALTER COLUMN identificador SET DEFAULT nextval('empleados_identificador_seq'::regclass);
+
+
+--
+-- TOC entry 1992 (class 2604 OID 16835)
+-- Dependencies: 185 186 186
+-- Name: identificador_venta; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_items ALTER COLUMN identificador_venta SET DEFAULT nextval('factura_items_identificador_venta_seq'::regclass);
+
+
+--
+-- TOC entry 1991 (class 2604 OID 16824)
+-- Dependencies: 184 183 184
+-- Name: id_factura; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY facturas ALTER COLUMN id_factura SET DEFAULT nextval('facturas_id_factura_seq'::regclass);
+
+
+--
+-- TOC entry 1993 (class 2604 OID 16846)
+-- Dependencies: 187 188 188
+-- Name: id_grupo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY grupos ALTER COLUMN id_grupo SET DEFAULT nextval('grupos_id_grupo_seq'::regclass);
+
+
+--
+-- TOC entry 1994 (class 2604 OID 16856)
+-- Dependencies: 190 189 190
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY industrias ALTER COLUMN id SET DEFAULT nextval('industrias_id_industria_seq'::regclass);
+
+
+--
+-- TOC entry 1995 (class 2604 OID 16865)
+-- Dependencies: 191 192 192
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_articulo_seq'::regclass);
+
+
+--
+-- TOC entry 1996 (class 2604 OID 16878)
+-- Dependencies: 194 193 194
+-- Name: id_marca; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY marcas ALTER COLUMN id_marca SET DEFAULT nextval('marcas_id_marca_seq'::regclass);
+
+
+--
+-- TOC entry 1997 (class 2604 OID 16894)
+-- Dependencies: 196 197 197
+-- Name: id_pieza; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY piezas ALTER COLUMN id_pieza SET DEFAULT nextval('piezas_id_pieza_seq'::regclass);
+
+
+--
+-- TOC entry 1998 (class 2604 OID 16904)
+-- Dependencies: 198 199 199
+-- Name: id_plan_de_pago; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY plan_pagos ALTER COLUMN id_plan_de_pago SET DEFAULT nextval('plan_pagos_id_plan_de_pago_seq'::regclass);
+
+
+--
+-- TOC entry 1999 (class 2604 OID 16914)
+-- Dependencies: 201 200 201
+-- Name: id_proveedor; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY proveedores ALTER COLUMN id_proveedor SET DEFAULT nextval('proveedores_id_proveedor_seq'::regclass);
+
+
+--
+-- TOC entry 2000 (class 2604 OID 16926)
+-- Dependencies: 203 202 203
+-- Name: id_rol; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY roles ALTER COLUMN id_rol SET DEFAULT nextval('roles_id_rol_seq'::regclass);
+
+
+--
+-- TOC entry 2001 (class 2604 OID 16935)
+-- Dependencies: 204 205 205
+-- Name: id_venta; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY venta ALTER COLUMN id_venta SET DEFAULT nextval('venta_id_venta_seq'::regclass);
+
+
+--
+-- TOC entry 2123 (class 0 OID 16708)
+-- Dependencies: 162
+-- Data for Name: almacenes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2124 (class 0 OID 16720)
+-- Dependencies: 164
+-- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2125 (class 0 OID 16729)
+-- Dependencies: 166
+-- Data for Name: compras; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2126 (class 0 OID 16741)
+-- Dependencies: 168
+-- Data for Name: compras_items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2127 (class 0 OID 16752)
+-- Dependencies: 170
+-- Data for Name: creditos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2128 (class 0 OID 16762)
+-- Dependencies: 172
+-- Data for Name: cuentas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2129 (class 0 OID 16773)
+-- Dependencies: 174
+-- Data for Name: cuotas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2130 (class 0 OID 16783)
+-- Dependencies: 176
+-- Data for Name: descuentos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2131 (class 0 OID 16792)
+-- Dependencies: 178
+-- Data for Name: detalle_nota_venta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2132 (class 0 OID 16803)
+-- Dependencies: 180
+-- Data for Name: dosificaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2133 (class 0 OID 16812)
+-- Dependencies: 182
+-- Data for Name: empleados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2135 (class 0 OID 16832)
+-- Dependencies: 186
+-- Data for Name: factura_items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2134 (class 0 OID 16821)
+-- Dependencies: 184
+-- Data for Name: facturas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2136 (class 0 OID 16843)
+-- Dependencies: 188
+-- Data for Name: grupos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2137 (class 0 OID 16853)
+-- Dependencies: 190
+-- Data for Name: industrias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2138 (class 0 OID 16862)
+-- Dependencies: 192
+-- Data for Name: items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2139 (class 0 OID 16875)
+-- Dependencies: 194
+-- Data for Name: marcas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2140 (class 0 OID 16882)
+-- Dependencies: 195
+-- Data for Name: nota_de_venta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2141 (class 0 OID 16891)
+-- Dependencies: 197
+-- Data for Name: piezas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2142 (class 0 OID 16901)
+-- Dependencies: 199
+-- Data for Name: plan_pagos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2143 (class 0 OID 16911)
+-- Dependencies: 201
+-- Data for Name: proveedores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2144 (class 0 OID 16923)
+-- Dependencies: 203
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2145 (class 0 OID 16932)
+-- Dependencies: 205
+-- Data for Name: venta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2004 (class 2606 OID 16716)
+-- Dependencies: 162 162
+-- Name: pk_almacenes; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY almacenes
+    ADD CONSTRAINT pk_almacenes PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2007 (class 2606 OID 16725)
+-- Dependencies: 164 164
+-- Name: pk_clientes; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clientes
+    ADD CONSTRAINT pk_clientes PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2011 (class 2606 OID 16734)
+-- Dependencies: 166 166
+-- Name: pk_compras; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY compras
+    ADD CONSTRAINT pk_compras PRIMARY KEY (id_compra);
+
+
+--
+-- TOC entry 2018 (class 2606 OID 16746)
+-- Dependencies: 168 168
+-- Name: pk_compras_items; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY compras_items
+    ADD CONSTRAINT pk_compras_items PRIMARY KEY (identificador_compra);
+
+
+--
+-- TOC entry 2021 (class 2606 OID 16757)
+-- Dependencies: 170 170
+-- Name: pk_creditos; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY creditos
+    ADD CONSTRAINT pk_creditos PRIMARY KEY (id_credito);
+
+
+--
+-- TOC entry 2026 (class 2606 OID 16767)
+-- Dependencies: 172 172
+-- Name: pk_cuentas; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cuentas
+    ADD CONSTRAINT pk_cuentas PRIMARY KEY (id_cuenta);
+
+
+--
+-- TOC entry 2031 (class 2606 OID 16778)
+-- Dependencies: 174 174
+-- Name: pk_cuotas; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cuotas
+    ADD CONSTRAINT pk_cuotas PRIMARY KEY (id_cuota);
+
+
+--
+-- TOC entry 2034 (class 2606 OID 16788)
+-- Dependencies: 176 176
+-- Name: pk_descuentos; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY descuentos
+    ADD CONSTRAINT pk_descuentos PRIMARY KEY (id_descuento);
+
+
+--
+-- TOC entry 2037 (class 2606 OID 16797)
+-- Dependencies: 178 178
+-- Name: pk_detalle_nota_venta; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY detalle_nota_venta
+    ADD CONSTRAINT pk_detalle_nota_venta PRIMARY KEY (registro);
+
+
+--
+-- TOC entry 2042 (class 2606 OID 16808)
+-- Dependencies: 180 180
+-- Name: pk_dosificaciones; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY dosificaciones
+    ADD CONSTRAINT pk_dosificaciones PRIMARY KEY (id_dosificacion);
+
+
+--
+-- TOC entry 2045 (class 2606 OID 16817)
+-- Dependencies: 182 182
+-- Name: pk_empleados; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY empleados
+    ADD CONSTRAINT pk_empleados PRIMARY KEY (identificador);
+
+
+--
+-- TOC entry 2054 (class 2606 OID 16837)
+-- Dependencies: 186 186
+-- Name: pk_factura_items; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY factura_items
+    ADD CONSTRAINT pk_factura_items PRIMARY KEY (identificador_venta);
+
+
+--
+-- TOC entry 2048 (class 2606 OID 16826)
+-- Dependencies: 184 184 184
+-- Name: pk_facturas; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY facturas
+    ADD CONSTRAINT pk_facturas PRIMARY KEY (id_dosificacion, id_factura);
+
+
+--
+-- TOC entry 2058 (class 2606 OID 16848)
+-- Dependencies: 188 188
+-- Name: pk_grupos; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY grupos
+    ADD CONSTRAINT pk_grupos PRIMARY KEY (id_grupo);
+
+
+--
+-- TOC entry 2062 (class 2606 OID 16858)
+-- Dependencies: 190 190
+-- Name: pk_industrias; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY industrias
+    ADD CONSTRAINT pk_industrias PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2067 (class 2606 OID 16867)
+-- Dependencies: 192 192
+-- Name: pk_items; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT pk_items PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2072 (class 2606 OID 16880)
+-- Dependencies: 194 194
+-- Name: pk_marcas; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY marcas
+    ADD CONSTRAINT pk_marcas PRIMARY KEY (id_marca);
+
+
+--
+-- TOC entry 2075 (class 2606 OID 16886)
+-- Dependencies: 195 195
+-- Name: pk_nota_de_venta; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY nota_de_venta
+    ADD CONSTRAINT pk_nota_de_venta PRIMARY KEY (id_nota);
+
+
+--
+-- TOC entry 2079 (class 2606 OID 16896)
+-- Dependencies: 197 197
+-- Name: pk_piezas; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY piezas
+    ADD CONSTRAINT pk_piezas PRIMARY KEY (id_pieza);
+
+
+--
+-- TOC entry 2082 (class 2606 OID 16906)
+-- Dependencies: 199 199
+-- Name: pk_plan_pagos; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY plan_pagos
+    ADD CONSTRAINT pk_plan_pagos PRIMARY KEY (id_plan_de_pago);
+
+
+--
+-- TOC entry 2086 (class 2606 OID 16919)
+-- Dependencies: 201 201
+-- Name: pk_proveedores; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY proveedores
+    ADD CONSTRAINT pk_proveedores PRIMARY KEY (id_proveedor);
+
+
+--
+-- TOC entry 2089 (class 2606 OID 16928)
+-- Dependencies: 203 203
+-- Name: pk_roles; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY roles
+    ADD CONSTRAINT pk_roles PRIMARY KEY (id_rol);
+
+
+--
+-- TOC entry 2092 (class 2606 OID 16937)
+-- Dependencies: 205 205
+-- Name: pk_venta; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY venta
+    ADD CONSTRAINT pk_venta PRIMARY KEY (id_venta);
+
+
+--
+-- TOC entry 2002 (class 1259 OID 16717)
+-- Dependencies: 162
+-- Name: almacenes_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX almacenes_pk ON almacenes USING btree (id);
+
+
+--
+-- TOC entry 2014 (class 1259 OID 16748)
+-- Dependencies: 168
+-- Name: articulo_comprado_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX articulo_comprado_fk ON compras_items USING btree (id_articulo);
+
+
+--
+-- TOC entry 2005 (class 1259 OID 16726)
+-- Dependencies: 164
+-- Name: clientes_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX clientes_pk ON clientes USING btree (id);
+
+
+--
+-- TOC entry 2008 (class 1259 OID 16737)
+-- Dependencies: 166
+-- Name: compra_a_credito_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX compra_a_credito_fk ON compras USING btree (id_credito);
+
+
+--
+-- TOC entry 2015 (class 1259 OID 16747)
+-- Dependencies: 168
+-- Name: compras_items_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX compras_items_pk ON compras_items USING btree (identificador_compra);
+
+
+--
+-- TOC entry 2009 (class 1259 OID 16735)
+-- Dependencies: 166
+-- Name: compras_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX compras_pk ON compras USING btree (id_compra);
+
+
+--
+-- TOC entry 2019 (class 1259 OID 16758)
+-- Dependencies: 170
+-- Name: creditos_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX creditos_pk ON creditos USING btree (id_credito);
+
+
+--
+-- TOC entry 2023 (class 1259 OID 16770)
+-- Dependencies: 172
+-- Name: cuenta_de_usuario_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX cuenta_de_usuario_fk ON cuentas USING btree (identificador);
+
+
+--
+-- TOC entry 2024 (class 1259 OID 16768)
+-- Dependencies: 172
+-- Name: cuentas_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cuentas_pk ON cuentas USING btree (id_cuenta);
+
+
+--
+-- TOC entry 2028 (class 1259 OID 16780)
+-- Dependencies: 174
+-- Name: cuotas_pagadas_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX cuotas_pagadas_fk ON cuotas USING btree (id_plan_de_pago);
+
+
+--
+-- TOC entry 2029 (class 1259 OID 16779)
+-- Dependencies: 174
+-- Name: cuotas_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cuotas_pk ON cuotas USING btree (id_cuota);
+
+
+--
+-- TOC entry 2032 (class 1259 OID 16789)
+-- Dependencies: 176
+-- Name: descuentos_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX descuentos_pk ON descuentos USING btree (id_descuento);
+
+
+--
+-- TOC entry 2035 (class 1259 OID 16798)
+-- Dependencies: 178
+-- Name: detalle_nota_venta_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX detalle_nota_venta_pk ON detalle_nota_venta USING btree (registro);
+
+
+--
+-- TOC entry 2040 (class 1259 OID 16809)
+-- Dependencies: 180
+-- Name: dosificaciones_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX dosificaciones_pk ON dosificaciones USING btree (id_dosificacion);
+
+
+--
+-- TOC entry 2043 (class 1259 OID 16818)
+-- Dependencies: 182
+-- Name: empleados_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX empleados_pk ON empleados USING btree (identificador);
+
+
+--
+-- TOC entry 2063 (class 1259 OID 16870)
+-- Dependencies: 192
+-- Name: es_almacenado_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX es_almacenado_fk ON items USING btree (almacen_id);
+
+
+--
+-- TOC entry 2016 (class 1259 OID 16749)
+-- Dependencies: 168
+-- Name: es_detallado_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX es_detallado_fk ON compras_items USING btree (id_compra);
+
+
+--
+-- TOC entry 2051 (class 1259 OID 16840)
+-- Dependencies: 186
+-- Name: esta_en_una_factura_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX esta_en_una_factura_fk ON factura_items USING btree (id_articulo);
+
+
+--
+-- TOC entry 2052 (class 1259 OID 16838)
+-- Dependencies: 186
+-- Name: factura_items_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX factura_items_pk ON factura_items USING btree (identificador_venta);
+
+
+--
+-- TOC entry 2046 (class 1259 OID 16827)
+-- Dependencies: 184 184
+-- Name: facturas_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX facturas_pk ON facturas USING btree (id_dosificacion, id_factura);
+
+
+--
+-- TOC entry 2056 (class 1259 OID 16849)
+-- Dependencies: 188
+-- Name: grupos_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX grupos_pk ON grupos USING btree (id_grupo);
+
+
+--
+-- TOC entry 2060 (class 1259 OID 16859)
+-- Dependencies: 190
+-- Name: industrias_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX industrias_pk ON industrias USING btree (id);
+
+
+--
+-- TOC entry 2064 (class 1259 OID 16868)
+-- Dependencies: 192
+-- Name: items_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX items_pk ON items USING btree (id);
+
+
+--
+-- TOC entry 2070 (class 1259 OID 16881)
+-- Dependencies: 194
+-- Name: marcas_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX marcas_pk ON marcas USING btree (id_marca);
+
+
+--
+-- TOC entry 2073 (class 1259 OID 16887)
+-- Dependencies: 195
+-- Name: nota_de_venta_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX nota_de_venta_pk ON nota_de_venta USING btree (id_nota);
+
+
+--
+-- TOC entry 2065 (class 1259 OID 16869)
+-- Dependencies: 192
+-- Name: pertenece_a_un_grupo_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX pertenece_a_un_grupo_fk ON items USING btree (grupo_id);
+
+
+--
+-- TOC entry 2077 (class 1259 OID 16897)
+-- Dependencies: 197
+-- Name: piezas_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX piezas_pk ON piezas USING btree (id_pieza);
+
+
+--
+-- TOC entry 2083 (class 1259 OID 16907)
+-- Dependencies: 199
+-- Name: plan_pagos_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX plan_pagos_pk ON plan_pagos USING btree (id_plan_de_pago);
+
+
+--
+-- TOC entry 2087 (class 1259 OID 16920)
+-- Dependencies: 201
+-- Name: proveedores_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX proveedores_pk ON proveedores USING btree (id_proveedor);
+
+
+--
+-- TOC entry 2093 (class 1259 OID 16941)
+-- Dependencies: 205
+-- Name: realiza_una_venta_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX realiza_una_venta_fk ON venta USING btree (identificador);
+
+
+--
+-- TOC entry 2012 (class 1259 OID 16738)
+-- Dependencies: 166
+-- Name: registra_una_compra_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX registra_una_compra_fk ON compras USING btree (identificador);
+
+
+--
+-- TOC entry 2090 (class 1259 OID 16929)
+-- Dependencies: 203
+-- Name: roles_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX roles_pk ON roles USING btree (id_rol);
+
+
+--
+-- TOC entry 2038 (class 1259 OID 16800)
+-- Dependencies: 178
+-- Name: tiene_detalle_de_venta_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_detalle_de_venta_fk ON detalle_nota_venta USING btree (id_nota);
+
+
+--
+-- TOC entry 2055 (class 1259 OID 16839)
+-- Dependencies: 186 186
+-- Name: tiene_detalle_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_detalle_fk ON factura_items USING btree (id_dosificacion, id_factura);
+
+
+--
+-- TOC entry 2039 (class 1259 OID 16799)
+-- Dependencies: 178
+-- Name: tiene_detalle_nota_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_detalle_nota_fk ON detalle_nota_venta USING btree (id_articulo);
+
+
+--
+-- TOC entry 2049 (class 1259 OID 16829)
+-- Dependencies: 184
+-- Name: tiene_dosificacion_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_dosificacion_fk ON facturas USING btree (id_dosificacion);
+
+
+--
+-- TOC entry 2050 (class 1259 OID 16828)
+-- Dependencies: 184
+-- Name: tiene_factura_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_factura_fk ON facturas USING btree (id_venta);
+
+
+--
+-- TOC entry 2068 (class 1259 OID 16872)
+-- Dependencies: 192
+-- Name: tiene_industria_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_industria_fk ON items USING btree (industria_id);
+
+
+--
+-- TOC entry 2069 (class 1259 OID 16871)
+-- Dependencies: 192
+-- Name: tiene_marca_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_marca_fk ON items USING btree (marca_id);
+
+
+--
+-- TOC entry 2076 (class 1259 OID 16888)
+-- Dependencies: 195
+-- Name: tiene_nota_de_venta_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_nota_de_venta_fk ON nota_de_venta USING btree (id_venta);
+
+
+--
+-- TOC entry 2080 (class 1259 OID 16898)
+-- Dependencies: 197
+-- Name: tiene_piezas_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_piezas_fk ON piezas USING btree (id_articulo);
+
+
+--
+-- TOC entry 2084 (class 1259 OID 16908)
+-- Dependencies: 199
+-- Name: tiene_plan_de_pago_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_plan_de_pago_fk ON plan_pagos USING btree (id_credito);
+
+
+--
+-- TOC entry 2013 (class 1259 OID 16736)
+-- Dependencies: 166
+-- Name: tiene_proveedor_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_proveedor_fk ON compras USING btree (id_proveedor);
+
+
+--
+-- TOC entry 2027 (class 1259 OID 16769)
+-- Dependencies: 172
+-- Name: tiene_rol_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_rol_fk ON cuentas USING btree (id_rol);
+
+
+--
+-- TOC entry 2059 (class 1259 OID 16850)
+-- Dependencies: 188
+-- Name: tiene_subgrupos_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX tiene_subgrupos_fk ON grupos USING btree (gru_id_grupo);
+
+
+--
+-- TOC entry 2022 (class 1259 OID 16759)
+-- Dependencies: 170
+-- Name: venta__a_credito_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX venta__a_credito_fk ON creditos USING btree (id_venta);
+
+
+--
+-- TOC entry 2094 (class 1259 OID 16940)
+-- Dependencies: 205
+-- Name: venta_a_cliente_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX venta_a_cliente_fk ON venta USING btree (id_cliente);
+
+
+--
+-- TOC entry 2095 (class 1259 OID 16939)
+-- Dependencies: 205
+-- Name: venta_con_descuento_fk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX venta_con_descuento_fk ON venta USING btree (id_descuento);
+
+
+--
+-- TOC entry 2096 (class 1259 OID 16938)
+-- Dependencies: 205
+-- Name: venta_pk; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX venta_pk ON venta USING btree (id_venta);
+
+
+--
+-- TOC entry 2100 (class 2606 OID 16957)
+-- Dependencies: 2066 192 168
+-- Name: fk_compras__articulo__items; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras_items
+    ADD CONSTRAINT fk_compras__articulo__items FOREIGN KEY (id_articulo) REFERENCES items(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2101 (class 2606 OID 16962)
+-- Dependencies: 168 2010 166
+-- Name: fk_compras__es_detall_compras; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras_items
+    ADD CONSTRAINT fk_compras__es_detall_compras FOREIGN KEY (id_compra) REFERENCES compras(id_compra) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2097 (class 2606 OID 16942)
+-- Dependencies: 170 166 2020
+-- Name: fk_compras_compra_a__creditos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras
+    ADD CONSTRAINT fk_compras_compra_a__creditos FOREIGN KEY (id_credito) REFERENCES creditos(id_credito) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2098 (class 2606 OID 16947)
+-- Dependencies: 182 166 2044
+-- Name: fk_compras_registra__empleado; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras
+    ADD CONSTRAINT fk_compras_registra__empleado FOREIGN KEY (identificador) REFERENCES empleados(identificador) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2099 (class 2606 OID 16952)
+-- Dependencies: 166 201 2085
+-- Name: fk_compras_tiene_pro_proveedo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY compras
+    ADD CONSTRAINT fk_compras_tiene_pro_proveedo FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2102 (class 2606 OID 16967)
+-- Dependencies: 170 2091 205
+-- Name: fk_creditos_venta__a__venta; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY creditos
+    ADD CONSTRAINT fk_creditos_venta__a__venta FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2103 (class 2606 OID 16972)
+-- Dependencies: 182 2044 172
+-- Name: fk_cuentas_cuenta_de_empleado; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuentas
+    ADD CONSTRAINT fk_cuentas_cuenta_de_empleado FOREIGN KEY (identificador) REFERENCES empleados(identificador) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2104 (class 2606 OID 16977)
+-- Dependencies: 172 2088 203
+-- Name: fk_cuentas_tiene_rol_roles; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuentas
+    ADD CONSTRAINT fk_cuentas_tiene_rol_roles FOREIGN KEY (id_rol) REFERENCES roles(id_rol) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2105 (class 2606 OID 16982)
+-- Dependencies: 2081 199 174
+-- Name: fk_cuotas_cuotas_pa_plan_pag; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuotas
+    ADD CONSTRAINT fk_cuotas_cuotas_pa_plan_pag FOREIGN KEY (id_plan_de_pago) REFERENCES plan_pagos(id_plan_de_pago) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2107 (class 2606 OID 16992)
+-- Dependencies: 178 2066 192
+-- Name: fk_detalle__tiene_det_items; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY detalle_nota_venta
+    ADD CONSTRAINT fk_detalle__tiene_det_items FOREIGN KEY (id_articulo) REFERENCES items(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2106 (class 2606 OID 16987)
+-- Dependencies: 195 2074 178
+-- Name: fk_detalle__tiene_det_nota_de_; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY detalle_nota_venta
+    ADD CONSTRAINT fk_detalle__tiene_det_nota_de_ FOREIGN KEY (id_nota) REFERENCES nota_de_venta(id_nota) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2110 (class 2606 OID 17007)
+-- Dependencies: 2066 192 186
+-- Name: fk_factura__esta_en_u_items; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_items
+    ADD CONSTRAINT fk_factura__esta_en_u_items FOREIGN KEY (id_articulo) REFERENCES items(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2111 (class 2606 OID 17012)
+-- Dependencies: 186 2047 184 186 184
+-- Name: fk_factura__tiene_det_facturas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY factura_items
+    ADD CONSTRAINT fk_factura__tiene_det_facturas FOREIGN KEY (id_dosificacion, id_factura) REFERENCES facturas(id_dosificacion, id_factura) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2108 (class 2606 OID 16997)
+-- Dependencies: 184 2041 180
+-- Name: fk_facturas_tiene_dos_dosifica; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY facturas
+    ADD CONSTRAINT fk_facturas_tiene_dos_dosifica FOREIGN KEY (id_dosificacion) REFERENCES dosificaciones(id_dosificacion) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2109 (class 2606 OID 17002)
+-- Dependencies: 2091 205 184
+-- Name: fk_facturas_tiene_fac_venta; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY facturas
+    ADD CONSTRAINT fk_facturas_tiene_fac_venta FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2112 (class 2606 OID 17017)
+-- Dependencies: 188 2057 188
+-- Name: fk_grupos_tiene_sub_grupos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY grupos
+    ADD CONSTRAINT fk_grupos_tiene_sub_grupos FOREIGN KEY (gru_id_grupo) REFERENCES grupos(id_grupo) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2113 (class 2606 OID 17022)
+-- Dependencies: 192 162 2003
+-- Name: fk_items_es_almace_almacene; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT fk_items_es_almace_almacene FOREIGN KEY (almacen_id) REFERENCES almacenes(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2114 (class 2606 OID 17027)
+-- Dependencies: 2057 188 192
+-- Name: fk_items_pertenece_grupos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT fk_items_pertenece_grupos FOREIGN KEY (grupo_id) REFERENCES grupos(id_grupo) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2115 (class 2606 OID 17032)
+-- Dependencies: 2061 192 190
+-- Name: fk_items_tiene_ind_industri; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT fk_items_tiene_ind_industri FOREIGN KEY (industria_id) REFERENCES industrias(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2116 (class 2606 OID 17037)
+-- Dependencies: 194 192 2071
+-- Name: fk_items_tiene_mar_marcas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT fk_items_tiene_mar_marcas FOREIGN KEY (marca_id) REFERENCES marcas(id_marca) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2117 (class 2606 OID 17042)
+-- Dependencies: 195 205 2091
+-- Name: fk_nota_de__tiene_not_venta; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY nota_de_venta
+    ADD CONSTRAINT fk_nota_de__tiene_not_venta FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2118 (class 2606 OID 17047)
+-- Dependencies: 197 2066 192
+-- Name: fk_piezas_tiene_pie_items; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY piezas
+    ADD CONSTRAINT fk_piezas_tiene_pie_items FOREIGN KEY (id_articulo) REFERENCES items(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2119 (class 2606 OID 17052)
+-- Dependencies: 2020 199 170
+-- Name: fk_plan_pag_tiene_pla_creditos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY plan_pagos
+    ADD CONSTRAINT fk_plan_pag_tiene_pla_creditos FOREIGN KEY (id_credito) REFERENCES creditos(id_credito) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2120 (class 2606 OID 17057)
+-- Dependencies: 182 205 2044
+-- Name: fk_venta_realiza_u_empleado; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY venta
+    ADD CONSTRAINT fk_venta_realiza_u_empleado FOREIGN KEY (identificador) REFERENCES empleados(identificador) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2121 (class 2606 OID 17062)
+-- Dependencies: 205 164 2006
+-- Name: fk_venta_venta_a_c_clientes; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY venta
+    ADD CONSTRAINT fk_venta_venta_a_c_clientes FOREIGN KEY (id_cliente) REFERENCES clientes(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2122 (class 2606 OID 17067)
+-- Dependencies: 176 2033 205
+-- Name: fk_venta_venta_con_descuent; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY venta
+    ADD CONSTRAINT fk_venta_venta_con_descuent FOREIGN KEY (id_descuento) REFERENCES descuentos(id_descuento) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2150 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2012-03-20 21:07:39
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -53,6 +53,11 @@ Cache::config('default', array('engine' => 'File'));
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+ Inflector::rules('singular', array('rules' => array('/([d|j|m|n|l|r|s|y|z])es$/i' => '\1',
+        '/as$/i' => 'a',		
+        '/([ti])a$/i' => '\1a'), 'irregular' => array('items'=>'item'), 'uninflected' => array()));
+ Inflector::rules('plural', array('rules' => array('/([d|j|m|n|l|r|s|y|z])$/i' => '\1es',
+        '/a$/i' => '\1as'), 'irregular' => array('item'=>'items'), 'uninflected' => array()));
 
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call

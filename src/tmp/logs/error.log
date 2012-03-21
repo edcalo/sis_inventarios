@@ -1,0 +1,36 @@
+2012-03-20 17:02:23 Error: [MissingControllerException] Controller class AdminController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-20 19:07:21 Error: [PDOException] SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "id" violates not-null constraint
+#0 C:\xampp\cakephp-2.0\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp-2.0\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('INSERT INTO "in...', Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Model\Datasource\DboSource.php(967): DboSource->execute('INSERT INTO "in...')
+#3 C:\xampp\cakephp-2.0\lib\Cake\Model\Model.php(1646): DboSource->create(Object(Industria), Array, Array)
+#4 C:\xampp\htdocs\sis_inventarios\Controller\IndustriasController.php(43): Model->save(Array)
+#5 [internal function]: IndustriasController->add()
+#6 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#7 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#9 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2012-03-20 19:08:25 Error: [MissingControllerException] Controller class AdminController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-20 22:55:35 Error: [MissingHelperException] Helper class AjaxHelper could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\View\View.php(574): HelperCollection->load('Ajax', Array)
+#1 C:\xampp\cakephp-2.0\lib\Cake\View\View.php(356): View->loadHelpers()
+#2 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(900): View->render(NULL, NULL)
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#4 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#5 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-03-20 23:01:40 Error: [MissingViewException] View file "C:\xampp\htdocs\sis_inventarios\View\Pages\admin.ctp" is missing.
+#0 C:\xampp\cakephp-2.0\lib\Cake\View\View.php(360): View->_getViewFileName('admin')
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(900): View->render('admin', NULL)
+#2 C:\xampp\htdocs\sis_inventarios\Controller\PagesController.php(69): Controller->render('admin')
+#3 [internal function]: PagesController->display('admin')
+#4 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#5 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#6 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#7 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
