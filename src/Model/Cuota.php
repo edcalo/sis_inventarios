@@ -21,9 +21,9 @@ class Cuota extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'PlanDePago' => array(
-			'className' => 'PlanDePago',
-			'foreignKey' => 'plan_de_pago_id',
+		'PlanPago' => array(
+			'className' => 'PlanPago',
+			'foreignKey' => 'plan_pago_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

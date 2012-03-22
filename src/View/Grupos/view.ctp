@@ -6,9 +6,9 @@
 			<?php echo h($grupo['Grupo']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Grupo'); ?></dt>
+		<dt><?php echo __('Grupo Id'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($grupo['Grupo']['nombre_grupo'], array('controller' => 'grupos', 'action' => 'view', $grupo['Grupo']['id'])); ?>
+			<?php echo h($grupo['Grupo']['grupo_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Nombre Grupo'); ?></dt>
@@ -19,6 +19,11 @@
 		<dt><?php echo __('Descripcion Grupo'); ?></dt>
 		<dd>
 			<?php echo h($grupo['Grupo']['descripcion_grupo']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Codigo'); ?></dt>
+		<dd>
+			<?php echo h($grupo['Grupo']['codigo']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -45,6 +50,7 @@
 		<th><?php echo __('Grupo Id'); ?></th>
 		<th><?php echo __('Nombre Grupo'); ?></th>
 		<th><?php echo __('Descripcion Grupo'); ?></th>
+		<th><?php echo __('Codigo'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -55,6 +61,7 @@
 			<td><?php echo $grupo['grupo_id'];?></td>
 			<td><?php echo $grupo['nombre_grupo'];?></td>
 			<td><?php echo $grupo['descripcion_grupo'];?></td>
+			<td><?php echo $grupo['codigo'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'grupos', 'action' => 'view', $grupo['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'grupos', 'action' => 'edit', $grupo['id'])); ?>

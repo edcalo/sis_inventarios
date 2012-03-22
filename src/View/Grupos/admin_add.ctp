@@ -6,6 +6,7 @@
 		echo $this->Form->input('grupo_id');
 		echo $this->Form->input('nombre_grupo');
 		echo $this->Form->input('descripcion_grupo');
+		echo $this->Form->input('codigo');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

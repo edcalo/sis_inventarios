@@ -6,17 +6,17 @@
 			<th><?php echo $this->Paginator->sort('grupo_id');?></th>
 			<th><?php echo $this->Paginator->sort('nombre_grupo');?></th>
 			<th><?php echo $this->Paginator->sort('descripcion_grupo');?></th>
+			<th><?php echo $this->Paginator->sort('codigo');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 	foreach ($grupos as $grupo): ?>
 	<tr>
 		<td><?php echo h($grupo['Grupo']['id']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($grupo['Grupo']['nombre_grupo'], array('controller' => 'grupos', 'action' => 'view', $grupo['Grupo']['id'])); ?>
-		</td>
+		<td><?php echo h($grupo['Grupo']['grupo_id']); ?>&nbsp;</td>
 		<td><?php echo h($grupo['Grupo']['nombre_grupo']); ?>&nbsp;</td>
 		<td><?php echo h($grupo['Grupo']['descripcion_grupo']); ?>&nbsp;</td>
+		<td><?php echo h($grupo['Grupo']['codigo']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $grupo['Grupo']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $grupo['Grupo']['id'])); ?>

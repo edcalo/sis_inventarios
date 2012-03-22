@@ -78,9 +78,9 @@ class Pieza extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Articulo' => array(
-			'className' => 'Articulo',
-			'foreignKey' => 'articulo_id',
+		'Item' => array(
+			'className' => 'Item',
+			'foreignKey' => 'item_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
