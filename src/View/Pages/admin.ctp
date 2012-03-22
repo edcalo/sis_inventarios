@@ -1,87 +1,70 @@
-
 <?php
-App::uses('Debugger', 'Utility');
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<p>
-<?php
-	if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-<?php
-	if (is_writable(TMP)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your tmp directory is writable.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-<?php
-	$settings = Cache::settings();
-	if (!empty($settings)):
-		echo '<span class="notice success">';
-				echo __d('cake_dev', 'The %s is being used for caching. To change the config edit APP/Config/core.php ', '<em>'. $settings['engine'] . 'Engine</em>');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in APP/Config/core.php');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-<?php
-	$filePresent = null;
-	if (file_exists(APP . 'Config' . DS . 'database.php')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your database configuration file is present.');
-			$filePresent = true;
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your database configuration file is NOT present.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Rename APP/Config/database.php.default to APP/Config/database.php');
-		echo '</span>';
-	endif;
-?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $e) {
-		$connected = false;
-	}
+	echo $this->Html->script('app.js', array('inline' => false));
+        echo $this->Html->css('http://localhost:9191/libs/ext-4.0.7-gpl/examples/ux/css/ItemSelector.css', 'stylesheet', array('inline' => false));
 ?>
 
-<?php endif;?>
-<?php
-	App::uses('Validation', 'Utility');
-	if (!Validation::alphaNumeric('cakephp')) {
-		echo '<p><span class="notice">';
-		__d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-		echo '<br/>';
-		__d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-		echo '</span></p>';
-	}
-?>
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
+<div id="main_container">
+    <div id="main_content">
+        <div id="center_content">
+            <div class="left_content">
+                <div class="center_text"  style="height: 200px;">
+                    <h1 >Bienvenido a SinfoSys</h1>
+                    <img  width="128" height="128" src="img/logo_institucion.gif"  class="img_left" alt="logo institucion"/>
+                    SinfoSys fue dise&ntilde;ado como un sistema interno de la institucion para la admisnitracion y seguimiento de los servicios ofrecidos y captados.
+                </div>
+                
+                <div class="center_text sistemas" >
+                    
+                    <h1 style ="color:#1E4E8F;">Sistemas Disponibles para el usuario</h1>
+                    <div id="menu-sistemas">
+                        <div class="news_tab">
+                            <img src="img/error128x128.png" alt="No inicio session" class="img_left" />
+                            <h3 style="color: #710000">No inicio session</h3>
+                            <hr />
+                            <p style="font-size: 14px;">Disculpe <b>No ha iniciado session</b>, para tener acceso al menu debe iniciar session primero.<br /><br />
+                                Para iniciar session haga click en el boton <b>Iniciar session</b> que se encuentra en la esquina superior derecha e ingrese sus credenciales.</p>
+                        </div>
+                    </div>
 
+                </div>
+            </div> <!-- end of left_content -->
+            <div class="right_content">
+                <div class="center_text">
+                    <h1>Avisos</h1>
+                    <ol class="commentlist">
+                        <li class="alt" id="comment-63">
+                            <cite>
+                                <img alt="" src="img/social_rss.png" class="avatar" height="40" width="40"/>Erwin Says: <br />
+                                <span class="comment-data">Comments are great!</span>
+                            </cite>
+                        </li>
+                        <li id="comment-67">
+                            <cite>
+                                <img alt="" src="img/social_rss.png" class="avatar" height="40" width="40"/>admin Says: <br />
+                                <span class="comment-data">ALorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.Suspendisse bibendum.
+                                </span></cite>
+
+                        </li>
+                    </ol>
+                    <h1>Ultimas noticias</h1>
+                    <ol class="commentlist">
+                        <li class="alt" id="comment-63">
+                            <cite>
+                                <img alt="" src="img/calendar_news.png" class="avatar" height="40" width="40"/>Erwin Says: <br />
+                                <span class="comment-data">Comments are great!</span>
+                            </cite>
+                        </li>
+                        <li id="comment-67">
+                            <cite>
+                                <img alt="" src="img/calendar_news.png" class="avatar" height="40" width="40"/>admin Says: <br />
+                                <span class="comment-data">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.</span>
+                            </cite>
+                        </li>
+                    </ol>
+                </div>
+            </div> <!-- end of right_content -->
+        </div>
+    </div>
+    <!-- end of main_content -->
+</div>
+<!-- end of main_container -->
