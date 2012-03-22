@@ -7,6 +7,6 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'postgres',
 		'password' => 'postgres',
-		'database' => 'sis_inventarios',
+		'database' => 'sis_inventarios2',
 	);
 }
