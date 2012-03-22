@@ -7,3 +7,4 @@ En este proyecto se usara las siguientes herramientas
  * Netbeans 7.1
  * PowerDisegner
  * PostgreSQL 9
+ * Otros.......
