@@ -101,3 +101,76 @@
 #9 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(CuentasController), Object(CakeRequest), Object(CakeResponse))
 #10 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+2012-03-24 14:28:11 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:11 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:13 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:13 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:13 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:41 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:41 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:41 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:44 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:44 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:28:44 Error: [MissingActionException] Action GruposController::img() could not be found.
+#0 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(GruposController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-24 14:43:06 Error: [MissingControllerException] Controller class FtpGroupsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-24 14:43:06 Error: [MissingControllerException] Controller class FtpUsersController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-24 14:56:42 Error: [MissingControllerException] Controller class FtpUsersController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-24 14:56:42 Error: [MissingControllerException] Controller class FtpGroupsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-24 15:00:52 Error: [MissingControllerException] Controller class FtpUsersController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-24 15:00:52 Error: [MissingControllerException] Controller class FtpGroupsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
