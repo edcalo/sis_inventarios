@@ -1,15 +1,15 @@
-Ext.define('Hosting.store.FtpGroups', {
+Ext.define('SisInventarios.store.Roles', {
     extend: 'Ext.data.Store',
-    model: 'Hosting.model.FtpGroup',
+    model: 'SisInventarios.model.Rol',
     autoLoad: true,
     proxy: {
         type: 'ajax',
         method:'POST',
         api: {
-            read: 'ftp_groups',
-            update: 'ftp_groups/edit',
-            create: 'ftp_groups/add',
-            destroy: 'ftp_groups/delete'
+            read: 'admin/roles',
+            update: 'admin/roles/edit',
+            create: 'admin/roles/add',
+            destroy: 'admin/roles/delete'
         },
         reader: {
             type: 'json',

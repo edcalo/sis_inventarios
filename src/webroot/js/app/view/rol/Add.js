@@ -1,6 +1,6 @@
-Ext.define('Hosting.view.ftp_group.Add', {
+Ext.define('SisInventarios.view.rol.Add', {
     extend: 'Ext.window.Window',
-    alias : 'widget.ftpgroupadd',
+    alias : 'widget.roladd',
     title : 'Registrar servidor',
     layout: 'fit',
     autoShow: true,
@@ -59,7 +59,7 @@ Ext.define('Hosting.view.ftp_group.Add', {
                 name : 'members',
                 fieldLabel: 'Seleccione el o los usuarios que tienen habilitada(s) su(s) cuenta(s) en este servidor',
                 allowBlank: false,
-                store: Ext.data.StoreManager.lookup('FtpUsers'),
+                store: Ext.data.StoreManager.lookup('Roles'),
                 displayField: 'userid',
                 valueField:'id'
             }]

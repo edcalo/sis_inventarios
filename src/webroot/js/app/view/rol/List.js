@@ -1,12 +1,12 @@
-Ext.define('Hosting.view.ftp_group.List' ,{
+Ext.define('SisInventarios.view.rol.List' ,{
     extend: 'Ext.window.Window',
-    alias : 'widget.ftpgrouplist',
+    alias : 'widget.rollist',
     layout: 'fit',
     autoShow: true,
     modal:true,
     width: 550,
     height: 415,
-    title: 'Lista de Servidores ',
+    title: 'Lista de Roles',
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
             listeners:{
@@ -16,33 +16,33 @@ Ext.define('Hosting.view.ftp_group.List' ,{
         });
 
         this.items=[{
-            id:'listagrupos',
+            id:'listaroles',
             xtype: 'grid',
             border: false,
-            store: 'FtpGroups',
+            store: 'Roles',
             columns : [{
                 header: 'Nombre',
-                dataIndex: 'groupname',
+                dataIndex: 'nombre_rol',
                 renderer:function(value, metaData){
                     metaData.style = 'font-size:120%; font-weight: bold';
                     return value;
                 },
-                width:100
+                width:120
             },{
                 header: 'Descripcion',
-                dataIndex: 'description',
+                dataIndex: 'descripcion',
                 renderer:function(value, metaData){
                     metaData.style = 'white-space:normal';
                     return value;
                 },
-                width: 390
+                width: 380
             }],
             selModel: sm,
             bbar:Ext.create('Ext.PagingToolbar', {
-                store: Ext.data.StoreManager.lookup('FtpGroups'),
+                store: Ext.data.StoreManager.lookup('Roles'),
                 displayInfo: true,
-                displayMsg: 'Mostrando {0} - {1} servidores de  {2}',
-                emptyMsg: "No hay servidores registradas"
+                displayMsg: 'Mostrando {0} - {1} roles de  {2}',
+                emptyMsg: "No hay roles registrados"
             })
         }];
         
@@ -55,7 +55,7 @@ Ext.define('Hosting.view.ftp_group.List' ,{
                 items:{
                     scale: 'large',
                     text: 'Registrar',
-                    action: 'addserver',
+                    action: 'addrol',
                     iconAlign: 'top',
                     iconCls: 'icon-add-server'
                 }
@@ -68,12 +68,12 @@ Ext.define('Hosting.view.ftp_group.List' ,{
                 items:[{
                     text: 'Modificar',
                     iconCls: 'icon-edit-server',
-                    action: 'editserver',
+                    action: 'editrol',
                     disabled:true
                 },{
                     text: 'Eliminar',
                     iconCls:'icon-delete-server',
-                    action:'deleteserver',
+                    action:'deleterol',
                     disabled:true
                 }]
             }]

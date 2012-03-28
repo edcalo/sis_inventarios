@@ -1,14 +1,14 @@
-Ext.define('Hosting.controller.FtpGroups', {
+Ext.define('SisInventarios.controller.Roles', {
     extend: 'Ext.app.Controller',
     stores: [
-    'FtpGroups'
+    'Roles'
     ],
     models: [
-    'FtpGroup'
+    'Rol'
     ],
     views: [
-    'ftp_group.List',
-    'ftp_group.Add'
+    'rol.List',
+    'rol.Add'
     ],
     requires:[
     'Ext.window.MessageBox',
@@ -16,40 +16,40 @@ Ext.define('Hosting.controller.FtpGroups', {
     ],
     init: function() {
         this.control({
-            'ftpgrouplist button[action=addserver]': {
-                click: this.addFtpGroup
+            'listaroles button[action=addserver]': {
+                click: this.addRol
             },
-            'ftpgrouplist button[action=editserver]': {
-                click: this.editFtpGroup
+            'listaroles button[action=editserver]': {
+                click: this.editRol
             },
-            'ftpgrouplist #listagrupos': {
-                itemdblclick: this.editFtpGroup
+            'listaroles #listagrupos': {
+                itemdblclick: this.editRol
             },
-            'ftpgrouplist button[action=deleteserver]': {
+            'listaroles button[action=deleteserver]': {
+                click: this.deleteRol
+            },
+            'listaroles button[action=infoserver]': {
                 click: this.deleteFtpGroup
             },
-            'ftpgrouplist button[action=infoserver]': {
+            'listaroles button[action=statisticsserver]': {
                 click: this.deleteFtpGroup
             },
-            'ftpgrouplist button[action=statisticsserver]': {
+            'listaroles button[action=eventviewerserver]': {
                 click: this.deleteFtpGroup
             },
-            'ftpgrouplist button[action=eventviewerserver]': {
-                click: this.deleteFtpGroup
-            },
-            'ftpgroupadd button[action=save]': {
-                click: this.saveFtpGroup
+            'listaroles button[action=save]': {
+                click: this.saveRol
             }
         });
     },
-    addFtpGroup: function(button){
+    addRol: function(button){
         Ext.widget('ftpgroupadd');
 
     },
-    viewFtpGroup:function(a, b, c){
+    viewRol:function(a, b, c){
         console.log('Ver detalle del grupo');
     },
-    editFtpGroup: function(source, record){
+    editRol: function(source, record){
         if(source.getXType() == 'button'){
             var win = source.up('window');
             record = win.down('#listagrupos').getSelectionModel().getSelection();
@@ -59,7 +59,7 @@ Ext.define('Hosting.controller.FtpGroups', {
         view.down('form').loadRecord(record);
 
     },
-    deleteFtpGroup: function(button){
+    deleteRol: function(button){
         Ext.MessageBox.confirm(
             'Eliminar Servidores',
             'Esta seguro que desea eliminar los sercvidores seleccionados',
@@ -74,7 +74,7 @@ Ext.define('Hosting.controller.FtpGroups', {
             this
         );
     },
-    saveFtpGroup: function(button){
+    saveRol: function(button){
         var win    = button.up('window');
         var form   = win.down('form');
         var record = form.getRecord();

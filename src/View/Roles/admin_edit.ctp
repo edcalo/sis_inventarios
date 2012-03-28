@@ -1,22 +1,26 @@
-<div class="roles form">
-<?php echo $this->Form->create('Rol');?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit Rol'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('nombre_rol');
-		echo $this->Form->input('descripcion');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Rol.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Rol.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Roles'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Cuentas'), array('controller' => 'cuentas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cuenta'), array('controller' => 'cuentas', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+if($actualizado) {
+    
+    $lista_grupos = array();
+    foreach ($groups as $grupo) {
+        $grupo['FtpGroup']['id']=$grupo['FtpGroup']['gid'];
+        unset($grupo['FtpGroup']['gid']);
+        array_push($lista_grupos, $grupo['FtpGroup']);
+    }
+    $respuesta = array(
+        'success' => $actualizado,
+        'data'=>$lista_grupos
+    );
+}else {
+    $respuesta = array(
+        'success'=> $actualizado,
+        'mensage'=> array(
+            'titulo'=> 'Error al guardar',
+            'msg'=> 'El formulario tiene errores, corrijalos y vuelva ha intentarlo'
+        ),
+        'errors' => $this->validationErrors['FtpGroup']
+    );
+}
+echo json_encode($respuesta);
+?>

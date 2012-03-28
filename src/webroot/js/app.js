@@ -3,15 +3,14 @@
 });*/
 Ext.Loader.setPath('Ext.ux', '../libs/ext-4.0.7-gpl/examples/ux/');
 Ext.application({
-    name: 'Hosting',
+    name: 'SisInventarios',
     appFolder: 'js/app',
     controllers: [
-        'FtpUsers',
-        'FtpGroups'
+        'Roles'
     ],
-    listGroups: function(){
-        var groups = Ext.widget('ftpgrouplist');
-        groups.show();
+    listRoles: function(){
+        var roles = Ext.widget('rollist');
+        roles.show();
     },
     launch: function() {
         var panel_inicio = Ext.create('Ext.Panel',{
@@ -23,18 +22,19 @@ Ext.application({
             autoScroll: true
         });
         var panel_ftp=Ext.create('Ext.Panel',{
-            title: 'Usuarios FTP',
+            title: 'Sistema de Inventarios',
             layout: 'border',
             items:[{
-                id:'ftp-user-list',
-                xtype: 'ftpuserlist',
+                id:'item-list',
+                xtype: 'panel',
                 region:'center',
-                margins: '0 0 5 0'
+                margins: '0 0 5 0',
+                html: 'Lista de los items'
             },{
-                title: 'Detalle de la cuenta seleccionada',
+                title: 'Detalle del item seleccionado',
                 collapsible: true,
                 region:'east',
-                html:'Detalle de la cuenta esto sera un user_ftp.View',
+                html:'Detalle del item items.View',
                 width:400,
                 margins: '0 0 5 5'
 
@@ -79,7 +79,7 @@ Ext.application({
 
                         text: 'Ordenar',
                         iconCls:'icon-ordenar-aux',
-                        handler: this.listGroups
+                        handler: this.listRoles
                     }]
                 }]
             },{
@@ -107,6 +107,32 @@ Ext.application({
                         iconCls:'icon-unidad-32'
                     }, {
                         text: 'Cargos',
+                        iconCls:'icon-cargos-32'
+
+                    }]
+                }]
+            },'->', {
+                title: 'Catalogos',
+                xtype: 'buttongroup',
+                columns: 4,
+                defaults:{
+                    scale: 'large',
+                    iconAlign: 'top'
+                },
+                items:[{
+                    xtype: 'buttongroup',
+                    defaults:{
+                        scale: 'large',
+                        iconAlign: 'top'
+                    },
+                    items:[ {
+                        text: 'Proveedores',
+                        iconCls: 'icon-turno-32'
+                    },{
+                        text: 'Grupos',
+                        iconCls:'icon-unidad-32'
+                    }, {
+                        text: 'Roles',
                         iconCls:'icon-cargos-32'
 
                     }]

@@ -1,11 +1,10 @@
-Ext.define('Hosting.model.FtpGroup', {
+Ext.define('SisInventarios.model.Rol', {
     extend: 'Ext.data.Model',
     fields: [{
         name:'id',
         type: 'int',
         mapping: 'id'
     },
-    'groupname',
-    'members',
-    'description']
+    'nombre_rol',
+    'descripcion']
 });
