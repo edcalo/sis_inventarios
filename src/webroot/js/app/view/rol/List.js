@@ -77,64 +77,23 @@ Ext.define('SisInventarios.view.rol.List' ,{
                     disabled:true
                 }]
             }]
-        },{
-            title: 'Reportes',
-            xtype: 'buttongroup',
-            columns: 4,
-            defaults:{
-                scale: 'large',
-                iconAlign: 'top'
-            },
-            items:[{
-                xtype: 'buttongroup',
-                defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
-                },
-                items:[{
-                    text: 'Informacion',
-                    iconCls: 'icon-information-server',
-                    action:'infoserver',
-                    disabled:true
-                },{
-                    text: 'Estadisticas',
-                    iconCls: 'icon-statistics-server',
-                    action:'statisticsserver',
-                    disabled:true
-                },{
-                    text: 'Visor de eventos',
-                    iconCls:'icon-diagnosis-server',
-                    action:'eventviewerserver',
-                    disabled:true
-                }]
-            }]
         }];
         this.callParent(arguments);
     },
     selectChange: function( sm, selected, options ){
-        var bedit = this.down('button[action=editserver]');
-        var bdelete = this.down('button[action=deleteserver]');
-        var bdinfo = this.down('button[action=infoserver]');
-        var bdviewer = this.down('button[action=eventviewerserver]');
-        var bdstatistic = this.down('button[action=statisticsserver]');
+        var bedit = this.down('button[action=editrol]');
+        var bdelete = this.down('button[action=deleterol]');
+        
         if(selected.length > 0){
             bdelete.enable();
-            bdstatistic.enable();
             if(selected.length == 1){
                 bedit.enable();
-                bdinfo.enable();
-                bdviewer.enable()
             }else{
                 bedit.disable();
-                bdinfo.disable();
-                bdviewer.disable()
             }
         }else{
             bedit.disable();
             bdelete.disable();
-            bdinfo.disable();
-            bdviewer.disable();
-            bdstatistic.disable();
         }
     }
 

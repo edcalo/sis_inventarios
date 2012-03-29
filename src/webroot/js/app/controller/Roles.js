@@ -16,34 +16,25 @@ Ext.define('SisInventarios.controller.Roles', {
     ],
     init: function() {
         this.control({
-            'listaroles button[action=addserver]': {
+            'rollist button[action=addrol]': {
                 click: this.addRol
             },
-            'listaroles button[action=editserver]': {
+            'rollist button[action=editrol]': {
                 click: this.editRol
             },
-            'listaroles #listagrupos': {
+            'rollist #listaroles': {
                 itemdblclick: this.editRol
             },
-            'listaroles button[action=deleteserver]': {
+            'rollist button[action=deleterol]': {
                 click: this.deleteRol
             },
-            'listaroles button[action=infoserver]': {
-                click: this.deleteFtpGroup
-            },
-            'listaroles button[action=statisticsserver]': {
-                click: this.deleteFtpGroup
-            },
-            'listaroles button[action=eventviewerserver]': {
-                click: this.deleteFtpGroup
-            },
-            'listaroles button[action=save]': {
+            'roladd button[action=save]': {
                 click: this.saveRol
             }
         });
     },
     addRol: function(button){
-        Ext.widget('ftpgroupadd');
+        Ext.widget('roladd');
 
     },
     viewRol:function(a, b, c){
@@ -52,23 +43,23 @@ Ext.define('SisInventarios.controller.Roles', {
     editRol: function(source, record){
         if(source.getXType() == 'button'){
             var win = source.up('window');
-            record = win.down('#listagrupos').getSelectionModel().getSelection();
+            record = win.down('#listaroles').getSelectionModel().getSelection();
             record = record[0];
         }
-        var view = Ext.widget('ftpgroupadd');
+        var view = Ext.widget('roladd');
         view.down('form').loadRecord(record);
 
     },
     deleteRol: function(button){
         Ext.MessageBox.confirm(
-            'Eliminar Servidores',
-            'Esta seguro que desea eliminar los sercvidores seleccionados',
+            'Eliminar Rol',
+            'Esta seguro que desea eliminar los roles seleccionados',
             function(confirm){
                 if(confirm == 'yes'){
                     var win = button.up('window');
-                    var seleccion = win.down('#listagrupos').getSelectionModel().getSelection();
-                    this.getFtpGroupsStore().remove(seleccion);
-                    this.getFtpGroupsStore().sync();
+                    var seleccion = win.down('#listaroles').getSelectionModel().getSelection();
+                    this.getRolesStore().remove(seleccion);
+                    this.getRolesStore().sync();
                 }
             },
             this
@@ -80,15 +71,15 @@ Ext.define('SisInventarios.controller.Roles', {
         var record = form.getRecord();
         var values = form.getValues();
         if(!record){
-            record = this.getFtpGroupModel().create();
+            record = this.getRolModel().create();
             record.set(values);
-            this.getFtpGroupsStore().insert(0, record);
+            this.getRolesStore().insert(0, record);
         }else{
             record.set(values);
         }
         
         win.close();
-        this.getFtpGroupsStore().sync();
+        this.getRolesStore().sync();
 
 
     }

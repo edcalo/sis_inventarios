@@ -66,12 +66,13 @@ class RolesController extends AppController {
     public function admin_add() {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
-            $datos = json_decode(stripslashes($this->data)); //decodificamos la informacion
-            $this->data = array('Rol' => (array) $datos);
-            if ($this->FtpGroup->save($this->data)) {
-                $this->set('guardado', 1);
 
-                $this->data['Rol']['id'] = $this->Rol->id;
+            $datos = json_decode(stripslashes($this->data)); //decodificamos la informacion
+            $this->data = array('Rol' => (array)$datos);
+
+            if ($this->Rol->save($this->data)) {
+                $this->set('guardado', 1);                
+                $this->set('newID', $this->Rol->id);
             } else {
                 $this->set('guardado', 0);
             }

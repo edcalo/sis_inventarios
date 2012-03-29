@@ -6,10 +6,6 @@ Ext.define('SisInventarios.view.rol.Add', {
     autoShow: true,
     modal:true,
     width: 550,
-    requires:[
-    'Ext.ux.form.MultiSelect',
-    'Ext.ux.form.ItemSelector'
-    ],
     iconCls: 'icon-add',
     initComponent: function() {
         this.items = [{
@@ -23,45 +19,19 @@ Ext.define('SisInventarios.view.rol.Add', {
                 name:'id',
                 xtype: 'hidden'
             },{
-                xtype: 'container',
-                layout:'column',
-                style:{paddingBottom: '20px'},
-                items:[{
-                    xtype: 'container',
-                    columnWidth:.35,
-                    layout: 'anchor',
-                    items: [{
-                        xtype: 'textfield',
-                        name : 'groupname',
-                        fieldLabel: 'Identificador',
-                        msgTarget: 'side',
-                        allowBlank: false,
-                        anchor:'95%'
-                    }]
-                },{
-                    xtype: 'container',
-                    columnWidth:.65,
-                    layout: 'anchor',
-                    items: [{
-                        xtype: 'textfield',
-                        name : 'description',
-                        fieldLabel: 'Nombre del servidor',
-                        msgTarget: 'side',
-                        allowBlank: false,
-                        anchor:'100%'
-                    }]
-                }]
+                xtype: 'textfield',
+                name : 'nombre_rol',
+                fieldLabel: 'Nombre del Rol',
+                msgTarget: 'side',
+                allowBlank: false,
+                anchor:'95%'
             },{
                 anchor: '100%',
-                xtype: 'itemselector',
-                buttons:['add', 'remove'],
-                msgTarget: 'side',
-                name : 'members',
-                fieldLabel: 'Seleccione el o los usuarios que tienen habilitada(s) su(s) cuenta(s) en este servidor',
-                allowBlank: false,
-                store: Ext.data.StoreManager.lookup('Roles'),
-                displayField: 'userid',
-                valueField:'id'
+                xtype: 'htmleditor',                
+                name : 'descripcion',
+                fieldLabel: 'Desvripcion',
+                allowBlank: true,
+                height: 200
             }]
         }];
 

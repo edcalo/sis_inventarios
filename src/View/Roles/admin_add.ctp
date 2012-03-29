@@ -1,5 +1,4 @@
 <?php
-
 switch ($guardado) {
     case 1: {
             $respuesta = array(
@@ -8,7 +7,7 @@ switch ($guardado) {
                     'titulo' => __('Rol registrado', true),
                     'msg' => __('El nuevo Rol fue guardado con exito en el catalogo del sistema', true)
                 ),
-                'data' => $this->data['Rol']
+                'data' => array('id'=>$newID, 'nombre_rol'=>$this->data['Rol']['nombre_rol'], 'descripcion'=>$this->data['Rol']['descripcion'])
             );
             print json_encode($respuesta);
         } break;
