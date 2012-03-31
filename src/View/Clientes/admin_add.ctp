@@ -1,24 +1,47 @@
-<div class="clientes form">
-<?php echo $this->Form->create('Cliente');?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Cliente'); ?></legend>
-	<?php
-		echo $this->Form->input('nit_ci');
-		echo $this->Form->input('nombres');
-		echo $this->Form->input('apellido_paterno');
-		echo $this->Form->input('apellido_materno');
-		echo $this->Form->input('telefono');
-		echo $this->Form->input('email');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
 
-		<li><?php echo $this->Html->link(__('List Clientes'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Ventas'), array('controller' => 'ventas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Venta'), array('controller' => 'ventas', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+switch ($guardado) {
+    case 1: {            
+            $respuesta = array(
+                'success' => true,
+                'mensage' => array(
+                    'titulo' => 'Cliente guardado',
+                    'msg' => 'Cliente guardado con exito en el catalogo del sistema'
+                ),
+                'data' => array(
+                    'id' => $newID, 
+                    'nit_ci'=>$this->data['Cliente']['nit_ci'],
+                    'nombres' => $this->data['Cliente']['nombres'], 
+                    'apellido_paterno' =>$this->data['Cliente']['apellido_paterno'], 
+                    'apellido_materno' => $this->data['Cliente']['apellido_materno'],
+                    'telefono' => $this->data['Cliente']['telefono'],
+                    'email' => $this->data['Cliente']['email'],
+                )
+            );
+            print json_encode($respuesta);
+        } break;
+    case 0: {
+
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => 'Error al guardar',
+                    'msg' => 'El formulario tiene errores, corrijalos y vuelva ha intentarlo'
+                ),
+                'errors' => $this->validationErrors['Cliente']
+            );
+            print json_encode($resultado);
+        } break;
+    case 2: {
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => 'Error al guardar',
+                    'msg' => 'NO se recibio datos para registrar el servidor'
+                ),
+                'errors' => array()
+            );
+            print json_encode($resultado);
+        }break;
+}
+?>

@@ -266,6 +266,42 @@
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
+/* Iconos de JHT*/
+.icon-marcas-32{
+    background-image: url(../img/scp/marcas32x32.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-add-marcas{
+    background-image: url(../img/scp/marcas_add.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-edit-marcas{
+    background-image: url(../img/scp/marcas_edit.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-delete-marcas{
+    background-image: url(../img/scp/marcas_delete.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-industria-32{
+    background-image: url(../img/scp/industria32x32.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-almacen-32{
+    background-image: url(../img/scp/almacen32x32.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.icon-cliente-32{
+    background-image: url(../img/scp/clientes.png) !important;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
 
 /* para srr */
 .icon-day-view {

@@ -174,3 +174,486 @@
 2012-03-24 15:00:52 Error: [MissingControllerException] Controller class FtpGroupsController could not be found.
 #0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-03-28 21:56:53 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php, line 70]
+Trace:
+stripslashes - [internal], line ??
+RolesController::admin_add() - APP\Controller\RolesController.php, line 70
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-28 22:59:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-28 22:59:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-28 22:59:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-28 22:59:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-28 22:59:37 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-28 22:59:37 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-28 22:59:37 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-28 23:06:27 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-28 23:06:27 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-28 23:06:27 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:21:04 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:21:04 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:21:04 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:21:04 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:23:43 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:23:43 Error: [MissingControllerException] Controller class SisInventarioController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:26:21 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:26:21 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:26:21 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:26:37 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:26:37 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:26:37 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:27:49 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:27:49 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:27:49 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 14:49:16 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:49:16 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 14:49:16 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 15:07:58 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:07:58 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:07:58 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 15:09:12 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:09:12 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:09:12 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 15:34:36 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:34:36 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:34:36 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 15:35:36 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:35:36 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:35:36 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 15:40:15 Error: [NotFoundException] Invalid marca
+#0 [internal function]: MarcasController->admin_delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MarcasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(MarcasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-29 15:42:03 Error: [NotFoundException] Invalid marca
+#0 [internal function]: MarcasController->admin_delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MarcasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(MarcasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-29 15:56:10 Warning: Warning (2): include(C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:56:10 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'C:\xampp\htdocs\sis_inventarios2\Controller\RolesController.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in [C:\xampp\cakephp-2.0\lib\Cake\Core\App.php, line 505]
+Trace:
+App::load() - CORE\Cake\Core\App.php, line 505
+App::load() - CORE\Cake\Core\App.php, line 505
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Dispatcher::_loadController() - CORE\Cake\Routing\Dispatcher.php, line 187
+Dispatcher::_getController() - CORE\Cake\Routing\Dispatcher.php, line 156
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 77
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 15:56:10 Error: [MissingControllerException] Controller class RolesController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-29 17:15:17 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios\Controller\RolesController.php, line 92]
+Trace:
+stripslashes - [internal], line ??
+RolesController::admin_edit() - APP\Controller\RolesController.php, line 92
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 17:16:01 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios\Controller\RolesController.php, line 125]
+Trace:
+stripslashes - [internal], line ??
+RolesController::admin_delete() - APP\Controller\RolesController.php, line 125
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 17:16:01 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\sis_inventarios\Controller\RolesController.php, line 131]
+Trace:
+RolesController::admin_delete() - APP\Controller\RolesController.php, line 131
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 17:23:07 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\sis_inventarios\View\Marcas\admin_edit.ctp, line 6]
+Trace:
+include - APP\View\Marcas\admin_edit.ctp, line 6
+View::_render() - CORE\Cake\View\View.php, line 595
+View::render() - CORE\Cake\View\View.php, line 362
+Controller::render() - CORE\Cake\Controller\Controller.php, line 900
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 111
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 17:24:21 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\sis_inventarios\View\Marcas\admin_edit.ctp, line 6]
+Trace:
+include - APP\View\Marcas\admin_edit.ctp, line 6
+View::_render() - CORE\Cake\View\View.php, line 595
+View::render() - CORE\Cake\View\View.php, line 362
+Controller::render() - CORE\Cake\Controller\Controller.php, line 900
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 111
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 18:15:51 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios\Controller\RolesController.php, line 92]
+Trace:
+stripslashes - [internal], line ??
+RolesController::admin_edit() - APP\Controller\RolesController.php, line 92
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 18:20:06 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios\Controller\RolesController.php, line 92]
+Trace:
+stripslashes - [internal], line ??
+RolesController::admin_edit() - APP\Controller\RolesController.php, line 92
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 18:21:36 Warning: Warning (2): stripslashes() expects parameter 1 to be string, array given in [C:\xampp\htdocs\sis_inventarios\Controller\MarcasController.php, line 220]
+Trace:
+stripslashes - [internal], line ??
+MarcasController::admin_delete() - APP\Controller\MarcasController.php, line 220
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 18:21:36 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\sis_inventarios\Controller\MarcasController.php, line 226]
+Trace:
+MarcasController::admin_delete() - APP\Controller\MarcasController.php, line 226
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 104
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 86
+[main] - APP\webroot\index.php, line 98
+
+2012-03-29 18:21:36 Error: [MissingViewException] View file "C:\xampp\htdocs\sis_inventarios\View\Marcas\admin_delete.ctp" is missing.
+#0 C:\xampp\cakephp-2.0\lib\Cake\View\View.php(360): View->_getViewFileName(NULL)
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(900): View->render(NULL, NULL)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(MarcasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-29 18:22:58 Error: [MissingViewException] View file "C:\xampp\htdocs\sis_inventarios\View\Marcas\admin_delete.ctp" is missing.
+#0 C:\xampp\cakephp-2.0\lib\Cake\View\View.php(360): View->_getViewFileName(NULL)
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(900): View->render(NULL, NULL)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(MarcasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 11:44:06 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 11:46:13 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->edit()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 12:20:56 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->edit()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 12:35:48 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->edit()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 12:41:01 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 12:44:30 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 12:46:07 Error: [NotFoundException] Invalid industria
+#0 [internal function]: IndustriasController->delete()
+#1 C:\xampp\cakephp-2.0\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(IndustriasController), Array)
+#2 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 C:\xampp\cakephp-2.0\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(IndustriasController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-30 22:06:53 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\sis_inventarios\webroot\index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

@@ -6,11 +6,31 @@ Ext.application({
     name: 'SisInventarios',
     appFolder: 'js/app',
     controllers: [
-        'Roles'
+    'Roles',
+    'Marcas',
+    'Industrias',
+    'Almacenes',
+    'Clientes'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
         roles.show();
+    },
+    listMarcas: function (){
+        var marcas = Ext.widget('marcaslist');
+        marcas.show();
+    },
+    listIndustria: function (){
+        var industrias = Ext.widget('industrialist');
+        industrias.show();
+    },
+    listAlmacen: function(){
+        var almacen = Ext.widget('almacenlist');
+        almacen.show();
+    },
+    listCliente: function(){
+        var  cliente = Ext.widget('clientelist');
+        cliente.show();
     },
     launch: function() {
         var panel_inicio = Ext.create('Ext.Panel',{
@@ -135,6 +155,22 @@ Ext.application({
                         text: 'Roles',
                         iconCls:'icon-cargos-32'
 
+                    },{//Boton para acceder al catalogo de Marcas
+                        text:'Marcas',
+                        iconCls:'icon-marcas-32',
+                        handler: this.listMarcas
+                    },{
+                        text:'Industrias',
+                        iconCls:'icon-industria-32',
+                        handler: this.listIndustria
+                    },{
+                        text:'Almacenes',
+                        iconCls:'icon-almacen-32',
+                        handler: this.listAlmacen
+                    },{
+                        text:'Clientes',
+                        iconCls:'icon-cliente-32',
+                        handler: this.listCliente
                     }]
                 }]
             }]

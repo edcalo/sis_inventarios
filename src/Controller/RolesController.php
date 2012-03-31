@@ -67,7 +67,7 @@ class RolesController extends AppController {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
 
-            $datos = json_decode(stripslashes($this->data)); //decodificamos la informacion
+            $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
             $this->data = array('Rol' => (array)$datos);
 
             if ($this->Rol->save($this->data)) {
@@ -89,7 +89,7 @@ class RolesController extends AppController {
      */
     public function admin_edit($id = null) {
         $this->layout = 'ajax';
-        $datos = json_decode(stripslashes($this->data)); //decodificamos la informacion
+        $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Rol' => (array) $datos);
@@ -101,7 +101,7 @@ class RolesController extends AppController {
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Rol' => array());
-            foreach ($roles as $rol_data) {
+            foreach ($datos as $rol_data) {
                 $rol = array('Rol' => (array) $rol_data);
                 $rol['Rol']['id'] = $rol['Rol']['id'];
                 if ($this->Rol->save($rol)) {

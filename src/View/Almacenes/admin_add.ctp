@@ -1,21 +1,44 @@
-<div class="almacenes form">
-<?php echo $this->Form->create('Almacen');?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Almacen'); ?></legend>
-	<?php
-		echo $this->Form->input('nombre_almacen');
-		echo $this->Form->input('descripcion_almacen');
-		echo $this->Form->input('direccion_almacen');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
 
-		<li><?php echo $this->Html->link(__('List Almacenes'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Items'), array('controller' => 'items', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Item'), array('controller' => 'items', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+switch ($guardado) {
+    case 1: {            
+            $respuesta = array(
+                'success' => true,
+                'mensage' => array(
+                    'titulo' => 'Almacen guardado',
+                    'msg' => 'Almacen guardado con exito en el catalogo del sistema'
+                ),
+                'data' => array(
+                    'id' => $newID, 
+                    'nombre_almacen' => $this->data['Almacen']['nombre_almacen'], 
+                    'direccion_almacen' =>$this->data['Almacen']['direccion_almacen'], 
+                    'descripcion_almacen' => $this->data['Almacen']['descripcion_almacen']
+                )
+            );
+            print json_encode($respuesta);
+        } break;
+    case 0: {
+
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => 'Error al guardar',
+                    'msg' => 'El formulario tiene errores, corrijalos y vuelva ha intentarlo'
+                ),
+                'errors' => $this->validationErrors['Almacen']
+            );
+            print json_encode($resultado);
+        } break;
+    case 2: {
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => 'Error al guardar',
+                    'msg' => 'NO se recibio datos para registrar el servidor'
+                ),
+                'errors' => array()
+            );
+            print json_encode($resultado);
+        }break;
+}
+?>

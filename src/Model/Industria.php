@@ -18,10 +18,28 @@ class Industria extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'nombre_industria' => array(
+		'id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'nombre_industria' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'El nombre de Industria es Requerido',
+				'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'unico' => array(
+				'rule' => array('isUnique'),
+				'message' => 'El nombre de industria ya Existe',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
