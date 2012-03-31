@@ -162,7 +162,7 @@ class MarcasController extends AppController {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
 
-            $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
+            $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
             $this->data = array('Marca' => (array)$datos);
 
             if ($this->Marca->save($this->data)) {
@@ -184,7 +184,7 @@ class MarcasController extends AppController {
      */
     public function admin_edit($id =null) {
         $this->layout = 'ajax';
-        $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
+        $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Marca' => (array) $datos);
@@ -217,7 +217,7 @@ class MarcasController extends AppController {
      */
     public function admin_delete($id = null) {
         $this->layout = 'ajax';
-        $grupo = json_decode(stripslashes($this->data[0]));
+        $grupo = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
         if (count($grupo) == 1) {
             $result = $this->Marca->delete($grupo->id);
             $this->set('eliminado', $result);

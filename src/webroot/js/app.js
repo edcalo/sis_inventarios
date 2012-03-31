@@ -7,6 +7,7 @@ Ext.application({
     appFolder: 'js/app',
     controllers: [
     'Roles',
+    'Proveedores',
     'Marcas',
     'Industrias',
     'Almacenes',
@@ -15,6 +16,10 @@ Ext.application({
     listRoles: function(){
         var roles = Ext.widget('rollist');
         roles.show();
+    },
+    listProveedores: function(){
+        var proveedores = Ext.widget('proveedoreslist');
+        proveedores.show();
     },
     listMarcas: function (){
         var marcas = Ext.widget('marcaslist');
@@ -98,8 +103,7 @@ Ext.application({
                     },{
 
                         text: 'Ordenar',
-                        iconCls:'icon-ordenar-aux',
-                        handler: this.listRoles
+                        iconCls:'icon-ordenar-aux'
                     }]
                 }]
             },{
@@ -147,13 +151,15 @@ Ext.application({
                     },
                     items:[ {
                         text: 'Proveedores',
-                        iconCls: 'icon-turno-32'
+                        iconCls: 'icon-turno-32',
+                        handler: this.listProveedores
                     },{
                         text: 'Grupos',
                         iconCls:'icon-unidad-32'
                     }, {
                         text: 'Roles',
-                        iconCls:'icon-cargos-32'
+                        iconCls:'icon-cargos-32',
+                        handler: this.listRoles
 
                     },{//Boton para acceder al catalogo de Marcas
                         text:'Marcas',

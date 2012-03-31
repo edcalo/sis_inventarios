@@ -20,20 +20,6 @@ class RolesController extends AppController {
     }
 
     /**
-     * view method
-     *
-     * @param string $id
-     * @return void
-     */
-    public function view($id = null) {
-        $this->Rol->id = $id;
-        if (!$this->Rol->exists()) {
-            throw new NotFoundException(__('Invalid rol'));
-        }
-        $this->set('rol', $this->Rol->read(null, $id));
-    }
-
-    /**
      * admin_index method
      *
      * @return void
@@ -66,12 +52,11 @@ class RolesController extends AppController {
     public function admin_add() {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
-
-            $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
-            $this->data = array('Rol' => (array)$datos);
-
+            $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+            $this->data = array('Rol' => (array) $datos);
+            $this->Rol->create();
             if ($this->Rol->save($this->data)) {
-                $this->set('guardado', 1);                
+                $this->set('guardado', 1);
                 $this->set('newID', $this->Rol->id);
             } else {
                 $this->set('guardado', 0);
@@ -89,11 +74,12 @@ class RolesController extends AppController {
      */
     public function admin_edit($id = null) {
         $this->layout = 'ajax';
-        $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
+        
+        $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Rol' => (array) $datos);
-            $this->data['Rol']['id'] = $this->data['Rol']['id'];
+            $this->Rol->id = $this->data['Rol']['id'];
             if ($this->Rol->save($this->data)) {
                 $success = true;
                 $this->set('roles', $this->Rol->find('all'));
@@ -101,9 +87,9 @@ class RolesController extends AppController {
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Rol' => array());
-            foreach ($datos as $rol_data) {
+            foreach ($roles as $rol_data) {
                 $rol = array('Rol' => (array) $rol_data);
-                $rol['Rol']['id'] = $rol['Rol']['id'];
+                $this->Rol->id = $rol['Rol']['id'];
                 if ($this->Rol->save($rol)) {
                     $success = true;
                     array_push($resp['Rol'], $rol['Rol']);
@@ -122,14 +108,23 @@ class RolesController extends AppController {
      */
     public function admin_delete($id = null) {
         $this->layout = 'ajax';
-        $grupo = json_decode(stripslashes($this->data));
-        if (count($grupo) == 1) {
-            $result = $this->Rol->delete($grupo->id);
+        $roles = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
+
+        if (count($roles) == 1) {
+            $this->Rol->id = $roles->id;
+            if (!$this->Rol->exists()) {
+                throw new NotFoundException(__('Invalid rol'));
+            }
+            $result = $this->Rol->delete();
             $this->set('eliminado', $result);
         } else {
             $result = true;
-            foreach ($grupo as $g) {
-                $result = ($result and $this->Rol->delete($g->id));
+            foreach ($roles as $rol) {
+                $this->Rol->id = $rol->id;
+                if (!$this->Rol->exists()) {
+                    throw new NotFoundException(__('Invalid rol'));
+                }
+                $result = ($result and $this->Rol->delete());
             }
             $this->set('eliminado', $result);
         }

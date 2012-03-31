@@ -2,15 +2,14 @@
 
 if($actualizado) {
     
-    $lista_grupos = array();
-    foreach ($groups as $grupo) {
-        $grupo['FtpGroup']['id']=$grupo['FtpGroup']['gid'];
-        unset($grupo['FtpGroup']['gid']);
-        array_push($lista_grupos, $grupo['FtpGroup']);
+    $lista_roles = array();
+    foreach ($roles as $rol) {
+        
+        array_push($lista_roles, $rol['Rol']);
     }
     $respuesta = array(
         'success' => $actualizado,
-        'data'=>$lista_grupos
+        'data'=>$lista_roles
     );
 }else {
     $respuesta = array(
@@ -19,7 +18,7 @@ if($actualizado) {
             'titulo'=> 'Error al guardar',
             'msg'=> 'El formulario tiene errores, corrijalos y vuelva ha intentarlo'
         ),
-        'errors' => $this->validationErrors['FtpGroup']
+        'errors' => $this->validationErrors['Rol']
     );
 }
 echo json_encode($respuesta);

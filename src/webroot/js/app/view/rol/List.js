@@ -57,7 +57,7 @@ Ext.define('SisInventarios.view.rol.List' ,{
                     text: 'Registrar',
                     action: 'addrol',
                     iconAlign: 'top',
-                    iconCls: 'icon-add-server'
+                    iconCls: ''
                 }
             },{
                 xtype: 'buttongroup',
@@ -67,12 +67,12 @@ Ext.define('SisInventarios.view.rol.List' ,{
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-server',
+                    iconCls: 'icon-edit-aux',
                     action: 'editrol',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-server',
+                    iconCls:'icon-delete-aux',
                     action:'deleterol',
                     disabled:true
                 }]
