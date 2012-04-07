@@ -18,7 +18,7 @@ class Empleado extends AppModel {
  * Validation rules
  *
  * @var array
- */
+ *//*
 	public $validate = array(
 		'doc_identidad' => array(
 			'notempty' => array(
@@ -116,7 +116,7 @@ class Empleado extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-	);
+	);*/
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
