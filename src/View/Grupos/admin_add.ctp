@@ -1,24 +1,44 @@
-<div class="grupos form">
-<?php echo $this->Form->create('Grupo');?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Grupo'); ?></legend>
-	<?php
-		echo $this->Form->input('grupo_id');
-		echo $this->Form->input('nombre_grupo');
-		echo $this->Form->input('descripcion_grupo');
-		echo $this->Form->input('codigo');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
+switch ($guardado) {
+    case 1: {
+            $respuesta = array(
+                'success' => true,
+                'mensage' => array(
+                    'titulo' => __('Grupo registrado', true),
+                    'msg' => __('El nuevo Grupo fue guardado con exito en el catalogo del sistema', true)
+                ),
+                'data' => array(
+                    'id'=>$newID,
+                    'padre_id'=> $this->data['Grupo']['padre_id'],
+                    'codigo'=>$this->data['Grupo']['codigo'],
+                    'nombre_grupo'=>$this->data['Grupo']['nombre_grupo'],
+                    'descripcion_grupo'=>$this->data['Grupo']['descripcion_grupo']
+               )
+            );
+            print json_encode($respuesta);
+        } break;
+    case 0: {
 
-		<li><?php echo $this->Html->link(__('List Grupos'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Grupos'), array('controller' => 'grupos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Grupo'), array('controller' => 'grupos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Items'), array('controller' => 'items', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Item'), array('controller' => 'items', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => __('Error al guardar', true),
+                    'msg' => __('El formulario tiene errores, corrijalos y vuelva ha intentarlo', true)
+                ),
+                'errors' => $this->validationErrors['Grupo']
+            );
+            print json_encode($resultado);
+        } break;
+    case 2:
+        $resultado = array(
+            'success' => false,
+            'mensage' => array(
+                'titulo' => __('Error al guardar', true),
+                'msg' => __('NO se recibio datos para registrar', true)
+            ),
+            'errors' => array()
+        );
+        print json_encode($resultado);
+        break;
+}
+?>

@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Proveedores Controller
  *
@@ -7,175 +9,144 @@ App::uses('AppController', 'Controller');
  */
 class ProveedoresController extends AppController {
 
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index() {
+        $this->Proveedor->recursive = 0;
+        $this->set('proveedores', $this->paginate());
+    }
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Proveedor->recursive = 0;
-		$this->set('proveedores', $this->paginate());
-	}
+    /**
+     * view method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function view($id = null) {
+        $this->Proveedor->id = $id;
+        if (!$this->Proveedor->exists()) {
+            throw new NotFoundException(__('Invalid proveedor'));
+        }
+        $this->set('proveedor', $this->Proveedor->read(null, $id));
+    }
 
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		$this->set('proveedor', $this->Proveedor->read(null, $id));
-	}
+    /**
+     * admin_index method
+     *
+     * @return void
+     */
+    public function admin_index() {
+        $this->layout = 'ajax';
+        $this->Proveedor->recursive = 0;
+        $this->set('proveedores', $this->paginate());
+    }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Proveedor->create();
-			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
-			}
-		}
-	}
+    /**
+     * admin_view method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_view($id = null) {
+        $this->Proveedor->id = $id;
+        if (!$this->Proveedor->exists()) {
+            throw new NotFoundException(__('Invalid proveedor'));
+        }
+        $this->set('proveedor', $this->Proveedor->read(null, $id));
+    }
 
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Proveedor->read(null, $id);
-		}
-	}
+    /**
+     * admin_add method
+     *
+     * @return void
+     */
+    public function admin_add() {
+        $this->layout = 'ajax';
+        if (!empty($this->data)) {
+            $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+            $this->data = array('Proveedor' => (array) $datos);
+            $this->Proveedor->create();
+            if ($this->Proveedor->save($this->data)) {
+                $this->set('guardado', 1);
+                $this->set('newID', $this->Proveedor->id);
+            } else {
+                $this->set('guardado', 0);
+            }
+        } else {
+            $this->set('guardado', 2); // mo se recibieron datos para guardar
+        }
+    }
 
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		if ($this->Proveedor->delete()) {
-			$this->Session->setFlash(__('Proveedor deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Proveedor was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-/**
- * admin_index method
- *
- * @return void
- */
-	public function admin_index() {
-		$this->Proveedor->recursive = 0;
-		$this->set('proveedores', $this->paginate());
-	}
+    /**
+     * admin_edit method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_edit($id = null) {
 
-/**
- * admin_view method
- *
- * @param string $id
- * @return void
- */
-	public function admin_view($id = null) {
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		$this->set('proveedor', $this->Proveedor->read(null, $id));
-	}
+        $this->layout = 'ajax';
 
-/**
- * admin_add method
- *
- * @return void
- */
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Proveedor->create();
-			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
-			}
-		}
-	}
+        $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+        $success = false;
+        if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
+            $this->data = array('Proveedor' => (array) $datos);
+            $this->Proveedor->id = $this->data['Proveedor']['id'];
+            if ($this->Proveedor->save($this->data)) {
+                $success = true;
+                $this->set('proveedores', $this->Proveedor->find('all'));
+            }
+            $this->set('actualizado', $success);
+        } else if (count($datos) >= 2) {
+            $resp = array('Proveedor' => array());
+            foreach ($proveedores as $proveedor_data) {
+                $proveedor = array('Proveedor' => (array) $proveedor_data);
+                $this->Proveedor->id = $proveedor['Proveedor']['id'];
+                if ($this->Proveedor->save($proveedor)) {
+                    $success = true;
+                    array_push($resp['Proveedor'], $proveedor['Proveedor']);
+                }
+            }
+            $this->data = $resp;
+        }
+        $this->set('actualizado', $success);
+    }
 
-/**
- * admin_edit method
- *
- * @param string $id
- * @return void
- */
-	public function admin_edit($id = null) {
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Proveedor->read(null, $id);
-		}
-	}
+    /**
+     * admin_delete method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_delete($id = null) {
 
-/**
- * admin_delete method
- *
- * @param string $id
- * @return void
- */
-	public function admin_delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Proveedor->id = $id;
-		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
-		}
-		if ($this->Proveedor->delete()) {
-			$this->Session->setFlash(__('Proveedor deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Proveedor was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
+        $this->layout = 'ajax';
+        $proveedores = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
+
+        if (count($proveedores) == 1) {
+            $result = TRUE;
+            $this->Proveedor->id = $proveedores->id;
+            if (!$this->Proveedor->exists()) {
+                $result = FALSE;
+            } else {
+                $result = $this->Proveedor->delete();
+            }
+            $this->set('eliminado', $result);
+        } else {
+            $result = TRUE;
+            foreach ($proveedores as $proveedor) {
+                $this->Proveedor->id = $proveedor->id;
+                if (!$this->Proveedor->exists()) {
+                    $result = ($result and FALSE);
+                    continue;
+                }
+                $result = ($result and $this->Proveedor->delete());
+            }
+            $this->set('eliminado', $result);
+        }
+    }
+
 }

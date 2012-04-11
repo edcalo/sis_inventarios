@@ -8,10 +8,14 @@ Ext.application({
     controllers: [
     'Roles',
     'Proveedores',
+    'Grupos',
     'Marcas',
     'Industrias',
     'Almacenes',
-    'Clientes'
+    'Clientes',
+    'Empleados',
+    'Dosificaciones',
+    'Descuentos'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -20,6 +24,10 @@ Ext.application({
     listProveedores: function(){
         var proveedores = Ext.widget('proveedoreslist');
         proveedores.show();
+    },
+    listgrupos: function(){
+        var grupos = Ext.widget('gruposlist');
+        grupos.show();
     },
     listMarcas: function (){
         var marcas = Ext.widget('marcaslist');
@@ -36,6 +44,18 @@ Ext.application({
     listCliente: function(){
         var  cliente = Ext.widget('clientelist');
         cliente.show();
+    },
+    listEmpleados: function(){
+        var empleados = Ext.widget('empleadolist');
+        empleados.show();
+    },
+    listDosificaciones: function(){
+        var dosificaciones = Ext.widget('dosificacionlist');
+        dosificaciones.show();
+    },
+    listDescuentos: function(){
+        var descuentos = Ext.widget('descuentolist');
+        descuentos.show();
     },
     launch: function() {
         var panel_inicio = Ext.create('Ext.Panel',{
@@ -155,7 +175,8 @@ Ext.application({
                         handler: this.listProveedores
                     },{
                         text: 'Grupos',
-                        iconCls:'icon-unidad-32'
+                        iconCls:'icon-unidad-32',
+                        handler: this.listgrupos
                     }, {
                         text: 'Roles',
                         iconCls:'icon-cargos-32',
@@ -177,6 +198,21 @@ Ext.application({
                         text:'Clientes',
                         iconCls:'icon-cliente-32',
                         handler: this.listCliente
+                    },{
+                        text: 'Empleados',
+                        iconCls:'icon-cargos-32',
+                        handler: this.listEmpleados
+
+                    },{
+                        text: 'Dosificacion',
+                        iconCls:'icon-cargos-32',
+                        handler: this.listDosificaciones
+
+                    },{
+                        text: 'Descuentos',
+                        iconCls:'icon-cargos-32',
+                        handler: this.listDescuentos
+
                     }]
                 }]
             }]

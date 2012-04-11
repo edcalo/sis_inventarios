@@ -22,7 +22,7 @@ Ext.define('SisInventarios.controller.Proveedores', {
             'proveedoreslist button[action=editproveedor]': {
                 click: this.editProveedor
             },
-            'proveedoreslist #listaroles': {
+            'proveedoreslist #listaproveedores': {
                 itemdblclick: this.editProveedor
             },
             'proveedoreslist button[action=deleteproveedor]': {

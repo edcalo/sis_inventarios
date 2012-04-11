@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Grupos Controller
  *
@@ -7,183 +9,173 @@ App::uses('AppController', 'Controller');
  */
 class GruposController extends AppController {
 
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index() {
+        $this->Grupo->recursive = 0;
+        $this->set('grupos', $this->paginate());
+    }
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Grupo->recursive = 0;
-		$this->set('grupos', $this->paginate());
-	}
+    /**
+     * view method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function view($id = null) {
+        $this->Grupo->id = $id;
+        if (!$this->Grupo->exists()) {
+            throw new NotFoundException(__('Invalid grupo'));
+        }
+        $this->set('grupo', $this->Grupo->read(null, $id));
+    }
 
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		$this->set('grupo', $this->Grupo->read(null, $id));
-	}
+    /**
+     * admin_index method
+     *
+     * @return void
+     */
+    public function admin_index() {
+        $this->layout = 'ajax';
+        $this->Grupo->recursive = 0;
+        $padre = isset($this->request->query['grupo'])?$this->request->query['grupo']:1;
+        $this->set('grupos', $this->Grupo->find(
+                'all',array(
+                    'conditions'=>array(
+                        'Grupo.grupo_id'=> $padre
+                    )
+                    )
+                ));
+    }
+    /**
+     * admin_tree method
+     *
+     * @return void
+     */
+    public function admin_tree() {
+        $this->Grupo->recursive = 0;
+        $this->layout = 'ajax';
+        $padre = $this->request->query['node'];
+        $this->set('grupos', $this->Grupo->find(
+                'all', array(
+                    'conditions'=>array(
+                        'Grupo.grupo_id'=> $padre
+                    )
+                 )
+        ));
+    }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Grupo->create();
-			if ($this->Grupo->save($this->request->data)) {
-				$this->Session->setFlash(__('The grupo has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The grupo could not be saved. Please, try again.'));
-			}
-		}
-		$grupos = $this->Grupo->Grupo->find('list');
-		$this->set(compact('grupos'));
-	}
+    /**
+     * admin_view method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_view($id = null) {
+        $this->Grupo->id = $id;
+        if (!$this->Grupo->exists()) {
+            throw new NotFoundException(__('Invalid grupo'));
+        }
+        $this->set('grupo', $this->Grupo->read(null, $id));
+    }
 
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Grupo->save($this->request->data)) {
-				$this->Session->setFlash(__('The grupo has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The grupo could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Grupo->read(null, $id);
-		}
-		$grupos = $this->Grupo->Grupo->find('list');
-		$this->set(compact('grupos'));
-	}
+    /**
+     * admin_add method
+     *
+     * @return void
+     */
+    public function admin_add() {
+        $this->layout = 'ajax';
+        if (!empty($this->data)) {
+            $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+            $this->data = array('Grupo' => (array) $datos);
+            $this->Grupo->create();
+            if ($this->Grupo->save($this->data)) {
+                $this->set('guardado', 1);
+                $this->set('newID', $this->Grupo->id);
+            } else {
+                $this->set('guardado', 0);
+            }
+        } else {
+            $this->set('guardado', 2); // mo se recibieron datos para guardar
+        }
+    }
 
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		if ($this->Grupo->delete()) {
-			$this->Session->setFlash(__('Grupo deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Grupo was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-/**
- * admin_index method
- *
- * @return void
- */
-	public function admin_index() {
-		$this->Grupo->recursive = 0;
-		$this->set('grupos', $this->paginate());
-	}
+    /**
+     * admin_edit method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_edit($id = null) {
+        
+        $this->layout = 'ajax';
 
-/**
- * admin_view method
- *
- * @param string $id
- * @return void
- */
-	public function admin_view($id = null) {
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		$this->set('grupo', $this->Grupo->read(null, $id));
-	}
+        $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+        $success = false;
+        if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
+            $this->data = array('Grupo' => (array) $datos);
+            $this->Grupo->id = $this->data['Grupo']['id'];
+            if ($this->Grupo->save($this->data)) {
+                $success = true;
+                $this->set('grupos', $this->Grupo->find(
+                'all',array(
+                    'conditions'=>array(
+                        'Grupo.grupo_id'=> $this->data['Grupo']['padre_id']
+                    )
+                    )
+                ));
+            }
+            $this->set('actualizado', $success);
+        } else if (count($datos) >= 2) {
+            $resp = array('Grupo' => array());
+            foreach ($datos as $grupo_data) {
+                $grupo = array('Grupo' => (array) $grupo_data);
+                $this->Grupo->id = $grupo['Grupo']['id'];
+                if ($this->Grupo->save($grupo)) {
+                    $success = true;
+                    array_push($resp['Grupo'], $grupo['Grupo']);
+                }
+            }
+            $this->data = $resp;
+        }
+        $this->set('actualizado', $success);
+    }
 
-/**
- * admin_add method
- *
- * @return void
- */
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Grupo->create();
-			if ($this->Grupo->save($this->request->data)) {
-				$this->Session->setFlash(__('The grupo has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The grupo could not be saved. Please, try again.'));
-			}
-		}
-		$grupos = $this->Grupo->Grupo->find('list');
-		$this->set(compact('grupos'));
-	}
+    /**
+     * admin_delete method
+     *
+     * @param string $id
+     * @return void
+     */
+    public function admin_delete($id = null) {
+                
+        $this->layout = 'ajax';
+        $grupos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
 
-/**
- * admin_edit method
- *
- * @param string $id
- * @return void
- */
-	public function admin_edit($id = null) {
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Grupo->save($this->request->data)) {
-				$this->Session->setFlash(__('The grupo has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The grupo could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Grupo->read(null, $id);
-		}
-		$grupos = $this->Grupo->Grupo->find('list');
-		$this->set(compact('grupos'));
-	}
+        if (count($grupos) == 1) {
+            $result = TRUE;
+            $this->Grupo->id = $grupos->id;
+            if (!$this->Grupo->exists()) {
+                $result = FALSE;
+            } else {
+                $result = $this->Grupo->delete();
+            }
+            $this->set('eliminado', $result);
+        } else {
+            $result = TRUE;
+            foreach ($grupos as $grupo) {
+                $this->Grupo->id = $grupo->id;
+                if (!$this->Grupo->exists()) {
+                    $result = ($result and FALSE);
+                }
+                $result = ($result and $this->Grupo->delete());
+            }
+            $this->set('eliminado', $result);
+        }
+    }
 
-/**
- * admin_delete method
- *
- * @param string $id
- * @return void
- */
-	public function admin_delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Grupo->id = $id;
-		if (!$this->Grupo->exists()) {
-			throw new NotFoundException(__('Invalid grupo'));
-		}
-		if ($this->Grupo->delete()) {
-			$this->Session->setFlash(__('Grupo deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Grupo was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 }
