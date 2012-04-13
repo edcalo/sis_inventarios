@@ -1,13 +1,16 @@
 <?php
 
 if ($actualizado) {
+    $lista_marcas = array();
+    foreach ($marcas as $marca) {
+        
+        array_push($lista_marcas, $marca['Marca']);
+    }
     $respuesta = array(
         'success' => $actualizado,
-        /*'data' => array(
-            'nombre_marca' => $this->data['Marca']['nombre_marca'],
-            'descripcion_marca' => $this->data['Marca']['descripcion_marca']
-        )*/
+        'data'=>$lista_marcas
     );
+    
 } else {
     $respuesta = array(
         'success' => $actualizado,

@@ -58,7 +58,8 @@ class MarcasController extends AppController {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
 
-            $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
+            //$datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
+            $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
             $this->data = array('Marca' => (array)$datos);
 
             if ($this->Marca->save($this->data)) {
@@ -129,14 +130,13 @@ class MarcasController extends AppController {
      */
     public function admin_index() {
          $this->layout = 'ajax';
-        
+        /*
         $marcas = array();
         foreach ($this->Marca->find('all') as $marca) {
             array_push($marcas, $marca['Marca']);
-        }
-        //$this->Marca->recursive = 0;
-        //$this->set('marcas', $this->paginate());
-        $this->set('datos', $marcas);
+        }*/
+        $this->Marca->recursive = 0;
+        $this->set('marcas', $this->paginate());        
     }
 
     /**
@@ -188,17 +188,17 @@ class MarcasController extends AppController {
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Marca' => (array) $datos);
-            //$this->data['Marca']['id']=  $this->data['Marca']['id'];
+            $this->Marca->id =  $this->data['Marca']['id'];
             if ($this->Marca->save($this->data)) {
                 $success = true;
-                //$this->set('marcs',  $this->Marca->find('all'));
+                $this->set('marcas',  $this->Marca->find('all'));
             }
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Marca' => array());
             foreach ($datos as $dato_marca) {
                 $marca = array('Marca' => (array) $dato_marca);
-                $marca['Marca']['id']=$marca['Marca']['id'];
+                $marca->Marca->id=$marca['Marca']['id'];
                 if ($this->Marca->save($marca)) {
                     $success = true;
                     array_push($resp['Marca'], $marca['Marca']);

@@ -1,8 +1,13 @@
 <?php
 
 if ($actualizado) {
+    $lista_almacenes = array();
+    foreach ($almacenes as $almacen) {
+        array_push($lista_almacenes, $almacen['Almacen']);
+    }
     $respuesta = array(
         'success' => $actualizado,        
+        'data'=>$lista_almacenes
     );
 } else {
     $respuesta = array(

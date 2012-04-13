@@ -155,15 +155,17 @@ class ClientesController extends AppController {
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Cliente' => (array) $datos);
+            $this->Cliente->id =  $this->data['Cliente']['id'];
             if ($this->Cliente->save($this->data)) {
                 $success = true;
+                $this->set('clientes',  $this->Cliente->find('all'));
             }
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Cliente' => array());
             foreach ($datos as $dato_marca) {
                 $marca = array('Cliente' => (array) $dato_marca);
-                $marca['Cliente']['id']=$marca['Cliente']['id'];
+                $marca->Cliente->id=$marca['Cliente']['id'];
                 if ($this->Cliente->save($marca)) {
                     $success = true;
                     array_push($resp['Cliente'], $marca['Cliente']);

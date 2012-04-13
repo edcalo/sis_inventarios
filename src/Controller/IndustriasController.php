@@ -134,11 +134,14 @@ class IndustriasController extends AppController {
      */
     public function admin_add() {
         $this->layout = 'ajax';
+        //$dd = 'ángel';//utf8_encode('ángel');
+        //print_r($dd);
         if (!empty($this->data)) {
-
+            
             $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
+            
             $this->data = array('Industria' => (array)$datos);
-
+            
             if ($this->Industria->save($this->data)) {
                 $this->set('guardado', 1);                
                 $this->set('newID', $this->Industria->id);
@@ -158,21 +161,22 @@ class IndustriasController extends AppController {
      */
     public function admin_edit($id = null) {
         $this->layout = 'ajax';
+        
         $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Industria' => (array) $datos);
-            //$this->data['Industria']['id']=  $this->data['Industria']['id'];
+            $this->Industria->id =  $this->data['Industria']['id'];
             if ($this->Industria->save($this->data)) {
                 $success = true;
-                //$this->set('industrias',  $this->Industria->find('all'));
+                $this->set('industrias',  $this->Industria->find('all'));
             }
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Industria' => array());
             foreach ($datos as $dato_marca) {
                 $marca = array('Industria' => (array) $dato_marca);
-                $marca['Industria']['id']=$marca['Industria']['id'];
+                $marca->Industria->id=$marca['Industria']['id'];
                 if ($this->Industria->save($marca)) {
                     $success = true;
                     array_push($resp['Industria'], $marca['Industria']);

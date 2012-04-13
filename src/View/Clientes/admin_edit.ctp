@@ -1,8 +1,13 @@
 <?php
 
 if ($actualizado) {
+    $lista_clientes = array();
+    foreach ($clientes as $cliente) {
+        array_push($lista_clientes, $cliente['Cliente']);
+    }
     $respuesta = array(
         'success' => $actualizado,        
+        'data'=>$lista_clientes
     );
 } else {
     $respuesta = array(

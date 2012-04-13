@@ -1,8 +1,13 @@
 <?php
 
 if ($actualizado) {
+    $lista_industrias = array();
+    foreach ($industrias as $industria) {
+        array_push($lista_industrias, $industria['Industria']);
+    }
     $respuesta = array(
         'success' => $actualizado,        
+        'data'=>$lista_industrias
     );
 } else {
     $respuesta = array(

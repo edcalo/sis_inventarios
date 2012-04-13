@@ -4,6 +4,7 @@ Ext.define('SisInventarios.store.Industrias', {
     autoLoad: true,
     proxy: {
         type: 'ajax',
+        //headers: { 'Content-Type': 'application/json; charset=UTF-8' },
         method:'POST',
         api: {
             read: 'admin/industrias',

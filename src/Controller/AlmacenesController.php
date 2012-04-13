@@ -155,17 +155,17 @@ class AlmacenesController extends AppController {
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $this->data = array('Almacen' => (array) $datos);
-            //$this->data['Industria']['id']=  $this->data['Industria']['id'];
+            $this->Industria->id=  $this->data['Industria']['id'];
             if ($this->Almacen->save($this->data)) {
                 $success = true;
-                //$this->set('industrias',  $this->Industria->find('all'));
+                $this->set('almacenes',  $this->Industria->find('all'));
             }
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Almacen' => array());
             foreach ($datos as $dato_marca) {
                 $marca = array('Almacen' => (array) $dato_marca);
-                $marca['Almacen']['id']=$marca['Almacen']['id'];
+                $marca->Industria->id=$marca['Almacen']['id'];
                 if ($this->Almacen->save($marca)) {
                     $success = true;
                     array_push($resp['Almacen'], $marca['Almacen']);

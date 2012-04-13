@@ -59,6 +59,10 @@ class Cliente extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'custom' => array(
+                'rule' => array('custom', '/^[a-zA-Z\s]+$/'),
+                'message' => 'Solo Caracteres y Espacios'
+            )
         ),
         'apellido_paterno' => array(
             'notempty' => array(
@@ -69,6 +73,10 @@ class Cliente extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'custom' => array(
+                'rule' => array('custom', '/^[a-zA-Z\s]+$/'),
+                'message' => 'Solo Caracteres y Espacios'
+            )
         ),
         'telefono' => array(
             'numeric' => array(
