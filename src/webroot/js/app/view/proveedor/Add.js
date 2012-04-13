@@ -20,7 +20,7 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                 xtype: 'hidden'
             },{
                 xtype: 'textfield',
-                name : 'nombre_rol',
+                name : 'nombre_proveedor',
                 fieldLabel: 'Nombre del Proveedor',
                 msgTarget: 'side',
                 allowBlank: false,
@@ -28,21 +28,23 @@ Ext.define('SisInventarios.view.proveedor.Add', {
             },{
                 anchor: '100%',
                 xtype: 'textarea',                
-                name : 'descripcion',
-                fieldLabel: 'Descripcion',
+                name : 'direccion_proveedor',
+                fieldLabel: 'Direccion del proveedor',
                 allowBlank: true,
                 height: 100
             },{
                 xtype: 'container',
                 layout:'column',
-                style:{paddingBottom: '20px'},
+                style:{
+                    paddingBottom: '20px'
+                },
                 items:[{
                     xtype: 'container',
                     columnWidth:.35,
                     layout: 'anchor',
                     items: [{
                         xtype: 'textfield',
-                        name : 'groupname',
+                        name : 'telefono',
                         fieldLabel: 'Telefono',
                         msgTarget: 'side',
                         allowBlank: false,
@@ -54,11 +56,61 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                     layout: 'anchor',
                     items: [{
                         xtype: 'textfield',
-                        name : 'description',
+                        name : 'email',
                         fieldLabel: 'Correo electronico',
                         msgTarget: 'side',
                         allowBlank: false,
                         anchor:'100%'
+                    }]
+                }]
+            },{
+                xtype:'fieldset',
+                id:'contacto',
+                checkboxToggle:true,
+                title: 'Informacion del contacto',
+                defaultType: 'textfield',
+                collapsed: true,
+                layout: 'anchor',
+                defaults: {
+                    anchor: '100%'
+                },
+                items :[{
+                    xtype: 'textfield',
+                    name : 'contacto',
+                    fieldLabel: 'Nombre del Contacto',
+                    msgTarget: 'side',
+                    allowBlank: false,
+                    anchor:'95%'
+                },{
+                    xtype: 'container',
+                    layout:'column',
+                    style:{
+                        paddingBottom: '20px'
+                    },
+                    items:[{
+                        xtype: 'container',
+                        columnWidth:.35,
+                        layout: 'anchor',
+                        items: [{
+                            xtype: 'textfield',
+                            name : 'telefono_contacto',
+                            fieldLabel: 'Telefono del contacto',
+                            msgTarget: 'side',
+                            allowBlank: false,
+                            anchor:'95%'
+                        }]
+                    },{
+                        xtype: 'container',
+                        columnWidth:.65,
+                        layout: 'anchor',
+                        items: [{
+                            xtype: 'textfield',
+                            name : 'email_contacto',
+                            fieldLabel: 'Correo electronico del contacto',
+                            msgTarget: 'side',
+                            allowBlank: false,
+                            anchor:'100%'
+                        }]
                     }]
                 }]
             }]

@@ -68,14 +68,12 @@ Ext.define('SisInventarios.view.proveedor.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addproveedor',
-                    iconAlign: 'top',
                     iconCls: 'icon-add-server'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',

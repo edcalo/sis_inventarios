@@ -30,6 +30,9 @@ Ext.define('SisInventarios.controller.Proveedores', {
             },
             'proveedoradd button[action=save]': {
                 click: this.saveProveedor
+            },
+            'proveedoradd #contacto': {
+                click: function(){alert('hola');}
             }
         });
     },
@@ -63,23 +66,25 @@ Ext.define('SisInventarios.controller.Proveedores', {
                 }
             },
             this
-        );
+            );
     },
     saveProveedor: function(button){
         var win    = button.up('window');
         var form   = win.down('form');
-        var record = form.getRecord();
-        var values = form.getValues();
-        if(!record){
-            record = this.getProveedorModel().create();
-            record.set(values);
-            this.getProveedoresStore().insert(0, record);
-        }else{
-            record.set(values);
-        }
+        if(form.getForm().isValid()){
+            var record = form.getRecord();
+            var values = form.getValues();
+            if(!record){
+                record = this.getProveedorModel().create();
+                record.set(values);
+                this.getProveedoresStore().insert(0, record);
+            }else{
+                record.set(values);
+            }
         
-        win.close();
-        this.getProveedoresStore().sync();
+            win.close();
+            this.getProveedoresStore().sync();
+        }
 
 
     }

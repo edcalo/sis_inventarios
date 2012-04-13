@@ -1,24 +1,47 @@
-<div class="proveedores form">
-<?php echo $this->Form->create('Proveedor');?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Proveedor'); ?></legend>
-	<?php
-		echo $this->Form->input('nombre_proveedor');
-		echo $this->Form->input('direccion_proveedor');
-		echo $this->Form->input('telefono');
-		echo $this->Form->input('contacto');
-		echo $this->Form->input('email');
-		echo $this->Form->input('email_contacto');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php
 
-		<li><?php echo $this->Html->link(__('List Proveedores'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Compras'), array('controller' => 'compras', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+switch ($guardado) {
+    case 1: {
+            $respuesta = array(
+                'success' => true,
+                'mensage' => array(
+                    'titulo' => __('Proveedor registrado', true),
+                    'msg' => __('El nuevo Proveedor fue guardado con exito en el catalogo del sistema', true)
+                ),
+                'data' => array(
+                    'id' => $newID,
+                    'nombre_proveedor' => $this->data['Proveedor']['nombre_proveedor'],
+                    'direccion_proveedor' => $this->data['Proveedor']['direccion_proveedor'],
+                    'telefono' => $this->data['Proveedor']['telefono'],
+                    'contacto' => $this->data['Proveedor']['contacto'],
+                    'email' => $this->data['Proveedor']['email'],
+                    'email_contacto' => $this->data['Proveedor']['email_contacto'],
+                )
+            );
+            print json_encode($respuesta);
+        } break;
+    case 0: {
+
+            $resultado = array(
+                'success' => false,
+                'mensage' => array(
+                    'titulo' => __('Error al guardar', true),
+                    'msg' => __('El formulario tiene errores, corrijalos y vuelva ha intentarlo', true)
+                ),
+                'errors' => $this->validationErrors['Proveedor']
+            );
+            print json_encode($resultado);
+        } break;
+    case 2:
+        $resultado = array(
+            'success' => false,
+            'mensage' => array(
+                'titulo' => __('Error al guardar', true),
+                'msg' => __('NO se recibio datos para registrar', true)
+            ),
+            'errors' => array()
+        );
+        print json_encode($resultado);
+        break;
+}
+?>

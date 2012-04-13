@@ -14,6 +14,11 @@ Ext.define('SisInventarios.model.Proveedor', {
         },
         'email',
         'contacto',
-        'email_contacto'
+        'email_contacto',
+        {
+            name:'telefono_contacto',
+            mapping:'telefono_contacto',
+            type:'int'
+        }
     ]
 });
