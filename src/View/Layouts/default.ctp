@@ -45,13 +45,13 @@
                     <a id="menu" style="float:right;margin: 4px 10px;">
                     </a>
 
-                    <div class="api-title">SinfoSys - Sistema Integrado de Administracion</div>
+                    <div class="api-title">Sis-Inventarios - Sistema de Inventarios</div>
                     <div id="content">
                     <?php echo $content_for_layout; ?>
                 </div>
                 <div id="footer">
                     <div style="float:left; padding-top:10px;">
-                        LABINFSIS&copy; - Todos los derechos reservados 2010
+                        edca_abra_jhode - Todos los derechos reservados 2012
                     </div>
                     <div style="float:right;padding-left:2px;">
                         <img src="img/extjs.gif" alt="ExtJS" /> | <img src="img/cakephp-logo.gif" alt="CakePHP" /> |<img src="img/postgreSQL.png" alt="PostgreSQL" />

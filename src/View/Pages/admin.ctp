@@ -1,4 +1,5 @@
 <?php
+        //echo $this->Html->charset('utf-8');
 	echo $this->Html->script('app.js', array('inline' => false));
         echo $this->Html->css('http://localhost:9191/libs/ext-4.0.7-gpl/examples/ux/css/ItemSelector.css', 'stylesheet', array('inline' => false));
 ?>
@@ -8,9 +9,9 @@
         <div id="center_content">
             <div class="left_content">
                 <div class="center_text"  style="height: 200px;">
-                    <h1 >Bienvenido a SinfoSys</h1>
+                    <h1 >Bienvenido al Sis-Inventarios</h1>
                     <img  width="128" height="128" src="img/logo_institucion.gif"  class="img_left" alt="logo institucion"/>
-                    SinfoSys fue dise&ntilde;ado como un sistema interno de la institucion para la admisnitracion y seguimiento de los servicios ofrecidos y captados.
+                    Sis-Inventarios, es un sistema de inventarios para las empresas importadoras y exportadoras de artículos...
                 </div>
                 
                 <div class="center_text sistemas" >
