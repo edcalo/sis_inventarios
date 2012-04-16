@@ -7,7 +7,7 @@ Ext.define('SisInventarios.view.cliente.List' ,{
     width: 710,
     height: 420,
     title : 'Clientes Registrados',
-    iconCls: 'icon-online',
+    iconCls: 'icon-client-16x16',
         
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -32,19 +32,18 @@ Ext.define('SisInventarios.view.cliente.List' ,{
             columns: [{
                 header:'NIT o C.I.',
                 dataIndex:'nit_ci',
-                width:100
+                width:80
             },{
                 header: 'Nombres',
                 dataIndex: 'nombres',
                 width:120
             },{
-                header:'Apellido Paterno',
+                header:'Apellidos',
                 dataIndex: 'apellido_paterno',
-                width:120
-            },{
-                header:'Apellido Materno',
-                dataIndex: 'apellido_materno',
-                width:120
+                width:200,
+                renderer:function(value, metaData, record){
+                    return  value + ' '+record.get('apellido_materno');
+                }
             },{
                 header:'Telefono.',
                 dataIndex:'telefono',
@@ -52,7 +51,7 @@ Ext.define('SisInventarios.view.cliente.List' ,{
             },{
                 header:'Email',
                 dataIndex:'email',
-                width:150
+                width:180
             }],
             selModel: sm,
             bbar:Ext.create('Ext.PagingToolbar', {
@@ -72,23 +71,21 @@ Ext.define('SisInventarios.view.cliente.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addcliente',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-marcas'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-marcas',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editcliente',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-marcas',
+                    iconCls:'icon-delete-32x32',
                     action:'deletecliente',
                     disabled:true
                 }]

@@ -31,7 +31,7 @@ Ext.define('SisInventarios.controller.Proveedores', {
             'proveedoradd button[action=save]': {
                 click: this.saveProveedor
             },
-            'proveedoradd #contacto': {
+            'proveedoradd #contact': {
                 click: function(){alert('hola');}
             }
         });

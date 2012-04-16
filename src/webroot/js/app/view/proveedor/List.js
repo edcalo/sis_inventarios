@@ -6,6 +6,7 @@ Ext.define('SisInventarios.view.proveedor.List' ,{
     modal:true,
     width: 720,
     height: 415,
+    iconCls:'icon-provider-16x16',
     title: 'Lista de Proveedores',
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -68,7 +69,7 @@ Ext.define('SisInventarios.view.proveedor.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addproveedor',
-                    iconCls: 'icon-add-server'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
@@ -77,12 +78,12 @@ Ext.define('SisInventarios.view.proveedor.List' ,{
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-aux',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editproveedor',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-aux',
+                    iconCls:'icon-delete-32x32',
                     action:'deleteproveedor',
                     disabled:true
                 }]

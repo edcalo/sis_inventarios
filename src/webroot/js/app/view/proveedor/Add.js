@@ -6,7 +6,7 @@ Ext.define('SisInventarios.view.proveedor.Add', {
     autoShow: true,
     modal:true,
     width: 550,
-    iconCls: 'icon-add',
+    iconCls: 'icon-add-16x16',
     initComponent: function() {
         this.items = [{
             xtype: 'form',
@@ -43,11 +43,16 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                     columnWidth:.35,
                     layout: 'anchor',
                     items: [{
-                        xtype: 'textfield',
+                        xtype: 'numberfield',                        
                         name : 'telefono',
                         fieldLabel: 'Telefono',
                         msgTarget: 'side',
                         allowBlank: false,
+                        maxLength: 8,
+                        minValue: 0,
+                        hideTrigger: true,
+                        keyNavEnabled: false,
+                        mouseWheelEnabled: false,
                         anchor:'95%'
                     }]
                 },{
@@ -60,17 +65,21 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                         fieldLabel: 'Correo electronico',
                         msgTarget: 'side',
                         allowBlank: false,
+                        vtype:'email',
                         anchor:'100%'
                     }]
                 }]
             },{
                 xtype:'fieldset',
-                id:'contacto',
+                id:'contact',
                 checkboxToggle:true,
-                title: 'Informacion del contacto',
+                title: ' Marque esta casilla si desea ingresar informacion del persona de contacto',
                 defaultType: 'textfield',
                 collapsed: true,
                 layout: 'anchor',
+                style:{
+                    paddingTop: '20px'
+                },
                 defaults: {
                     anchor: '100%'
                 },
@@ -79,7 +88,6 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                     name : 'contacto',
                     fieldLabel: 'Nombre del Contacto',
                     msgTarget: 'side',
-                    allowBlank: false,
                     anchor:'95%'
                 },{
                     xtype: 'container',
@@ -89,14 +97,18 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                     },
                     items:[{
                         xtype: 'container',
-                        columnWidth:.35,
+                       columnWidth:.35,
                         layout: 'anchor',
                         items: [{
-                            xtype: 'textfield',
+                            xtype: 'numberfield',
                             name : 'telefono_contacto',
                             fieldLabel: 'Telefono del contacto',
                             msgTarget: 'side',
-                            allowBlank: false,
+                            maxLength: 8,
+                            minValue: 0,
+                            hideTrigger: true,
+                            keyNavEnabled: false,
+                            mouseWheelEnabled: false,
                             anchor:'95%'
                         }]
                     },{
@@ -108,7 +120,7 @@ Ext.define('SisInventarios.view.proveedor.Add', {
                             name : 'email_contacto',
                             fieldLabel: 'Correo electronico del contacto',
                             msgTarget: 'side',
-                            allowBlank: false,
+                            vtype: 'email',
                             anchor:'100%'
                         }]
                     }]
@@ -119,14 +131,18 @@ Ext.define('SisInventarios.view.proveedor.Add', {
         this.buttons = [{
             text: 'Save',
             action: 'save',
-            iconCls:'icon-guardar'
+            iconCls:'icon-save-16x16'
         },{
             text: 'Cancel',
             scope: this,
             handler: this.close,
-            iconCls:'icon-cancelar'
+            iconCls:'icon-cancel-16x16'
         }];
 
         this.callParent(arguments);
+    },
+    showContact: function(show){
+        this.down('#contact').checkboxCmp.setValue(show);
+
     }
 });

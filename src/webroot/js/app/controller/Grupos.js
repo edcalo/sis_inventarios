@@ -37,7 +37,9 @@ Ext.define('SisInventarios.controller.Grupos', {
                     this.seletedGroupId = record.get('id')
                     view.up('gruposlist').down('#listagrupos').setTitle('Subgrupos de ' + record.get('text'))
                     this.getGruposStore().load({
-                        params:{grupo: this.seletedGroupId}
+                        params:{
+                            grupo: this.seletedGroupId
+                            }
                     });
                 }
                 
@@ -74,25 +76,26 @@ Ext.define('SisInventarios.controller.Grupos', {
                 }
             },
             this
-        );
+            );
     },
     saveGrupo: function(button){
         var win    = button.up('window');
         var form   = win.down('form');
         var record = form.getRecord();
         var values = form.getValues();
-        if(!record){
-            record = this.getGrupoModel().create();
-            values.padre_id = this.seletedGroupId
-            record.set(values);
-            this.getGruposStore().insert(0, record);
-        }else{
-            record.set(values);
-        }
+        if(form.getForm().isValid()){
+            if(!record){
+                record = this.getGrupoModel().create();
+                values.grupo_id = this.seletedGroupId
+                record.set(values);
+                this.getGruposStore().insert(0, record);
+            }else{
+                record.set(values);
+            }
         
-        win.close();
-        this.getGruposStore().sync();
-
+            win.close();
+            this.getGruposStore().sync();
+        }
 
     }
 

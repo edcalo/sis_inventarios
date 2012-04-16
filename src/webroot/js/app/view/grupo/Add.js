@@ -6,7 +6,7 @@ Ext.define('SisInventarios.view.grupo.Add', {
     autoShow: true,
     modal:true,
     width: 550,
-    iconCls: 'icon-add',
+    iconCls: 'icon-add-16x16',
     initComponent: function() {
         this.items = [{
             xtype: 'form',
@@ -19,7 +19,7 @@ Ext.define('SisInventarios.view.grupo.Add', {
                 name:'id',
                 xtype: 'hidden'
             },{
-                name:'padre_id',
+                name:'grupo_id',
                 xtype: 'hidden'
             },{
                 xtype: 'container',
@@ -33,6 +33,7 @@ Ext.define('SisInventarios.view.grupo.Add', {
                         xtype: 'textfield',
                         name : 'codigo',
                         fieldLabel: 'Codigo',
+                        maxLength: 5,
                         msgTarget: 'side',
                         allowBlank: false,
                         anchor:'95%'
@@ -63,12 +64,12 @@ Ext.define('SisInventarios.view.grupo.Add', {
         this.buttons = [{
             text: 'Save',
             action: 'save',
-            iconCls:'icon-guardar'
+            iconCls:'icon-save-16x16'
         },{
             text: 'Cancel',
             scope: this,
             handler: this.close,
-            iconCls:'icon-cancelar'
+            iconCls:'icon-cancel-16x16'
         }];
 
         this.callParent(arguments);

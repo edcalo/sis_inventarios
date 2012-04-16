@@ -6,7 +6,7 @@ Ext.define('SisInventarios.model.Grupo', {
         mapping: 'id'
     },
     {
-        name: 'padre_id',
+        name: 'grupo_id',
         type: 'int',
         mapping: 'grupo_id'
     },

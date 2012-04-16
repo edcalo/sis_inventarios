@@ -7,7 +7,7 @@ Ext.define('SisInventarios.view.almacen.List' ,{
     width: 650,
     height: 420,
     title : 'Almacenes Registradas',
-    iconCls: 'icon-online',
+    iconCls: 'icon-depot-16x16',
         
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -60,23 +60,21 @@ Ext.define('SisInventarios.view.almacen.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addalmacen',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-marcas'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-marcas',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editalmacen',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-marcas',
+                    iconCls:'icon-delete-32x32',
                     action:'deletealmacen',
                     disabled:true
                 }]

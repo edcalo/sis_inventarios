@@ -6,7 +6,7 @@ Ext.define('SisInventarios.view.industria.List' ,{
     modal:true,
     width: 520,
     height: 415,
-    iconCls:'icon-list',
+    iconCls:'icon-industry-16x16',
     title: 'Lista de Industrias ',
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -31,19 +31,11 @@ Ext.define('SisInventarios.view.industria.List' ,{
             columns : [{
                 header: 'Nombre',
                 dataIndex: 'nombre_industria',
-                /*renderer:function(value, metaData){
-                    metaData.style = 'font-size:120%; font-weight: bold';
-                    return value;
-                },*/
                 width:100
             },{
                 header: 'Descripcion',
-                dataIndex: 'descripcion_industria',
-                /*renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },*/
-                width: 390
+                dataIndex: 'descripcion_industria', 
+                width: 380
             }],
             selModel: sm,
             bbar:Ext.create('Ext.PagingToolbar', {
@@ -64,23 +56,21 @@ Ext.define('SisInventarios.view.industria.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addindustria',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-marcas'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-marcas',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editindustria',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-marcas',
+                    iconCls:'icon-delete-32x32',
                     action:'deleteindustria',
                     disabled:true
                 }]
@@ -93,27 +83,17 @@ Ext.define('SisInventarios.view.industria.List' ,{
     selectChange: function( sm, selected, options ){
         var bedit = this.down('button[action=editindustria]');
         var bdelete = this.down('button[action=deleteindustria]');
-        //var bdinfo = this.down('button[action=infoserver]');
-        //var bdviewer = this.down('button[action=eventviewerserver]');
-        //var bdstatistic = this.down('button[action=statisticsserver]');
         if(selected.length > 0){
             bdelete.enable();
-           // bdstatistic.enable();
             if(selected.length == 1){
                 bedit.enable();
-               // bdinfo.enable();
-                //bdviewer.enable()
+
             }else{
                 bedit.disable();
-                //bdinfo.disable();
-                //bdviewer.disable()
             }
         }else{
             bedit.disable();
             bdelete.disable();
-            //bdinfo.disable();
-            //bdviewer.disable();
-            //bdstatistic.disable();
         }
     }
 });

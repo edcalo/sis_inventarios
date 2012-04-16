@@ -63,25 +63,25 @@ Ext.define('SisInventarios.controller.Roles', {
                 }
             },
             this
-        );
+            );
     },
     saveRol: function(button){
         var win    = button.up('window');
         var form   = win.down('form');
         var record = form.getRecord();
         var values = form.getValues();
-        if(!record){
-            record = this.getRolModel().create();
-            record.set(values);
-            this.getRolesStore().insert(0, record);
-        }else{
-            record.set(values);
-        }
+        if(form.getForm().isValid()){
+            if(!record){
+                record = this.getRolModel().create();
+                record.set(values);
+                this.getRolesStore().insert(0, record);
+            }else{
+                record.set(values);
+            }
         
-        win.close();
-        this.getRolesStore().sync();
-
-
+            win.close();
+            this.getRolesStore().sync();
+        }
     }
 
 });

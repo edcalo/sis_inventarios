@@ -6,6 +6,7 @@ Ext.define('SisInventarios.view.rol.List' ,{
     modal:true,
     width: 550,
     height: 415,
+    iconCls: 'icon-roles-16x16',
     title: 'Lista de Roles',
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -56,23 +57,21 @@ Ext.define('SisInventarios.view.rol.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addrol',
-                    iconAlign: 'top',
-                    iconCls: ''
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-aux',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editrol',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-aux',
+                    iconCls:'icon-delete-32x32',
                     action:'deleterol',
                     disabled:true
                 }]

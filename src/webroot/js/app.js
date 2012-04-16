@@ -94,7 +94,7 @@ Ext.application({
                         scale: 'large',                        
                         text: 'Registrar',
                         iconAlign: 'top',
-                        iconCls: 'icon-add-aux'
+                        iconCls: 'icon-add-32x32'
                     }
                 },{
                     xtype: 'buttongroup',
@@ -103,11 +103,11 @@ Ext.application({
                         text: 'Modificar',
                         scale: 'large',
                         iconAlign: 'top',                        
-                        iconCls: 'icon-edit-aux'
+                        iconCls: 'icon-edit-32x32'
                     },{
                         id: 'eliminar',
                         text: 'Eliminar',
-                        iconCls:'icon-delete-aux',
+                        iconCls:'icon-delete-32x32',
                         scale: 'large',
                         iconAlign: 'top'
                     }]
@@ -119,40 +119,11 @@ Ext.application({
                     },
                     items:[{
                         text: 'Buscar',                        
-                        iconCls: 'icon-buscar-aux'
+                        iconCls: 'icon-search-32x32'
                     },{
 
                         text: 'Ordenar',
                         iconCls:'icon-ordenar-aux'
-                    }]
-                }]
-            },{
-                title: 'Configuracion de fuente de datos',
-                xtype: 'buttongroup',
-                columns: 4,
-                defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
-                },
-                items:[{
-                    xtype: 'buttongroup',
-                    defaults:{
-                        scale: 'large',
-                        iconAlign: 'top'
-                    },
-                    items:[{
-                        text: 'Gestiones',                        
-                        iconCls: 'icon-gestion-32'
-                    },{
-                        text: 'Turnos',
-                        iconCls: 'icon-turno-32'
-                    },{
-                        text: 'Unidades',
-                        iconCls:'icon-unidad-32'
-                    }, {
-                        text: 'Cargos',
-                        iconCls:'icon-cargos-32'
-
                     }]
                 }]
             },'->', {
@@ -171,46 +142,46 @@ Ext.application({
                     },
                     items:[ {
                         text: 'Proveedores',
-                        iconCls: 'icon-turno-32',
+                        iconCls: 'icon-provider-32x32',
                         handler: this.listProveedores
                     },{
                         text: 'Grupos',
-                        iconCls:'icon-unidad-32',
+                        iconCls:'icon-group-32x32',
                         handler: this.listgrupos
                     }, {
                         text: 'Roles',
-                        iconCls:'icon-cargos-32',
+                        iconCls:'icon-roles-32x32',
                         handler: this.listRoles
 
-                    },{//Boton para acceder al catalogo de Marcas
+                    },{
                         text:'Marcas',
-                        iconCls:'icon-marcas-32',
+                        iconCls:'icon-marcas-32x32',
                         handler: this.listMarcas
                     },{
                         text:'Industrias',
-                        iconCls:'icon-industria-32',
+                        iconCls:'icon-industry-32x32',
                         handler: this.listIndustria
                     },{
                         text:'Almacenes',
-                        iconCls:'icon-almacen-32',
+                        iconCls:'icon-depot-32x32',
                         handler: this.listAlmacen
                     },{
                         text:'Clientes',
-                        iconCls:'icon-cliente-32',
+                        iconCls:'icon-client-32x32',
                         handler: this.listCliente
                     },{
                         text: 'Empleados',
-                        iconCls:'icon-cargos-32',
+                        iconCls:'icon-employee-32x32',
                         handler: this.listEmpleados
 
                     },{
                         text: 'Dosificacion',
-                        iconCls:'icon-cargos-32',
+                        iconCls:'icon-ii-32x32',
                         handler: this.listDosificaciones
 
                     },{
                         text: 'Descuentos',
-                        iconCls:'icon-cargos-32',
+                        iconCls:'icon-descuentos-32x32',
                         handler: this.listDescuentos
 
                     }]

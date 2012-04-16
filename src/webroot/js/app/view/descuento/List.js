@@ -6,9 +6,9 @@ Ext.define('SisInventarios.view.descuento.List' ,{
     modal:true,
     width: 650,
     height: 415,
+    iconCls:'icon-descuentos-16x16',
     title: 'Lista de Descuentos',
-    initComponent: function() {
-       // alert("aqui");        
+    initComponent: function() {     
         var sm = Ext.create('Ext.selection.CheckboxModel',{
             listeners:{
                 'selectionchange': this.selectChange,
@@ -32,46 +32,26 @@ Ext.define('SisInventarios.view.descuento.List' ,{
             },{
                 header: 'Fecha Inicio Descuento',
                 dataIndex: 'fecha_inicio_descuento',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 180
             },
             {
                 header: 'Fecha Fin Descuento',
                 dataIndex: 'fecha_fin_descuento',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 180
             },
             {
                 header: 'Cuota Inicial',
                 dataIndex: 'cuota_inicial',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 80
             },
             {
                 header: 'Tipo',
                 dataIndex: 'tipo',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 80
             },
             {
                 header: 'Descripción Descuento',
                 dataIndex: 'descripcion_descuento',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
                 width: 380
             }],
             selModel: sm,
@@ -93,23 +73,21 @@ Ext.define('SisInventarios.view.descuento.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'adddescuento',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-server'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-server',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editdescuento',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-server',
+                    iconCls:'icon-delete-32x32',
                     action:'deletedescuento',
                     disabled:true
                 }]

@@ -5,9 +5,8 @@ Ext.define('SisInventarios.view.almacen.Add', {
     layout: 'fit',
     autoShow: true,
     modal:true,
-    width: 550,
-    
-    iconCls: 'icon-add',
+    width: 550,    
+    iconCls: 'icon-add-16x16',
     initComponent: function() {
         this.items = [{
             xtype: 'form',
@@ -46,12 +45,12 @@ Ext.define('SisInventarios.view.almacen.Add', {
         this.buttons = [{
             text: 'Save',
             action: 'save',
-            iconCls:'icon-guardar'
+            iconCls:'icon-save-16x16'
         },{
             text: 'Cancel',
             scope: this,
             handler: this.close,
-            iconCls:'icon-cancelar'
+            iconCls:'icon-cancel-16x16'
         }];
 
         this.callParent(arguments);

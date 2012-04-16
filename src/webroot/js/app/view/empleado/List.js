@@ -8,8 +8,8 @@ Ext.define('SisInventarios.view.empleado.List' ,{
     width: 650,
     height: 415,
     title: 'Lista de Empleados',
-    initComponent: function() {
-       // alert("aqui");        
+    iconCls:'icon-employee-16x16',
+    initComponent: function() {       
         var sm = Ext.create('Ext.selection.CheckboxModel',{
             listeners:{
                 'selectionchange': this.selectChange,
@@ -23,6 +23,13 @@ Ext.define('SisInventarios.view.empleado.List' ,{
             border: false,
             store: 'Empleados',
             columns : [{
+                header: 'Doc. Identidad',
+                dataIndex: 'doc_identidad',
+                renderer:function(value, metaData, record){
+                    return record.get('tipo_doc_identidad') + ' ' + value;
+                },
+                width: 120
+            },{
                 header: 'Nombre',
                 dataIndex: 'nombres',
                 renderer:function(value, metaData){
@@ -31,76 +38,31 @@ Ext.define('SisInventarios.view.empleado.List' ,{
                 },
                 width:120
             },{
-                header: 'Apellido Paterno',
+                header: 'Apellidos',
                 dataIndex: 'apellido_paterno',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
+                renderer:function(value, metaData, record){
+                    return value + ' ' + record.get('apellido_materno');
                 },
-                width: 380
-            },
-            {
-                header: 'Apellido Materno',
-                dataIndex: 'apellido_materno',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
-            },
-            {
-                header: 'Documento Identidad',
-                dataIndex: 'doc_identidad',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
-            },
-            {
+                width: 150
+            },{
                 header: 'Fecha Ingreso',
                 dataIndex: 'fecha_ingreso',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 80
             },
             {
                 header: 'Contacto',
                 dataIndex: 'contacto',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 100
             },
             {
                 header: 'Telefono',
                 dataIndex: 'telefono',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 80
             },
             {
                 header: 'email',
                 dataIndex: 'email',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
-            },
-            {
-                header: 'Tipo Documento',
-                dataIndex: 'tipo_doc_identidad',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 100
             }],
             selModel: sm,
             bbar:Ext.create('Ext.PagingToolbar', {
@@ -121,23 +83,21 @@ Ext.define('SisInventarios.view.empleado.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addempleado',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-server'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-server',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editempleado',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-server',
+                    iconCls:'icon-delete-32x32',
                     action:'deleteempleado',
                     disabled:true
                 }]

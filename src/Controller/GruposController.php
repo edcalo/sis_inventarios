@@ -41,15 +41,16 @@ class GruposController extends AppController {
     public function admin_index() {
         $this->layout = 'ajax';
         $this->Grupo->recursive = 0;
-        $padre = isset($this->request->query['grupo'])?$this->request->query['grupo']:1;
+        $padre = isset($this->request->query['grupo']) ? $this->request->query['grupo'] : 1;
         $this->set('grupos', $this->Grupo->find(
-                'all',array(
-                    'conditions'=>array(
-                        'Grupo.grupo_id'=> $padre
+                        'all', array(
+                    'conditions' => array(
+                        'Grupo.grupo_id' => $padre
                     )
-                    )
+                        )
                 ));
     }
+
     /**
      * admin_tree method
      *
@@ -59,13 +60,24 @@ class GruposController extends AppController {
         $this->Grupo->recursive = 0;
         $this->layout = 'ajax';
         $padre = $this->request->query['node'];
-        $this->set('grupos', $this->Grupo->find(
-                'all', array(
-                    'conditions'=>array(
-                        'Grupo.grupo_id'=> $padre
+        $grupos = $this->Grupo->find(
+                        'all', array(
+                    'conditions' => array(
+                        'Grupo.grupo_id' => $padre
                     )
-                 )
-        ));
+                        )
+        );
+        $pos = 0;
+        foreach ($grupos as $grupo) {
+            $childs = $this->Grupo->find('count', array(
+                        'conditions' => array(
+                            'Grupo.grupo_id' => $grupo['Grupo']['id']
+                        )
+                    ));
+            $grupos[$pos]['Grupo']['childs'] = $childs;
+            $pos++;
+        }
+        $this->set('grupos', $grupos);
     }
 
     /**
@@ -111,7 +123,7 @@ class GruposController extends AppController {
      * @return void
      */
     public function admin_edit($id = null) {
-        
+
         $this->layout = 'ajax';
 
         $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
@@ -122,12 +134,12 @@ class GruposController extends AppController {
             if ($this->Grupo->save($this->data)) {
                 $success = true;
                 $this->set('grupos', $this->Grupo->find(
-                'all',array(
-                    'conditions'=>array(
-                        'Grupo.grupo_id'=> $this->data['Grupo']['padre_id']
-                    )
-                    )
-                ));
+                    'all', array(
+                            'conditions' => array(
+                                'Grupo.grupo_id' => $this->data['Grupo']['grupo_id']
+                            )
+                        )
+                    ));
             }
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
@@ -152,7 +164,7 @@ class GruposController extends AppController {
      * @return void
      */
     public function admin_delete($id = null) {
-                
+
         $this->layout = 'ajax';
         $grupos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
 

@@ -9,7 +9,7 @@ switch ($guardado) {
                 ),
                 'data' => array(
                     'id'=>$newID,
-                    'padre_id'=> $this->data['Grupo']['padre_id'],
+                    'grupo_id'=> $this->data['Grupo']['grupo_id'],
                     'codigo'=>$this->data['Grupo']['codigo'],
                     'nombre_grupo'=>$this->data['Grupo']['nombre_grupo'],
                     'descripcion_grupo'=>$this->data['Grupo']['descripcion_grupo']

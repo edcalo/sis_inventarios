@@ -8,7 +8,7 @@ Ext.define('SisInventarios.view.marca.List' ,{
     width: 550,
     height: 420,
     title : 'Marcas Registradas',
-    iconCls: 'icon-online',
+    iconCls: 'icon-marcas-16x16',
         
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -57,23 +57,21 @@ Ext.define('SisInventarios.view.marca.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addmarcas',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-marcas'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-marcas',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editmarcas',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-marcas',
+                    iconCls:'icon-delete-32x32',
                     action:'deletemarcas',
                     disabled:true
                 }]
@@ -84,27 +82,16 @@ Ext.define('SisInventarios.view.marca.List' ,{
     selectChange: function( sm, selected, options ){
         var bedit = this.down('button[action=editmarcas]');
         var bdelete = this.down('button[action=deletemarcas]');
-        //var bdinfo = this.down('button[action=infoserver]');
-        //var bdviewer = this.down('button[action=eventviewerserver]');
-        //var bdstatistic = this.down('button[action=statisticsserver]');
         if(selected.length > 0){
             bdelete.enable();
-            //bdstatistic.enable();
             if(selected.length == 1){
                 bedit.enable();
-                //bdinfo.enable();
-                //bdviewer.enable()
             }else{
                 bedit.disable();
-                //bdinfo.disable();
-                //bdviewer.disable()
             }
         }else{
             bedit.disable();
             bdelete.disable();
-            //bdinfo.disable();
-            //bdviewer.disable();
-            //bdstatistic.disable();
         }
     }
 

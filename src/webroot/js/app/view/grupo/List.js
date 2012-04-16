@@ -6,6 +6,7 @@ Ext.define('SisInventarios.view.grupo.List' ,{
     modal:true,
     width: 720,
     height: 415,
+    iconCls:'icon-group-16x16',
     title: 'Lista de Grupos',
     initComponent: function() {
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -25,8 +26,7 @@ Ext.define('SisInventarios.view.grupo.List' ,{
                 id: 1,
                 expanded: true
             },
-            folderSort: true,
-            
+            folderSort: true,            
             sorters: [{
                 property: 'text',
                 direction: 'ASC'
@@ -35,6 +35,7 @@ Ext.define('SisInventarios.view.grupo.List' ,{
 
         this.tree = Ext.create('Ext.tree.Panel', {
             id:'tree',
+            title:'Grupos',
             store: this.treestore,
             viewConfig: {
                 plugins: {
@@ -94,7 +95,7 @@ Ext.define('SisInventarios.view.grupo.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'addgrupo',
-                    iconCls: 'icon-add-server'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
@@ -103,12 +104,12 @@ Ext.define('SisInventarios.view.grupo.List' ,{
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-aux',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editgrupo',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-aux',
+                    iconCls:'icon-delete-32x32',
                     action:'deletegrupo',
                     disabled:true
                 }]

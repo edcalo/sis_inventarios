@@ -6,6 +6,7 @@ Ext.define('SisInventarios.view.dosificacion.List' ,{
     modal:true,
     width: 650,
     height: 415,
+    iconCls:'icon-ii-16x16',
     title: 'Lista de Dosificacion',
     initComponent: function() {
        // alert("aqui");        
@@ -32,38 +33,22 @@ Ext.define('SisInventarios.view.dosificacion.List' ,{
             },{
                 header: 'Fecha inicio Emision',
                 dataIndex: 'fecha_inicio_emicion',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 120
             },
             {
                 header: 'Fecha limite Emision',
                 dataIndex: 'fecha_limite_emision',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 120
             },
             {
                 header: 'Numero de Autorizacion',
-                dataIndex: 'numero_de_autorizacion',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                dataIndex: 'numero_de_autorizacion',                
+                width: 120
             },
             {
                 header: 'Numero Actual de Factura',
                 dataIndex: 'numero_de_factura',
-                renderer:function(value, metaData){
-                    metaData.style = 'white-space:normal';
-                    return value;
-                },
-                width: 380
+                width: 120
             }],
             selModel: sm,
             bbar:Ext.create('Ext.PagingToolbar', {
@@ -84,23 +69,21 @@ Ext.define('SisInventarios.view.dosificacion.List' ,{
                     scale: 'large',
                     text: 'Registrar',
                     action: 'adddosificacion',
-                    iconAlign: 'top',
-                    iconCls: 'icon-add-server'
+                    iconCls: 'icon-add-32x32'
                 }
             },{
                 xtype: 'buttongroup',
                 defaults:{
-                    scale: 'large',
-                    iconAlign: 'top'
+                    scale: 'large'
                 },
                 items:[{
                     text: 'Modificar',
-                    iconCls: 'icon-edit-server',
+                    iconCls: 'icon-edit-32x32',
                     action: 'editdosificacion',
                     disabled:true
                 },{
                     text: 'Eliminar',
-                    iconCls:'icon-delete-server',
+                    iconCls:'icon-delete-32x32',
                     action:'deletedosificacion',
                     disabled:true
                 }]

@@ -13,169 +13,122 @@
     background-position:  5px center !important;
     width: 24px !important;
 }
+
 .icon-add-16x16{
-    background-image: url(../img/icons/16x16/add.png) !important;
+    background-image: url(../img/icons/common/16x16/add.png) !important;
 }
 .icon-edit-16x16{
-    background-image: url(../img/icons/16x16/pencil.png) !important;
+    background-image: url(../img/icons/common/16x16/pencil.png) !important;
 }
 .icon-delete-16x16{
-    background-image: url(../img/icons/16x16/delete.png) !important;
+    background-image: url(../img/icons/common/16x16/delete.png) !important;
 }
 .icon-save-16x16{
-    background-image: url(../img/icons/16x16/disk.png) !important;
+    background-image: url(../img/icons/common/16x16/disk.png) !important;
     
 }
 .icon-cancel-16x16{
-    background-image: url(../img/icons/16x16/cancel.png) !important;
+    background-image: url(../img/icons/common/16x16/cancel.png) !important;
 }
 /*32x32*/
 .icon-add-32x32{
-    background-image: url(../img/icons/32x32/add.png) !important;
+    background-image: url(../img/icons/common/32x32/add.png) !important;
 }
 .icon-delete-32x32{
-    background-image: url(../img/icons/32x32/delete.png) !important;
+    background-image: url(../img/icons/common/32x32/delete.png) !important;
 }
 .icon-edit-32x32{
-    background-image: url(../img/icons/32x32/pencil.png) !important;
+    background-image: url(../img/icons/common/32x32/pencil.png) !important;
 }
 .icon-save-32x32{
-    background-image: url(../img/icons/32x32/disk.png) !important;
+    background-image: url(../img/icons/common/32x32/disk.png) !important;
 }
 .icon-cancel-32x32{
-    background-image: url(../img/icons/32x32/cancel.png) !important ;
+    background-image: url(../img/icons/common/32x32/cancel.png) !important ;
 }
 
 .icon-search-32x32 {
-    background-image:url(../img/icons/32x32/find.png) !important;
+    background-image:url(../img/icons/common/32x32/find.png) !important;
 }
+
+
+
+
+
 
 /* tools 16x16*/
 .icon-provider-16x16 {
-    background-image:url(../img/application/16x16/provider.png) !important;
+    background-image:url(../img/icons/application/16x16/provider.png) !important;
 }
 .icon-group-16x16 {
-    background-image:url(../img/application/16x16/department.png) !important;
+    background-image:url(../img/icons/application/16x16/department.png) !important;
    
 }
 .icon-roles-16x16 {
-    background-image:url(../img/application/16x16/reseller_programm.png) !important;
+    background-image:url(../img/icons/application/16x16/reseller_programm.png) !important;
    
 }
 .icon-industry-16x16 {
-    background-image:url(../img/application/16x16/building.png) !important;
+    background-image:url(../img/icons/application/16x16/building.png) !important;
    
 }
 .icon-depot-16x16 {
-    background-image:url(../img/application/16x16/depot.png) !important;   
+    background-image:url(../img/icons/application/16x16/depot.png) !important;
 }
 
 .icon-client-16x16 {
-    background-image:url(../img/application/16x16/reseller_account.png) !important;   
+    background-image:url(../img/icons/application/16x16/reseller_account.png) !important;
+}
+.icon-marcas-16x16{
+    background-image:url(../img/icons/application/16x16/copyright.png) !important;
 }
 .icon-employee-16x16 {
-    background-image:url(../img/application/16x16/session_idle_time.png) !important;   
+    background-image:url(../img/icons/application/16x16/session_idle_time.png) !important;
+}
+.icon-ii-16x16 {
+    background-image:url(../img/icons/application/16x16/impuestos_internos.png) !important;
+}
+.icon-descuentos-16x16 {
+    background-image:url(../img/icons/application/16x16/descuentos.png) !important;
 }
 
 /* tools 32x32*/
 .icon-provider-32x32 {
-    background-image:url(../img/application/32x32/provider.png) !important;
+    background-image:url(../img/icons/application/32x32/provider.png) !important;
 }
 .icon-group-32x32 {
-    background-image:url(../img/application/32x32/department.png) !important;
+    background-image:url(../img/icons/application/32x32/department.png) !important;
 }
 .icon-roles-32x32 {
-    background-image:url(../img/application/32x32/reseller_programm.png) !important;
+    background-image:url(../img/icons/application/32x32/reseller_programm.png) !important;
    
 }
 .icon-industry-32x32 {
-    background-image:url(../img/application/32x32/building.png) !important;
+    background-image:url(../img/icons/application/32x32/building.png) !important;
    
 }
 .icon-depot-32x32 {
-    background-image:url(../img/application/32x32/depot.png) !important;   
+    background-image:url(../img/icons/application/32x32/depot.png) !important;
 }
 .icon-client-32x32 {
-    background-image:url(../img/application/32x32/reseller_account.png) !important;   
+    background-image:url(../img/icons/application/32x32/reseller_account.png) !important;
 }
-
+.icon-marcas-32x32{
+    background-image:url(../img/icons/application/32x32/copyright.png) !important;
+}
 .icon-employee-32x32 {
-    background-image:url(../img/application/32x32/session_idle_time.png) !important;   
+    background-image:url(../img/icons/application/32x32/session_idle_time.png) !important;
+}
+.icon-ii-32x32 {
+    background-image:url(../img/icons/application/32x32/impuestos_internos.png) !important;
+}
+.icon-descuentos-32x32 {
+    background-image:url(../img/icons/application/32x32/descuentos.png) !important;
 }
 
 /********************************************************************************/
 
-.icon-formulario-add {
-    background-image:url(../img/shared/application-form-add16x16.png) !important;
-}
 
-
-
-.icon-formulario-edit {
-    background-image: url(../img/shared/application-form-edit16x16.png) !important;
-}
-
-
-.icon-buscar {
-    background-image:url(../img/shared/search16x16.png) !important;
-}
-
-.icon-imprimir{
-    background-image:url(../img/shared/print16x16.png) !important;
-}
-.icon-ok{
-    background-image: url(../img/shared/tick16x16.png) !important;
-}
-
-.icon-information{
-    background-image: url(../img/shared/information16x16.png) !important;
-}
-
-
-.icon-filtro {
-    background-image:url(../img/shared/stock-autofilter16x16.png) !important;
-}
-.icon-cancelar-filtro {
-    background-image:url(../img/shared/stock-delete-autofilter16x16.png) !important;
-}
-.icon-expandir-arbol {
-    background-image: url(../img/shared/expand-all16x16.gif) !important;
-}
-.icon-colapsar-arbol {
-    background-image: url(../img/shared/collapse-all16x16.gif) !important;
-}
-
-
-
-.seguridad {
-  background: url(../img/shared/seguridad.png) 0px 4px no-repeat !important;
-}
-
-.icon-online {
-    background-image:url(../img/shared/status_online.png) !important;
-}
-.icon-offline {
-    background-image:url(../img/shared/status_offline.png) !important;
-}
-.icon-usuario {
-    background-image:url(../img/1253486757_Client.png) !important;
-}
-.icon-salir {
-    background-image:url(../img/shared/salir16x16.png) !important;
-}
-/* del toolbar */
-
-
-.sub-unidad {
-    background-image:url(../img/scp/building16x16.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
-.unidad {
-    background-image:url(../img/scp/chart_organisation16x16.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
 
 
 /* para sca*/
@@ -184,39 +137,5 @@
 }
 
 
-/* para sca */
 
-
-.icon-refresh-32x32{
-    background-image: url(../img/scp/update32x32.png) !important;
-}
-.icon-loading-32x32{
-    background-image: url(../img/scp/loading-anim.gif) !important;
-}
-
-
-.icon-report-32x32 {
-    background-image:url(../img/scp/report32x32.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
-.icon-credencial-32x32 {
-    background-image:url(../img/scp/user_info32x32.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
-
-
-
-.icon-cargos-32x32 {
-    background-image: url(../img/scp/findjob32x32.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
-/* Iconos de JHT*/
-.icon-marcas-32{
-    background-image: url(../img/scp/marcas32x32.png) !important;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
 
