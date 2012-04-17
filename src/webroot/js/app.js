@@ -1,7 +1,7 @@
-/*Ext.Loader.setConfig({
+Ext.Loader.setConfig({
     enabled: true
-});*/
-Ext.Loader.setPath('Ext.ux', '../libs/ext-4.0.7-gpl/examples/ux/');
+});
+
 Ext.application({
     name: 'SisInventarios',
     appFolder: 'js/app',
