@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Marcas', {
     ],
     views: [
     'marca.List',
-    'marca.Add'
+    'marca.Add',
+    'marca.Selector'
     ],
     requires:[
         'Ext.window.MessageBox',

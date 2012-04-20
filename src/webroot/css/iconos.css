@@ -9,10 +9,10 @@
 
 /* 16x16*/
 
-.icon-add-16x16, .icon-edit-16x16, .icon-delete-16x16, .icon-save-16x16, .icon-cancel-16x16{
+/*.icon-add-16x16, .icon-edit-16x16, .icon-delete-16x16, .icon-save-16x16, .icon-cancel-16x16{
     background-position:  5px center !important;
     width: 24px !important;
-}
+}*/
 
 .icon-add-16x16{
     background-image: url(../img/icons/common/16x16/add.png) !important;

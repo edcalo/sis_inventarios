@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Proveedores', {
     ],
     views: [
     'proveedor.List',
-    'proveedor.Add'
+    'proveedor.Add',
+    'proveedor.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',

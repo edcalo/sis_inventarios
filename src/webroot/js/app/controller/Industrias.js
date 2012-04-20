@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Industrias', {
     ],
     views: [
         'industria.List',
-        'industria.Add'
+        'industria.Add',
+        'industria.Selector'
     ],
     requires:[
         'Ext.window.MessageBox',
