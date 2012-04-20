@@ -6,16 +6,16 @@ Ext.application({
     name: 'SisInventarios',
     appFolder: 'js/app',
     controllers: [
-    'Roles',
-    'Proveedores',
-    'Grupos',
-    'Marcas',
-    'Industrias',
-    'Almacenes',
-    'Clientes',
-    'Empleados',
-    'Dosificaciones',
-    'Descuentos'
+        'Roles',
+        'Proveedores',
+        'Grupos',
+        'Marcas',
+        'Industrias',
+        'Almacenes',
+        'Clientes',
+        'Empleados',
+        'Dosificaciones',
+        'Descuentos'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -57,8 +57,25 @@ Ext.application({
         var descuentos = Ext.widget('descuentolist');
         descuentos.show();
     },
+    showSelectors: function(){
+        var selectors = Ext.create('Ext.Window', {
+            title: 'Selectores',
+            width: 200,
+            layout: 'fit',
+            items:Ext.create('Ext.form.Panel',{
+               items:[
+                   {xtype: 'rolselector'},
+                   {xtype:'proveedorselector'},
+                   {xtype:'marcasselector'},
+                   {xtype:'industriaselector'}
+               ] 
+            })
+            
+        });
+        selectors.show();
+    },
     launch: function() {
-        var panel_inicio = Ext.create('Ext.Panel',{
+        var dashboard = Ext.create('Ext.Panel',{
             id: 'home',
             iconCls: 'icon-home',
             title: 'Dashboard',
@@ -66,7 +83,7 @@ Ext.application({
             bodyStyle: 'background-color: transparent',
             autoScroll: true
         });
-        var panel_ftp=Ext.create('Ext.Panel',{
+        var panel_inventarios=Ext.create('Ext.Panel',{
             title: 'Sistema de Inventarios',
             layout: 'border',
             items:[{
@@ -118,8 +135,9 @@ Ext.application({
                         iconAlign: 'top'
                     },
                     items:[{
-                        text: 'Buscar',                        
-                        iconCls: 'icon-search-32x32'
+                        text: 'Selectores',                        
+                        iconCls: 'icon-search-32x32',
+                        handler: this.showSelectors
                     },{
 
                         text: 'Ordenar',
@@ -192,7 +210,7 @@ Ext.application({
             activeItem: 'ftp-user-list',
             region: 'center',
             id: 'main',
-            items:[panel_inicio, panel_ftp]
+            items:[dashboard, panel_inventarios]
         });
 
         Ext.create('Ext.container.Viewport', {

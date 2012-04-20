@@ -1,7 +1,7 @@
 Ext.define('SisInventarios.view.rol.Add', {
     extend: 'Ext.window.Window',
     alias : 'widget.roladd',
-    title : 'Registrar servidor',
+    title : 'Registrar nuevo Rol',
     layout: 'fit',
     autoShow: true,
     modal:true,
@@ -29,7 +29,7 @@ Ext.define('SisInventarios.view.rol.Add', {
                 anchor: '100%',
                 xtype: 'htmleditor',                
                 name : 'descripcion',
-                fieldLabel: 'Desvripcion',
+                fieldLabel: 'Descripcion',
                 allowBlank: true,
                 height: 200
             }]
