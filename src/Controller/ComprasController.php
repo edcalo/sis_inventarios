@@ -50,8 +50,7 @@ class ComprasController extends AppController {
 		$creditos = $this->Compra->Credito->find('list');
 		$empleados = $this->Compra->Empleado->find('list');
 		$proveedores = $this->Compra->Proveedor->find('list');
-		$items = $this->Compra->Item->find('list');
-		$this->set(compact('creditos', 'empleados', 'proveedores', 'items'));
+		$this->set(compact('creditos', 'empleados', 'proveedores'));
 	}
 
 /**
@@ -78,8 +77,7 @@ class ComprasController extends AppController {
 		$creditos = $this->Compra->Credito->find('list');
 		$empleados = $this->Compra->Empleado->find('list');
 		$proveedores = $this->Compra->Proveedor->find('list');
-		$items = $this->Compra->Item->find('list');
-		$this->set(compact('creditos', 'empleados', 'proveedores', 'items'));
+		$this->set(compact('creditos', 'empleados', 'proveedores'));
 	}
 
 /**
@@ -109,6 +107,7 @@ class ComprasController extends AppController {
  * @return void
  */
 	public function admin_index() {
+            $this->layout ='ajax';
 		$this->Compra->recursive = 0;
 		$this->set('compras', $this->paginate());
 	}
@@ -145,8 +144,7 @@ class ComprasController extends AppController {
 		$creditos = $this->Compra->Credito->find('list');
 		$empleados = $this->Compra->Empleado->find('list');
 		$proveedores = $this->Compra->Proveedor->find('list');
-		$items = $this->Compra->Item->find('list');
-		$this->set(compact('creditos', 'empleados', 'proveedores', 'items'));
+		$this->set(compact('creditos', 'empleados', 'proveedores'));
 	}
 
 /**
@@ -173,8 +171,7 @@ class ComprasController extends AppController {
 		$creditos = $this->Compra->Credito->find('list');
 		$empleados = $this->Compra->Empleado->find('list');
 		$proveedores = $this->Compra->Proveedor->find('list');
-		$items = $this->Compra->Item->find('list');
-		$this->set(compact('creditos', 'empleados', 'proveedores', 'items'));
+		$this->set(compact('creditos', 'empleados', 'proveedores'));
 	}
 
 /**

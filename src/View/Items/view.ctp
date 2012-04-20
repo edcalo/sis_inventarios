@@ -46,6 +46,26 @@
 			<?php echo h($item['Item']['codigo']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Precio Compra'); ?></dt>
+		<dd>
+			<?php echo h($item['Item']['precio_compra']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Precio Referencia Venta'); ?></dt>
+		<dd>
+			<?php echo h($item['Item']['precio_referencia_venta']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Garantia Compra'); ?></dt>
+		<dd>
+			<?php echo h($item['Item']['garantia_compra']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Compra Id'); ?></dt>
+		<dd>
+			<?php echo h($item['Item']['compra_id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -118,6 +138,7 @@
 		<th><?php echo __('Venta Id'); ?></th>
 		<th><?php echo __('Fecha Factura'); ?></th>
 		<th><?php echo __('Monto Total'); ?></th>
+		<th><?php echo __('Numero Factura'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -129,6 +150,7 @@
 			<td><?php echo $factura['venta_id'];?></td>
 			<td><?php echo $factura['fecha_factura'];?></td>
 			<td><?php echo $factura['monto_total'];?></td>
+			<td><?php echo $factura['numero_factura'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'facturas', 'action' => 'view', $factura['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'facturas', 'action' => 'edit', $factura['id'])); ?>

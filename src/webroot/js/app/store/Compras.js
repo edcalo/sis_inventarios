@@ -1,11 +1,11 @@
-Ext.define('SisInventarios.store.Compras',{
-    extend:'Ext.data.Store',
-    model:'SisInventarios.model.Compra',
+Ext.define('SisInventarios.store.Compras', {
+    extend: 'Ext.data.Store',
+    model: 'SisInventarios.model.Compra',
     autoLoad: true,
-    proxy:{
-        type:'ajax',
+    proxy: {
+        type: 'ajax',
         method:'POST',
-        api:{
+        api: {
             read: 'admin/compras',
             update: 'admin/compras/edit',
             create: 'admin/compras/add',

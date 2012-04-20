@@ -1,3 +1,6 @@
+/*Ext.require([
+    'SisInventarios.view.compra.List'
+]);*/
 Ext.Loader.setConfig({
     enabled: true
 });
@@ -15,7 +18,8 @@ Ext.application({
         'Clientes',
         'Empleados',
         'Dosificaciones',
-        'Descuentos'
+        'Descuentos',
+        'Compras'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -64,7 +68,7 @@ Ext.application({
             layout: 'fit',
             items:Ext.create('Ext.form.Panel',{
                items:[
-                   {xtype: 'rolselector'},
+                   //{xtype: 'rolselector'},
                    {xtype:'proveedorselector'},
                    {xtype:'marcasselector'},
                    {xtype:'industriaselector'}
@@ -83,12 +87,8 @@ Ext.application({
             bodyStyle: 'background-color: transparent',
             autoScroll: true
         });
-<<<<<<< HEAD
-        var panel_compras = Ext.create('SisInventarios.view.compra.List');
-        var panel_ftp=Ext.create('Ext.Panel',{
-=======
         var panel_inventarios=Ext.create('Ext.Panel',{
->>>>>>> 3eff76bec35fd15d443c03283ebe9cddc08c8304
+
             title: 'Sistema de Inventarios',
             layout: 'border',            
             items:[{             
@@ -97,32 +97,26 @@ Ext.application({
                 region:'center',
                 margins: '0 0 5 0',
                 layout:'fit',
-                bodyStyle:'padding:5px',
-                //html: 'Lista de los items',
-                
-                items:[{
-                        /*xtype:'panel',                        
+                bodyStyle:'padding:5px',                
+                items:[{                        
+                        xtype:'panel',                        
                         layout:{
                             type:'vbox',
                             align:'stretch'
                         },                        
-                        items:[{
-                                
-                                xtype:'grid',
-                                columns:[{header:'Compras'},{header:'Total Compras'}],
-                                store:[''],
-                                title:'Lista de Compras de los Items',
+                        items:[{                                
+                                xtype:'compralist',
                                 flex:1
                                 
                         },{
                             xtype:'splitter'
                         },{
-                                //xtype:'panel',
+                                xtype:'panel',
                                 title:'Items que corresponden a la compra seleccionada',
                                 bodyPadding:5,
                                 //region:'south',
                                 flex:2
-                        }]*/
+                        }]
                 }]
             },{
                 title: 'Detalle del item seleccionado',
@@ -142,6 +136,7 @@ Ext.application({
                     items:{
                         scale: 'large',                        
                         text: 'Registrar',
+                        action:'addrol',
                         iconAlign: 'top',
                         iconCls: 'icon-add-32x32'
                     }
@@ -150,15 +145,19 @@ Ext.application({
                     items:[{
                         id: 'editar',
                         text: 'Modificar',
+                        action:'editcompra',
                         scale: 'large',
                         iconAlign: 'top',                        
-                        iconCls: 'icon-edit-32x32'
+                        iconCls: 'icon-edit-32x32',
+                        disable:true
                     },{
                         id: 'eliminar',
                         text: 'Eliminar',
+                        action:'deletecompra',
                         iconCls:'icon-delete-32x32',
                         scale: 'large',
-                        iconAlign: 'top'
+                        iconAlign: 'top',
+                        disable:true
                     }]
                 },{
                     xtype: 'buttongroup',
@@ -242,11 +241,11 @@ Ext.application({
             activeItem: 'ftp-user-list',
             region: 'center',
             id: 'main',
-<<<<<<< HEAD
-            items:[panel_inicio, panel_ftp,panel_compras]
-=======
+
+            //items:[panel_inicio, panel_ftp,panel_compras]
+
             items:[dashboard, panel_inventarios]
->>>>>>> 3eff76bec35fd15d443c03283ebe9cddc08c8304
+
         });
 
         Ext.create('Ext.container.Viewport', {

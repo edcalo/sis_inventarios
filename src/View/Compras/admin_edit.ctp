@@ -9,7 +9,6 @@
 		echo $this->Form->input('proveedor_id');
 		echo $this->Form->input('fecha_compra');
 		echo $this->Form->input('monto_total');
-		echo $this->Form->input('Item');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

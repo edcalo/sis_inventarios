@@ -64,6 +64,10 @@
 		<th><?php echo __('Descripcion'); ?></th>
 		<th><?php echo __('Numero De Serie'); ?></th>
 		<th><?php echo __('Codigo'); ?></th>
+		<th><?php echo __('Precio Compra'); ?></th>
+		<th><?php echo __('Precio Referencia Venta'); ?></th>
+		<th><?php echo __('Garantia Compra'); ?></th>
+		<th><?php echo __('Compra Id'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -79,6 +83,10 @@
 			<td><?php echo $item['descripcion'];?></td>
 			<td><?php echo $item['numero_de_serie'];?></td>
 			<td><?php echo $item['codigo'];?></td>
+			<td><?php echo $item['precio_compra'];?></td>
+			<td><?php echo $item['precio_referencia_venta'];?></td>
+			<td><?php echo $item['garantia_compra'];?></td>
+			<td><?php echo $item['compra_id'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'items', 'action' => 'view', $item['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'items', 'action' => 'edit', $item['id'])); ?>

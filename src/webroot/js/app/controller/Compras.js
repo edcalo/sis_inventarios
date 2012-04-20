@@ -8,7 +8,7 @@ Ext.define('SisInventarios.controller.Compras', {
     ],
     views: [
     'compra.List',
-    'compra.Add'
+    'compra.Add'    
     ],
     requires:[
     'Ext.window.MessageBox',
@@ -76,12 +76,9 @@ Ext.define('SisInventarios.controller.Compras', {
             this.getComprasStore().insert(0, record);
         }else{
             record.set(values);
-        }
-        
+        }        
         win.close();
         this.getComprasStore().sync();
-
-
     }
 
 });

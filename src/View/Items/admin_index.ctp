@@ -11,6 +11,10 @@
 			<th><?php echo $this->Paginator->sort('descripcion');?></th>
 			<th><?php echo $this->Paginator->sort('numero_de_serie');?></th>
 			<th><?php echo $this->Paginator->sort('codigo');?></th>
+			<th><?php echo $this->Paginator->sort('precio_compra');?></th>
+			<th><?php echo $this->Paginator->sort('precio_referencia_venta');?></th>
+			<th><?php echo $this->Paginator->sort('garantia_compra');?></th>
+			<th><?php echo $this->Paginator->sort('compra_id');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -33,6 +37,10 @@
 		<td><?php echo h($item['Item']['descripcion']); ?>&nbsp;</td>
 		<td><?php echo h($item['Item']['numero_de_serie']); ?>&nbsp;</td>
 		<td><?php echo h($item['Item']['codigo']); ?>&nbsp;</td>
+		<td><?php echo h($item['Item']['precio_compra']); ?>&nbsp;</td>
+		<td><?php echo h($item['Item']['precio_referencia_venta']); ?>&nbsp;</td>
+		<td><?php echo h($item['Item']['garantia_compra']); ?>&nbsp;</td>
+		<td><?php echo h($item['Item']['compra_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $item['Item']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $item['Item']['id'])); ?>

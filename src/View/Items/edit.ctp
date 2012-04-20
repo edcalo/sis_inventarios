@@ -12,6 +12,10 @@
 		echo $this->Form->input('descripcion');
 		echo $this->Form->input('numero_de_serie');
 		echo $this->Form->input('codigo');
+		echo $this->Form->input('precio_compra');
+		echo $this->Form->input('precio_referencia_venta');
+		echo $this->Form->input('garantia_compra');
+		echo $this->Form->input('compra_id');
 		echo $this->Form->input('Compra');
 		echo $this->Form->input('Factura');
 	?>

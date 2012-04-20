@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Empleados', {
     ],
     views: [
     'empleado.List',
-    'empleado.Add'
+    'empleado.Add',
+    'empleado.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',
