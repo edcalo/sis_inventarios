@@ -127,7 +127,7 @@ class DescuentosController extends AppController {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
 
-            $datos = json_decode(stripslashes($this->data)); //decodificamos la informacion
+            $datos = json_decode(stripslashes($this->data[0])); //decodificamos la informacion
             $this->data = array('Descuento' => (array)$datos);
 
             if ($this->Descuento->save($this->data)) {

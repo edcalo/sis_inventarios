@@ -66,15 +66,43 @@ Ext.application({
             bodyStyle: 'background-color: transparent',
             autoScroll: true
         });
+        var panel_compras = Ext.create('SisInventarios.view.compra.List');
         var panel_ftp=Ext.create('Ext.Panel',{
             title: 'Sistema de Inventarios',
-            layout: 'border',
-            items:[{
+            layout: 'border',            
+            items:[{             
                 id:'item-list',
                 xtype: 'panel',
                 region:'center',
                 margins: '0 0 5 0',
-                html: 'Lista de los items'
+                layout:'fit',
+                bodyStyle:'padding:5px',
+                //html: 'Lista de los items',
+                
+                items:[{
+                        /*xtype:'panel',                        
+                        layout:{
+                            type:'vbox',
+                            align:'stretch'
+                        },                        
+                        items:[{
+                                
+                                xtype:'grid',
+                                columns:[{header:'Compras'},{header:'Total Compras'}],
+                                store:[''],
+                                title:'Lista de Compras de los Items',
+                                flex:1
+                                
+                        },{
+                            xtype:'splitter'
+                        },{
+                                //xtype:'panel',
+                                title:'Items que corresponden a la compra seleccionada',
+                                bodyPadding:5,
+                                //region:'south',
+                                flex:2
+                        }]*/
+                }]
             },{
                 title: 'Detalle del item seleccionado',
                 collapsible: true,
@@ -192,7 +220,7 @@ Ext.application({
             activeItem: 'ftp-user-list',
             region: 'center',
             id: 'main',
-            items:[panel_inicio, panel_ftp]
+            items:[panel_inicio, panel_ftp,panel_compras]
         });
 
         Ext.create('Ext.container.Viewport', {

@@ -1,0 +1,14 @@
+Ext.define('SisInventarios.model.Compra',{
+    extend:'Ext.data.Model',
+    fields:[{
+        name:'id',
+        type:'int',
+        mappding:'id'
+    },
+    'credito_id',
+    'empleado_id',
+    'proveedor_id',
+    'fecha_compra',
+    'monto_total'
+    ]
+});
