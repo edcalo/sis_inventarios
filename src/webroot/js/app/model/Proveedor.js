@@ -20,5 +20,5 @@ Ext.define('SisInventarios.model.Proveedor', {
             mapping:'telefono_contacto',
             type:'int'
         }
-    ]
+    ]    
 });

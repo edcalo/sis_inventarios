@@ -15,10 +15,20 @@ Ext.define('SisInventarios.view.industria.Selector', {
             triggerAction:  'all',
             forceSelection: true,
             editable:       true,
-            name:           'rol',
             displayField:   'nombre_industria',
             valueField:     'id',
-            store:          'Industrias'   
+            store:          'Industrias',
+            name:           this.name,
+            allowBlank:     this.allowBlank,
+            listConfig:     {
+                emptyText: 'No se han encontrado industrias.',
+                getInnerTpl: function() {
+                    return '<div class="search-item">' +
+                    '<h3>{nombre_industria}</h3>' +
+                    '<span style="font-size:11px; color:#333;">{descripcion_industria}</span>' +
+                    '</div>';
+                }
+            }
         },{
             xtype:          'button',
             iconCls:        'icon-add-16x16',
@@ -29,7 +39,5 @@ Ext.define('SisInventarios.view.industria.Selector', {
     },
     showFormAdd: function(){
         Ext.widget('industriaadd');
-    },
-    getValue: function(){},
-    setValue: function (){}
+    }
 });

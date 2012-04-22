@@ -1,6 +1,6 @@
-Ext.define('SisInventarios.view.marca.Selector', {
+Ext.define('SisInventarios.view.almacen.Selector', {
     extend: 'Ext.form.FieldContainer',
-    alias : 'widget.marcasselector',
+    alias : 'widget.almacenselector',
     combineErrors: true,
     msgTarget: 'side',
     layout: 'hbox',
@@ -15,17 +15,17 @@ Ext.define('SisInventarios.view.marca.Selector', {
             triggerAction:  'all',
             forceSelection: true,
             editable:       true,
-            displayField:   'nombre_marca',
+            displayField:   'nombre_almacen',
             valueField:     'id',
-            store:          'Marcas',
+            store:          'Almacenes',
             name:           this.name,
             allowBlank:     this.allowBlank,
             listConfig:     {
-                emptyText: 'No se han encontrado marcas.',
+                emptyText: 'No se han encontrado almacenes.',
                 getInnerTpl: function() {
                     return '<div class="search-item">' +
-                    '<h3>{nombre_marca}</h3>' +
-                    '<span style="font-size:11px; color:#333;">{descripcion_marca}</span>' +
+                    '<h3>{nombre_almacen}</h3>' +
+                    '<span style="font-size:11px; color:#333;">Direccion : {direccion_almacen}</span>' +
                     '</div>';
                 }
             }
@@ -38,6 +38,6 @@ Ext.define('SisInventarios.view.marca.Selector', {
         this.callParent(arguments);
     },
     showFormAdd: function(){
-        Ext.widget('marcasadd');
+        Ext.widget('almacenadd');
     }
 });

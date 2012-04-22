@@ -1,6 +1,6 @@
-Ext.define('SisInventarios.view.marca.Selector', {
+Ext.define('SisInventarios.view.rol.Selector', {
     extend: 'Ext.form.FieldContainer',
-    alias : 'widget.marcasselector',
+    alias : 'widget.rolselector',
     combineErrors: true,
     msgTarget: 'side',
     layout: 'hbox',
@@ -15,17 +15,17 @@ Ext.define('SisInventarios.view.marca.Selector', {
             triggerAction:  'all',
             forceSelection: true,
             editable:       true,
-            displayField:   'nombre_marca',
-            valueField:     'id',
-            store:          'Marcas',
             name:           this.name,
+            displayField:   'nombre_rol',
+            valueField:     'id',
+            store:          'Roles',
             allowBlank:     this.allowBlank,
             listConfig:     {
-                emptyText: 'No se han encontrado marcas.',
+                emptyText: 'No se han encontrado roles.',
                 getInnerTpl: function() {
                     return '<div class="search-item">' +
-                    '<h3>{nombre_marca}</h3>' +
-                    '<span style="font-size:11px; color:#333;">{descripcion_marca}</span>' +
+                    '<h3>{nombre_rol}</h3>' +
+                    '<span style="font-size:11px; color:#333;">{descripcion}</span>' +
                     '</div>';
                 }
             }
@@ -34,10 +34,11 @@ Ext.define('SisInventarios.view.marca.Selector', {
             iconCls:        'icon-add-16x16',
             handler:        this.showFormAdd
         }]
+        
 
         this.callParent(arguments);
     },
     showFormAdd: function(){
-        Ext.widget('marcasadd');
+        Ext.widget('roladd');
     }
 });

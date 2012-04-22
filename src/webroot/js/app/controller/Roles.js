@@ -9,7 +9,7 @@ Ext.define('SisInventarios.controller.Roles', {
     views: [
     'rol.List',
     'rol.Add',
-    //'rol.Selector'
+    'rol.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',

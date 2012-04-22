@@ -37,12 +37,9 @@ Ext.define('SisInventarios.controller.Compras', {
         Ext.widget('compraadd');
 
     },
-    viewRol:function(a, b, c){
-        console.log('Ver detalle del grupo');
-    },
     editCompra: function(source, record){
         if(source.getXType() == 'button'){
-            var win = source.up('window');
+            var win = source.up('compralist');
             record = win.down('#listacompras').getSelectionModel().getSelection();
             record = record[0];
         }
@@ -56,8 +53,8 @@ Ext.define('SisInventarios.controller.Compras', {
             'Esta seguro que desea eliminar los Compras seleccionados',
             function(confirm){
                 if(confirm == 'yes'){
-                    var win = button.up('window');
-                    var seleccion = win.down('#listacompras').getSelectionModel().getSelection();
+                    var panel = button.up('compralist');
+                    var seleccion = panel.down('#listacompras').getSelectionModel().getSelection()[0];
                     this.getComprasStore().remove(seleccion);
                     this.getComprasStore().sync();
                 }

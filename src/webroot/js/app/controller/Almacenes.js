@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Almacenes', {
     ],
     views: [
     'almacen.List',
-    'almacen.Add'
+    'almacen.Add',
+    'almacen.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',

@@ -1,7 +1,7 @@
-Ext.define('SisInventarios.view.compra.List' ,{
+Ext.define('SisInventarios.view.item.List' ,{
     extend: 'Ext.panel.Panel',
-    alias : 'widget.compralist',
-    title : 'Compras Registradas',    
+    alias : 'widget.itemlist',
+    title : 'Items Que corresponden a la Compra seleccionada',    
     layout:'fit',
     initComponent: function() {    
         var sm = Ext.create('Ext.selection.CheckboxModel',{
@@ -12,20 +12,20 @@ Ext.define('SisInventarios.view.compra.List' ,{
         });
         this.listeners = {
             'destroy': function(window, options){
-                Ext.data.StoreManager.lookup('Compras').clearFilter();
+                Ext.data.StoreManager.lookup('Items').clearFilter();
             },
             'hide': function(window, options){
-                Ext.data.StoreManager.lookup('Compras').clearFilter();
+                Ext.data.StoreManager.lookup('Items').clearFilter();
             }
         }
         this.items=[{
-                id:'listacompras',
+                id:'listaitems',
                 xtype:'grid',
                 border:false,
-                store:'Compras',
-                columns:[{
-                        header:'Fecha de Compra',
-                        dataIndex:'fecha_compra',
+                store:'Items',
+                columns:[/*{
+                        header:'Fecha de Item',
+                        dataIndex:'fecha_item',
                         width:150,
                         renderer:Ext.util.Format.dateRenderer('Y/m/d')
                 },{
@@ -46,7 +46,7 @@ Ext.define('SisInventarios.view.compra.List' ,{
                         dataIndex:'credito_id',
                         width:150
                 },{
-                        header:'Total de Compra',
+                        header:'Total de Item',
                         dataIndex:'monto_total',
                         width:150
                 },{
@@ -62,13 +62,13 @@ Ext.define('SisInventarios.view.compra.List' ,{
                            
                             return value;
                         }   
-                }],
+                }*/],
             selModel:sm,
             bbar:Ext.create('Ext.PagingToolbar', {
-                store: Ext.data.StoreManager.lookup('Compras'),
+                store: Ext.data.StoreManager.lookup('Items'),
                 displayInfo: true,
-                displayMsg: 'Mostrando {0} - {1} Compras de  {2}',
-                emptyMsg: "No hay compras registradas"
+                displayMsg: 'Mostrando {0} - {1} Items de  {2}',
+                emptyMsg: "No hay Items registradas"
             })
         }];
     this.tbar=[{
@@ -80,7 +80,7 @@ Ext.define('SisInventarios.view.compra.List' ,{
                 items:{
                     scale: 'large',
                     text: 'Registrar',
-                    action: 'addcompra',
+                    action: 'additem',
                     iconCls: 'icon-add-32x32'
                 }
             },{
@@ -91,12 +91,12 @@ Ext.define('SisInventarios.view.compra.List' ,{
                 items:[{
                     text: 'Modificar',
                     iconCls: 'icon-edit-32x32',
-                    action: 'editcompra',
+                    action: 'edititem',
                     disabled:true
                 },{
                     text: 'Eliminar',
                     iconCls:'icon-delete-32x32',
-                    action:'deletecompra',
+                    action:'deleteitem',
                     disabled:true
                 }]
             }]
@@ -104,8 +104,8 @@ Ext.define('SisInventarios.view.compra.List' ,{
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){
-        var bedit = this.down('button[action=editcompra]');
-        var bdelete = this.down('button[action=deletecompra]');
+        var bedit = this.down('button[action=edititem]');
+        var bdelete = this.down('button[action=deleteitem]');
         if(selected.length > 0){
             bdelete.enable();
             if(selected.length == 1){

@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Clientes', {
     ],
     views: [
     'cliente.List',
-    'cliente.Add'
+    'cliente.Add',
+    'cliente.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',

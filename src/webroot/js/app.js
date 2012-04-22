@@ -19,7 +19,8 @@ Ext.application({
         'Empleados',
         'Dosificaciones',
         'Descuentos',
-        'Compras'
+        'Compras',
+        'Items'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -66,13 +67,69 @@ Ext.application({
             title: 'Selectores',
             width: 200,
             layout: 'fit',
+            buttons : [{
+                text: 'Save',
+                iconCls:'icon-save-16x16',
+                handler: function(){
+                    
+                    var form = selectors.down('#formulario').getForm();
+                    if(form.isValid()){
+                        selectors.close();
+                    }
+                }
+            },{
+                text: 'Cancel',
+                handler: function(){selectors.close()},
+                iconCls:'icon-cancel-16x16'
+            }],
             items:Ext.create('Ext.form.Panel',{
-               items:[
-                   //{xtype: 'rolselector'},
-                   {xtype:'proveedorselector'},
-                   {xtype:'marcasselector'},
-                   {xtype:'industriaselector'}
-               ] 
+                id:'formulario',
+                fieldDefaults: {
+                    labelAlign: 'top'
+                },
+                items:[
+                {
+                    xtype: 'rolselector', 
+                    fieldLabel:'Rol',
+                    allowBlank: false,
+                    name: 'rol'
+                },
+
+                {
+                    xtype:'proveedorselector',
+                    fieldLabel:'Proveedor',
+                    allowBlank: false,
+                    name: 'proveedor'
+                },
+
+                {
+                    xtype:'marcasselector',
+                    fieldLabel:'Marca',
+                    allowBlank: false,
+                    name: 'marca'
+                },
+
+                {
+                    xtype:'industriaselector',
+                    fieldLabel:'Industria',
+                    allowBlank: false,
+                    name: 'industria'
+                },
+
+                {
+                    xtype:'alamacenselector',
+                    fieldLabel:'Almacen',
+                    allowBlank: false,
+                    name: 'almacen'
+                },
+
+                {
+                    xtype:'clienteselector',
+                    fieldLabel:'Clientes',
+                    allowBlank: false,
+                    name: 'cliente'
+                }
+                ] 
             })
             
         });
@@ -100,22 +157,17 @@ Ext.application({
                 bodyStyle:'padding:5px',                
                 items:[{                        
                         xtype:'panel',                        
-                        layout:{
-                            type:'vbox',
-                            align:'stretch'
-                        },                        
+                        layout:'border',                        
                         items:[{                                
                                 xtype:'compralist',
-                                flex:1
+                                region:'north'
                                 
                         },{
-                            xtype:'splitter'
-                        },{
-                                xtype:'panel',
-                                title:'Items que corresponden a la compra seleccionada',
-                                bodyPadding:5,
-                                //region:'south',
-                                flex:2
+                                xtype:'itemlist',
+                                //title:'Items que corresponden a la compra seleccionada',
+                                //bodyPadding:5,
+                                region:'center'
+                                
                         }]
                 }]
             },{
@@ -241,9 +293,6 @@ Ext.application({
             activeItem: 'ftp-user-list',
             region: 'center',
             id: 'main',
-
-            //items:[panel_inicio, panel_ftp,panel_compras]
-
             items:[dashboard, panel_inventarios]
 
         });

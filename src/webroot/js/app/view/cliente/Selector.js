@@ -1,6 +1,6 @@
-Ext.define('SisInventarios.view.marca.Selector', {
+Ext.define('SisInventarios.view.cliente.Selector', {
     extend: 'Ext.form.FieldContainer',
-    alias : 'widget.marcasselector',
+    alias : 'widget.clienteselector',
     combineErrors: true,
     msgTarget: 'side',
     layout: 'hbox',
@@ -15,17 +15,17 @@ Ext.define('SisInventarios.view.marca.Selector', {
             triggerAction:  'all',
             forceSelection: true,
             editable:       true,
-            displayField:   'nombre_marca',
+            displayField:   'nit_ci',
             valueField:     'id',
-            store:          'Marcas',
+            store:          'Clientes',
             name:           this.name,
             allowBlank:     this.allowBlank,
             listConfig:     {
-                emptyText: 'No se han encontrado marcas.',
+                emptyText: 'No se han encontrado clientes.',
                 getInnerTpl: function() {
                     return '<div class="search-item">' +
-                    '<h3>{nombre_marca}</h3>' +
-                    '<span style="font-size:11px; color:#333;">{descripcion_marca}</span>' +
+                    '<h3>({nit_ci}) {nombres} {apellido_paterno} {apellido_materno}</h3>' +
+                    '<span style="font-size:11px; color:#333;"><b>Telefono:</b> {telefono}, <b>E-mail:</b> {email} </span>' +
                     '</div>';
                 }
             }
@@ -38,6 +38,6 @@ Ext.define('SisInventarios.view.marca.Selector', {
         this.callParent(arguments);
     },
     showFormAdd: function(){
-        Ext.widget('marcasadd');
+        Ext.widget('clienteadd');
     }
 });
