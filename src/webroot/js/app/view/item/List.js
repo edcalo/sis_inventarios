@@ -97,6 +97,8 @@ Ext.define('SisInventarios.view.item.List' ,{
                 renderer: function(value, metaData, record, rowIndex, colIndex, store){
                     var sp = Ext.data.StoreManager.lookup('Grupos');
                     var index = sp.find('id', value);
+                    //alert(sp.getAt(1).get('nombre_grupo'));
+                    //debug('grupo '+sp.getAt(index).get('nombre_grupo'));
                     if(index >= 0 ){
                         return sp.getAt(index).get('nombre_grupo');
                     }
@@ -151,7 +153,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                 emptyMsg: "No hay Items registradas"
             })
         }];//
-        this.tbar=[{
+        /*this.tbar=[{
             title:'Acciones',
             xtype:'buttongroup',
             columns:3,
@@ -180,7 +182,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                     disabled:true
                 }]
             }]
-        }]
+        }]*/
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){
