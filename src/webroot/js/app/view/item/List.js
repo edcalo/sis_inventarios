@@ -184,7 +184,7 @@ Ext.define('SisInventarios.view.item.List' ,{
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){
-        var bedit = this.down('button[action=edititem]');
+        /*var bedit = this.down('button[action=edititem]');
         var bdelete = this.down('button[action=deleteitem]');
         if(selected.length > 0){
             bdelete.enable();
@@ -196,7 +196,7 @@ Ext.define('SisInventarios.view.item.List' ,{
         }else{
             bedit.disable();
             bdelete.disable();
-        }
+        }*/
     }
 
 });

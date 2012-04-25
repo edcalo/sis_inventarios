@@ -42,7 +42,7 @@ Ext.define('SisInventarios.view.compra.Add', {
                         name : 'proveedor_id',
                         fieldLabel: 'Proveedor de Compra',
                         allowBlank: true,
-                        height: 100
+                        height: 50
                     }]
                 },{},{
                     xtype:'container',
@@ -53,7 +53,7 @@ Ext.define('SisInventarios.view.compra.Add', {
                         name : 'empleado_id',
                         fieldLabel: 'Empleado encargado',
                         allowBlank: true,
-                        height: 100
+                        height: 50
                     }]
                 }]
             },{

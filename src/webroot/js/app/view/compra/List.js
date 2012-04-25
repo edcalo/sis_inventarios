@@ -28,7 +28,7 @@ Ext.define('SisInventarios.view.compra.List' ,{
                 header:'Fecha de Compra',
                 dataIndex:'fecha_compra',
                 width:150,
-                renderer:Ext.util.Format.dateRenderer('Y/m/d')
+                renderer:Ext.util.Format.dateRenderer('D d-m-Y')
             },{
                 header:'Proveedor',
                 dataIndex:'proveedor_id',                        
