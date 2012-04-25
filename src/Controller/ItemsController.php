@@ -143,6 +143,16 @@ class ItemsController extends AppController {
         $this->layout = 'ajax';
         if (!empty($this->data)) {
             $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data));
+            
+            //ya que en el grupo id esta llegando el nombre del grupo y no su id
+            //se esta buscando en al bd el id por elnombre
+            $grupo = $this->Item->Grupo->find('first', array('conditions'=>array(
+                'Grupo.nombre_grupo'=>$datos->grupo_id
+            )));
+            //seteamos con el id del grupo encontrado caso contrario le damos que
+            //sea una grupo raiz 
+            $datos->grupo_id = isset($grupo)?$grupo['Grupo']['id']:1;
+            
             $this->data = array('Item' => (array) $datos);
             if ($this->Item->save($this->data)) {
                 $this->set('guardado', 1);
