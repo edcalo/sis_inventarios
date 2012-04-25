@@ -147,20 +147,7 @@ class ComprasController extends AppController {
             }
         }else {
             $this->set('guardado', 2); // mo se recibieron datos para guardar
-        }
-        /* if ($this->request->is('post')) {
-          $this->Compra->create();
-          if ($this->Compra->save($this->request->data)) {
-          $this->Session->setFlash(__('The compra has been saved'));
-          $this->redirect(array('action' => 'index'));
-          } else {
-          $this->Session->setFlash(__('The compra could not be saved. Please, try again.'));
-          }
-          } */
-       /* $creditos = $this->Compra->Credito->find('list');
-        $empleados = $this->Compra->Empleado->find('list');
-        $proveedores = $this->Compra->Proveedor->find('list');
-        $this->set(compact('creditos', 'empleados', 'proveedores'));*/
+        }        
     }
 
     /**

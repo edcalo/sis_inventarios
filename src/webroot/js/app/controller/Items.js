@@ -43,7 +43,7 @@ Ext.define('SisInventarios.controller.Items', {
     },
     editItem: function(source, record){
         if(source.getXType() == 'button'){
-            var win = source.up('window');
+            var win = source.up('itemlist');
             record = win.down('#listaitems').getSelectionModel().getSelection();
             record = record[0];
         }
@@ -57,7 +57,7 @@ Ext.define('SisInventarios.controller.Items', {
             'Esta seguro que desea eliminar los items seleccionados',
             function(confirm){
                 if(confirm == 'yes'){
-                    var win = button.up('window');
+                    var win = button.up('itemlist');
                     var seleccion = win.down('#listaitems').getSelectionModel().getSelection();
                     this.getItemsStore().remove(seleccion);
                     this.getItemsStore().sync();

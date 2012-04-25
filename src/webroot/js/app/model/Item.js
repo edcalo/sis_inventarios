@@ -15,7 +15,7 @@ Ext.define('SisInventarios.model.Item', {
     'codigo',
     'precio_compra',
     'precio_referencia_venta',
-    'garantia',
+    'garantia_compra',
     'compra_id'
     ]
 });

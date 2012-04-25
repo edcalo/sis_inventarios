@@ -19,51 +19,52 @@ Ext.define('SisInventarios.view.compra.List' ,{
             }
         }
         this.items=[{
-                id:'listacompras',
-                xtype:'grid',
-                border:false,
-                store:'Compras',
-                columns:[{
-                        header:'Fecha de Compra',
-                        dataIndex:'fecha_compra',
-                        width:150,
-                        renderer:Ext.util.Format.dateRenderer('Y/m/d')
-                },{
-                        header:'Proveedor',
-                        dataIndex:'proveedor_id',                        
-                        width:150,
-                        renderer: function(value, metaData, record, rowIndex, colIndex, store){
-                            var sp = Ext.data.StoreManager.lookup('Proveedores');
-                            var index = sp.find('id', value);
-                            if(index >= 0 ){
-                                return sp.getAt(index).get('nombre_proveedor');
-                            }
+            id:'listacompras',
+            xtype:'grid',
+            border:false,
+            store:'Compras',
+            columns:[
+            new Ext.grid.RowNumberer(),{
+                header:'Fecha de Compra',
+                dataIndex:'fecha_compra',
+                width:150,
+                renderer:Ext.util.Format.dateRenderer('Y/m/d')
+            },{
+                header:'Proveedor',
+                dataIndex:'proveedor_id',                        
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Proveedores');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_proveedor');
+                    }
                            
-                            return value;
-                        }                        
-                },{
-                        header:'Credito',
-                        dataIndex:'credito_id',
-                        width:150
-                },{
-                        header:'Total de Compra',
-                        dataIndex:'monto_total',
-                        width:150
-                },{
-                        header:'Empleado',
-                        dataIndex:'empleado_id',
-                        width:150,
-                        renderer: function(value, metaData, record, rowIndex, colIndex, store){
-                            var sp = Ext.data.StoreManager.lookup('Empleados');
-                            var index = sp.find('id', value);
-                            if(index >= 0 ){
-                                return sp.getAt(index).get('nombres') + ' ' +sp.getAt(index).get('apellido_paterno') + ' ' + sp.getAt(index).get('apellido_materno');
-                            }
+                    return value;
+                }                        
+            },{
+                header:'Credito',
+                dataIndex:'credito_id',
+                width:150
+            },{
+                header:'Total de Compra',
+                dataIndex:'monto_total',
+                width:150
+            },{
+                header:'Empleado',
+                dataIndex:'empleado_id',
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Empleados');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombres') + ' ' +sp.getAt(index).get('apellido_paterno') + ' ' + sp.getAt(index).get('apellido_materno');
+                    }
                            
-                            return value;
-                        }   
-                }],
-            selModel:sm,
+                    return value;
+                }   
+            }],
+            //selModel:sm,
             bbar:Ext.create('Ext.PagingToolbar', {
                 store: Ext.data.StoreManager.lookup('Compras'),
                 displayInfo: true,
@@ -71,7 +72,7 @@ Ext.define('SisInventarios.view.compra.List' ,{
                 emptyMsg: "No hay compras registradas"
             })
         }];
-    this.tbar=[{
+        this.tbar=[{
             title:'Acciones',
             xtype:'buttongroup',
             columns:3,
@@ -92,15 +93,17 @@ Ext.define('SisInventarios.view.compra.List' ,{
                     text: 'Modificar',
                     iconCls: 'icon-edit-32x32',
                     action: 'editcompra',
-                    disabled:true
+                    disabled:false
                 },{
+                    id:'delete',
                     text: 'Eliminar',
                     iconCls:'icon-delete-32x32',
                     action:'deletecompra',
-                    disabled:true
+                    disabled:false
                 }]
             }]
-    }]
+        }],
+        
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){

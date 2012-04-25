@@ -19,50 +19,129 @@ Ext.define('SisInventarios.view.item.List' ,{
             }
         }
         this.items=[{
-                id:'listaitems',
-                xtype:'grid',
-                border:false,
-                store:'Items',
-                columns:[/*{
-                        header:'Fecha de Item',
-                        dataIndex:'fecha_item',
-                        width:150,
-                        renderer:Ext.util.Format.dateRenderer('Y/m/d')
-                },{
-                        header:'Proveedor',
-                        dataIndex:'proveedor_id',                        
-                        width:150,
-                        renderer: function(value, metaData, record, rowIndex, colIndex, store){
-                            var sp = Ext.data.StoreManager.lookup('Proveedores');
-                            var index = sp.find('id', value);
-                            if(index >= 0 ){
-                                return sp.getAt(index).get('nombre_proveedor');
-                            }
+            id:'listaitems',
+            xtype:'grid',
+            border:false,
+            store:'Items',
+            columns:[{
+                header:'Nombre Item',
+                dataIndex:'nombre_articulo',
+                width:150
+            },{
+                header:'Descripcion',
+                dataIndex:'descripcion',
+                width:150
+            },{
+                header:'Nro. de serie',
+                dataIndex:'numero_de_serie',
+                width:80
+            },{
+                header:'Codigo',
+                dataIndex:'codigo',
+                width:80
+            },{
+                header:'Precio Compra',
+                dataIndex:'precio_compra',
+                width:100
+            },{
+                header:'Precio Ref. Venta',
+                dataIndex:'precio_referencia_venta',
+                width:100
+            },{
+                header:'Garantia',
+                dataIndex:'garantia_compra',
+                width:80
+            },{
+                header:'Almacen',
+                dataIndex:'almacen_id',
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Almacenes');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_almacen');
+                    }
                            
-                            return value;
-                        }                        
-                },{
-                        header:'Credito',
-                        dataIndex:'credito_id',
-                        width:150
-                },{
-                        header:'Total de Item',
-                        dataIndex:'monto_total',
-                        width:150
-                },{
-                        header:'Empleado',
-                        dataIndex:'empleado_id',
-                        width:150,
-                        renderer: function(value, metaData, record, rowIndex, colIndex, store){
-                            var sp = Ext.data.StoreManager.lookup('Empleados');
-                            var index = sp.find('id', value);
-                            if(index >= 0 ){
-                                return sp.getAt(index).get('nombres') + ' ' +sp.getAt(index).get('apellido_paterno') + ' ' + sp.getAt(index).get('apellido_materno');
-                            }
+                    return value;
+                } 
+            },{
+                header:'Marca',
+                dataIndex:'marca_id',                        
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Marcas');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_marca');
+                    }
                            
-                            return value;
-                        }   
-                }*/],
+                    return value;
+                }                        
+            },{
+                header:'Industria',
+                dataIndex:'industria_id',                        
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Industrias');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_industria');
+                    }
+                           
+                    return value;
+                }                        
+            },{
+                header:'Grupo',
+                dataIndex:'grupo_id',
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Grupos');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_grupo');
+                    }
+                           
+                    return value;
+                } 
+            },{
+                xtype:'actioncolumn',
+                widht:50,
+                items:[{
+                    tooltip:'Editar',
+                    icon:'/img/icons/common/16x16/pencil.png',
+                    handler:function(grid,rowIndex,colIndex){
+                        var rec = grid.getStore().getAt(rowIndex);
+                        var view = Ext.widget('itemadd');
+                        view.down('form').loadRecord(rec);
+                    //alert('edit '+rec.get('nombre_articulo'));
+                    }
+                },{
+                    icon:'/img/icons/common/16x16/delete.png',
+                    tooltip:'Eliminar',
+                    handler:function(value, grid,rowIndex,colIndex){
+                        //var rec = grid.getStore().getAt(rowIndex);
+                        var sp = Ext.data.StoreManager.lookup('Items');
+                        var index = sp.find('id',value);
+                        if(index.length === 0 ){
+                            return false;
+                        }else{
+                            sp.getItemsStore().remove(index);
+                            sp.getItemsStore().sync();
+                        }
+                        
+                        //var st = Ext.store('');
+                        /*var seleccion = grid.getSelectionModel().getSelection();
+                        if(rec.length ===0){
+                            return false;
+                        }
+                        sp.remove(rec);
+                    sp.getItemsStore().remove(seleccion);
+                        sp.getItemsStore().sync();*/
+                        
+                    //alert('edit '+rec.get('nombre_articulo'));
+                    }
+                }]
+            }],
             selModel:sm,
             bbar:Ext.create('Ext.PagingToolbar', {
                 store: Ext.data.StoreManager.lookup('Items'),
@@ -70,8 +149,8 @@ Ext.define('SisInventarios.view.item.List' ,{
                 displayMsg: 'Mostrando {0} - {1} Items de  {2}',
                 emptyMsg: "No hay Items registradas"
             })
-        }];
-    this.tbar=[{
+        }];//
+        this.tbar=[{
             title:'Acciones',
             xtype:'buttongroup',
             columns:3,
@@ -100,7 +179,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                     disabled:true
                 }]
             }]
-    }]
+        }]
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){

@@ -23,6 +23,7 @@ Ext.define('SisInventarios.view.compra.Add', {
                 format:'d/m/Y',
                 name : 'fecha_compra',
                 fieldLabel: 'Fecha de Compra',
+                value: new Date(),
                 msgTarget: 'side',
                 allowBlank: false,
                 anchor:'50%'

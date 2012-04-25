@@ -160,10 +160,12 @@ Ext.application({
                         layout:'border',                        
                         items:[{                                
                                 xtype:'compralist',
+                                //itemId:'gridPanelCompra',
                                 region:'north'
                                 
                         },{
                                 xtype:'itemlist',
+                                //itemId:'detallePanelItem',
                                 //title:'Items que corresponden a la compra seleccionada',
                                 //bodyPadding:5,
                                 region:'center'

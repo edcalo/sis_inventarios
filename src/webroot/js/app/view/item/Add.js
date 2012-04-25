@@ -43,10 +43,10 @@ Ext.define('SisInventarios.view.item.Add', {
                             xtype:'textfield',
                             name : 'grupo_id',
                             fieldLabel: 'Grupo Item',
-                            allowBlank: true,
-                            height: 100
+                            allowBlank: false,
+                            height: 50
                         }]
-                    },{},{
+                    },{
                         xtype:'container',
                         columnWidth:.45,
                         layout:'anchor',
@@ -54,10 +54,10 @@ Ext.define('SisInventarios.view.item.Add', {
                             xtype: 'industriaselector',                
                             name : 'industria_id',
                             fieldLabel: 'Industria',
-                            allowBlank: true,
-                            height: 100
+                            allowBlank: false,
+                            height: 50
                         }]
-                    },{},{
+                    },{
                         xtype:'container',
                         columnWidth:.45,
                         layout:'anchor',
@@ -65,10 +65,10 @@ Ext.define('SisInventarios.view.item.Add', {
                             xtype: 'almacenselector',                
                             name : 'almacen_id',
                             fieldLabel: 'Almacen',
-                            allowBlank: true,
-                            height: 100
+                            allowBlank: false,
+                            height: 50
                         }]
-                    },{},{
+                    },{
                         xtype:'container',
                         columnWidth:.45,
                         layout:'anchor',
@@ -76,8 +76,19 @@ Ext.define('SisInventarios.view.item.Add', {
                             xtype: 'marcasselector',                
                             name : 'marca_id',
                             fieldLabel: 'Marca',
-                            allowBlank: true,
-                            height: 100
+                            allowBlank: false,
+                            height: 50
+                        }]
+                    },{
+                        xtype:'container',
+                        columnWidth:.45,
+                        layout:'anchor',
+                        items:[{
+                            xtype: 'compraselector',                
+                            name : 'compra_id',
+                            fieldLabel: 'Compra',
+                            allowBlank: false,
+                            height: 50
                         }]
                     }]
                 }]
@@ -93,54 +104,115 @@ Ext.define('SisInventarios.view.item.Add', {
                     anchor:'100%'
                 },
                 items:[{
-                    xtype:'textfield',
-                    name:'nombre_articulo',
-                    fieldLabel:'Nombre del Item',
-                    msgTarget:'side',
-                    anchor:'90%'
+                    xtype:'container',
+                    layout:'column',
+                    style:{
+                        paddingBottom: '20px'
+                    },
+                    items:[{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype:'textfield',
+                            name:'nombre_articulo',
+                            fieldLabel:'Nombre del Item',
+                            allowBlank: false,
+                            msgTarget:'side',
+                            anchor:'90%'
+                        }]
+                    },{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype:'textfield',
+                            name:'numero_de_serie',
+                            fieldLabel:'Numero de Serie',
+                            allowBlank: false,
+                            msgTarget:'side',
+                            anchor:'90%'  
+                        }]
+                    },{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype:'textfield',
+                            name:'codigo',
+                            fieldLabel:'Codigo del Item',
+                            allowBlank: false,
+                            msgTarget:'side',
+                            anchor:'90%'  
+                        }]
+                    }]
                 },{
-                    xtype:'textfield',
-                    name:'numero_de_serie',
-                    fieldLabel:'Numero de Serie del Item',
-                    msgTarget:'side',
-                    anchor:'90%'
-                },{
-                    xtype:'textfield',
-                    name:'codigo',
-                    fieldLabel:'Codigo del Item',
-                    msgTarget:'side',
-                    anchor:'90%'
+                    xtype:'container',
+                    layout:'column',
+                    style:{
+                        paddingBottom: '20px'
+                    },
+                    items:[{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype:'numberfield',
+                            name:'precio_compra',
+                            fieldLabel:'Precio de compra',
+                            msgTarget:'side',
+                            allowBlank: false,
+                            allowDecimals:true,
+                            maxLength: 8,
+                            minValue: 0,
+                            hideTrigger: true,
+                            keyNavEnabled: false,
+                            mouseWheelEnabled: false,
+                            anchor:'90%'
+                        }]
+                    },{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype:'numberfield',
+                            name:'precio_referencia_venta',
+                            fieldLabel:'Precio de Referencia  venta',
+                            msgTarget:'side',
+                            allowBlank: false,
+                            allowDecimals:true,
+                            maxLength: 8,
+                            minValue: 0,
+                            hideTrigger: true,
+                            keyNavEnabled: false,
+                            mouseWheelEnabled: false,
+                            anchor:'90%'
+                        }]
+                    },{
+                        xtype:'container',
+                        columnWidth:.33,
+                        layout: 'anchor',
+                        items:[{
+                            xtype: 'numberfield',                        
+                            name : 'garantia_compra',
+                            fieldLabel: 'Garantia del item',
+                            msgTarget: 'side',
+                            allowBlank: false,
+                            allowDecimals:false,
+                            maxLength: 8,
+                            minValue: 0,
+                            hideTrigger: true,
+                            keyNavEnabled: false,
+                            mouseWheelEnabled: false,
+                            anchor:'95%'
+                        }]
+                    }]
                 },{
                     xtype:'textarea',
                     name:'descripcion',
                     fieldLabel:'Descripcion del Item',
                     msgTarget:'side',
                     anchor:'90%'
-                },{
-                    xtype:'numberfield',
-                    name:'precio_compra',
-                    fieldLabel:'Precio de compra del Item',
-                    msgTarget:'side',
-                    anchor:'90%'
-                },{
-                    xtype:'numberfield',
-                    name:'precio_referencia_venta',
-                    fieldLabel:'Precio de Referencia de venta del Item',
-                    msgTarget:'side',
-                    anchor:'90%'
-                },{
-                    xtype: 'numberfield',                        
-                    name : 'garantia',
-                    fieldLabel: 'Garantia del item',
-                    msgTarget: 'side',
-                    allowBlank: false,
-                    allowDecimals:false,
-                    maxLength: 8,
-                    minValue: 0,
-                    hideTrigger: true,
-                    keyNavEnabled: false,
-                    mouseWheelEnabled: false,
-                    anchor:'95%'
                 }]
             }]
         }];

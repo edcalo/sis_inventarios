@@ -8,7 +8,8 @@ Ext.define('SisInventarios.controller.Compras', {
     ],
     views: [
     'compra.List',
-    'compra.Add'    
+    'compra.Add',
+    'compra.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',
