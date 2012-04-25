@@ -151,7 +151,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                 emptyMsg: "No hay Items registradas"
             })
         }];//
-        /*this.tbar=[{
+        this.tbar=[{
             title:'Acciones',
             xtype:'buttongroup',
             columns:3,
@@ -180,7 +180,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                     disabled:true
                 }]
             }]
-        }]*/
+        }]
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){

@@ -7,6 +7,9 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name: 'SisInventarios',
+    paths: {
+        'Ext.ux': 'js/libs/ext-plugins'
+    },
     appFolder: 'js/app',
     controllers: [
         'Roles',
