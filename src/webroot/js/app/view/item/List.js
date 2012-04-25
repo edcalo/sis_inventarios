@@ -107,14 +107,14 @@ Ext.define('SisInventarios.view.item.List' ,{
                 } 
             },{
                 xtype:'actioncolumn',
-                widht:50,
-                items:[{
+                widht:30,
+                items:[/*{
                     tooltip:'Registrar',
                     icon:'/img/icons/common/16x16/add.png',
                     handler:function(grid,rowIndex,colIndex){                        
                         Ext.widget('itemadd');
                     }
-                },{
+                },*/{
                     tooltip:'Editar',
                     icon:'/img/icons/common/16x16/pencil.png',
                     handler:function(grid,rowIndex,colIndex){
@@ -123,7 +123,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                         view.down('form').loadRecord(rec);
                     //alert('edit '+rec.get('nombre_articulo'));
                     }
-                },{
+                },' ', {
                     icon:'/img/icons/common/16x16/delete.png',
                     tooltip:'Eliminar',
                     handler:function(grid,rowIndex,colIndex){
@@ -153,40 +153,16 @@ Ext.define('SisInventarios.view.item.List' ,{
                 emptyMsg: "No hay Items registradas"
             })
         }];//
-        /*this.tbar=[{
-            title:'Acciones',
-            xtype:'buttongroup',
-            columns:3,
-            items:[{
-                xtype:'buttongroup',
-                items:{
-                    scale: 'large',
-                    text: 'Registrar',
-                    action: 'additem',
-                    iconCls: 'icon-add-32x32'
-                }
-            },{
-                xtype: 'buttongroup',
-                defaults:{
-                    scale: 'large'
-                },
-                items:[{
-                    text: 'Modificar',
-                    iconCls: 'icon-edit-32x32',
-                    action: 'edititem',
-                    disabled:true
-                },{
-                    text: 'Eliminar',
-                    iconCls:'icon-delete-32x32',
-                    action:'deleteitem',
-                    disabled:true
-                }]
-            }]
-        }]*/
+        this.tbar=[{
+            text: 'Registrar',
+            action: 'additem',
+            iconCls: 'icon-add-16x16'
+        }]
+   
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){
-        /*var bedit = this.down('button[action=edititem]');
+    /*var bedit = this.down('button[action=edititem]');
         var bdelete = this.down('button[action=deleteitem]');
         if(selected.length > 0){
             bdelete.enable();

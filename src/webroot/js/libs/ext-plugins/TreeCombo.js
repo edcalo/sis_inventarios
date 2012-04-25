@@ -75,7 +75,7 @@ Ext.define("Ext.ux.TreeCombo", {
     },
     valueSelected: function(picker,value,options) {
         this.setValue(value.data.text);
-        this.setRawValue(value.data.id);
+        //this.setRawValue(value.data.id);
         this.fireEvent('valueSelected',this,value.data.id);
         this.collapse();
     }

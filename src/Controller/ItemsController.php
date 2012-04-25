@@ -176,6 +176,13 @@ class ItemsController extends AppController {
         $datos = json_decode(stripslashes(is_array($this->data) ? $this->data[0] : $this->data)); //decodificamos la informacion
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
+            
+            $grupo = $this->Item->Grupo->find('first', array('conditions'=>array(
+                'Grupo.nombre_grupo'=>$datos->grupo_id
+            )));
+            //seteamos con el id del grupo encontrado caso contrario le damos que
+            //sea una grupo raiz 
+            $datos->grupo_id = isset($grupo)?$grupo['Grupo']['id']:1;
             $this->data = array('Item' => (array) $datos);
             $this->Item->id = $this->data['Item']['id'];
             if ($this->Item->save($this->data)) {
@@ -185,12 +192,12 @@ class ItemsController extends AppController {
             $this->set('actualizado', $success);
         } else if (count($datos) >= 2) {
             $resp = array('Item' => array());
-            foreach ($datos as $dato_marca) {
-                $marca = array('Item' => (array) $dato_marca);
-                $marca->Item->id = $marca['Item']['id'];
-                if ($this->Item->save($marca)) {
+            foreach ($datos as $dato_item) {
+                $item = array('Item' => (array) $dato_item);
+                $item->Item->id = $dato_item['Item']['id'];
+                if ($this->Item->save($item)) {
                     $success = true;
-                    array_push($resp['Item'], $marca['Item']);
+                    array_push($resp['Item'], $item['Item']);
                 }
             }
             $this->data = $resp;
