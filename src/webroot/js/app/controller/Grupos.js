@@ -9,6 +9,7 @@ Ext.define('SisInventarios.controller.Grupos', {
     views: [
     'grupo.List',
     'grupo.Add',
+    'grupo.Selector'
     ],
     requires:[
     'Ext.window.MessageBox',

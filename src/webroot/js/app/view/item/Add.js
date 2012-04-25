@@ -39,12 +39,10 @@ Ext.define('SisInventarios.view.item.Add', {
                         columnWidth:.45,
                         layout:'anchor',
                         items:[{
-                            //xtype: 'gruposelector',
-                            xtype:'textfield',
+                            xtype: 'gruposelector',
                             name : 'grupo_id',
                             fieldLabel: 'Grupo Item',
-                            allowBlank: false,
-                            height: 50
+                            allowBlank: false
                         }]
                     },{
                         xtype:'container',
