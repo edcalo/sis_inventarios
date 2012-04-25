@@ -107,6 +107,12 @@ Ext.define('SisInventarios.view.item.List' ,{
                 xtype:'actioncolumn',
                 widht:50,
                 items:[{
+                    tooltip:'Registrar',
+                    icon:'/img/icons/common/16x16/add.png',
+                    handler:function(grid,rowIndex,colIndex){                        
+                        Ext.widget('itemadd');
+                    }
+                },{
                     tooltip:'Editar',
                     icon:'/img/icons/common/16x16/pencil.png',
                     handler:function(grid,rowIndex,colIndex){
@@ -118,27 +124,22 @@ Ext.define('SisInventarios.view.item.List' ,{
                 },{
                     icon:'/img/icons/common/16x16/delete.png',
                     tooltip:'Eliminar',
-                    handler:function(value, grid,rowIndex,colIndex){
-                        //var rec = grid.getStore().getAt(rowIndex);
-                        var sp = Ext.data.StoreManager.lookup('Items');
-                        var index = sp.find('id',value);
-                        if(index.length === 0 ){
-                            return false;
-                        }else{
-                            sp.getItemsStore().remove(index);
-                            sp.getItemsStore().sync();
-                        }
+                    handler:function(grid,rowIndex,colIndex){
+                        //var rec = grid.getStore().getAt(rowIndex);  
+                        Ext.MessageBox.confirm(
+                            'eliminar Item',
+                            'Esta seguro que desea eliminar el item seleccionado',
+                            function(confirm){
+                                if(confirm == 'yes'){
+                                    var sp = Ext.data.StoreManager.lookup('Items');
+                                    var row =sp.getAt(rowIndex);
+                                    sp.remove(row);
+                                    sp.sync();                                                           
+                                }
+                            },
+                            this
+                            );
                         
-                        //var st = Ext.store('');
-                        /*var seleccion = grid.getSelectionModel().getSelection();
-                        if(rec.length ===0){
-                            return false;
-                        }
-                        sp.remove(rec);
-                    sp.getItemsStore().remove(seleccion);
-                        sp.getItemsStore().sync();*/
-                        
-                    //alert('edit '+rec.get('nombre_articulo'));
                     }
                 }]
             }],
@@ -150,7 +151,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                 emptyMsg: "No hay Items registradas"
             })
         }];//
-        this.tbar=[{
+        /*this.tbar=[{
             title:'Acciones',
             xtype:'buttongroup',
             columns:3,
@@ -179,7 +180,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                     disabled:true
                 }]
             }]
-        }]
+        }]*/
         this.callParent(arguments);
     } ,
     selectChange: function( sm, selected, options ){

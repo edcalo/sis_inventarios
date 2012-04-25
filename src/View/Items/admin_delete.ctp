@@ -2,8 +2,8 @@
 $respuesta = array(
     'success'=> $eliminado,
     'mensage'=> array(
-        'titulo'=> 'Error al eliminar',
-        'msg'=> 'No se puede eliminar el cargo '
+        'titulo'=> 'Eliminar Item',
+        'msg'=> 'Se elimino el item exitosamente '
         
     ),
     'data'=>array()

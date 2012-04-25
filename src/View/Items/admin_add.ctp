@@ -18,7 +18,7 @@ switch ($guardado) {
                     'codigo' => $this->data['Item']['codigo'],
                     'precio_compra' => $this->data['Item']['precio_compra'],
                     'precio_referencia_venta' => $this->data['Item']['precio_referencia_venta'],
-                    'garantia' => $this->data['Item']['garantia'],
+                    'garantia_compra' => $this->data['Item']['garantia_compra'],
                     'compra_id' => $this->data['Item']['compra_id']
                 )
             );
