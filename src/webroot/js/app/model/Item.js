@@ -16,6 +16,7 @@ Ext.define('SisInventarios.model.Item', {
     'precio_compra',
     'precio_referencia_venta',
     'garantia_compra',
-    'compra_id'
+    'compra_id',
+    'nombre_grupo'
     ]
 });

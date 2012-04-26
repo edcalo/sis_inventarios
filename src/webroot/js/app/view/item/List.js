@@ -92,6 +92,10 @@ Ext.define('SisInventarios.view.item.List' ,{
                 }                        
             },{
                 header:'Grupo',
+                dataIndex:'nombre_grupo',
+                width:150
+            },/*{
+                header:'Grupo',
                 dataIndex:'grupo_id',
                 width:150,
                 renderer: function(value, metaData, record, rowIndex, colIndex, store){
@@ -105,7 +109,7 @@ Ext.define('SisInventarios.view.item.List' ,{
                            
                     return value;
                 } 
-            },{
+            },*/{
                 xtype:'actioncolumn',
                 widht:30,
                 items:[/*{
