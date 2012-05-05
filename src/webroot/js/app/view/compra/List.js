@@ -47,9 +47,22 @@ Ext.define('SisInventarios.view.compra.List' ,{
                 dataIndex:'credito_id',
                 width:150
             },{
-                header:'Total de Compra',
+                header:'Monto total',
                 dataIndex:'monto_total',
                 width:150
+            },{
+                header:'Moneda',
+                dataIndex:'moneda_id',
+                width:150,
+                renderer: function(value, metaData, record, rowIndex, colIndex, store){
+                    var sp = Ext.data.StoreManager.lookup('Monedas');
+                    var index = sp.find('id', value);
+                    if(index >= 0 ){
+                        return sp.getAt(index).get('nombre_moneda');
+                    }
+                           
+                    return value;
+                }   
             },{
                 header:'Empleado',
                 dataIndex:'empleado_id',

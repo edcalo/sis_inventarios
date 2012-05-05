@@ -57,18 +57,36 @@ Ext.define('SisInventarios.view.compra.Add', {
                     }]
                 }]
             },{
-                xtype: 'numberfield',                        
-                name : 'monto_total',
-                fieldLabel: 'Monto Total de compra',
-                msgTarget: 'side',
-                allowBlank: false,
-                allowDecimals:false,
-                maxLength: 8,
-                minValue: 0,
-                hideTrigger: true,
-                keyNavEnabled: false,
-                mouseWheelEnabled: false,
-                anchor:'95%'
+                xtype:'container',
+                layout:'column',
+                style:{
+                    paddingBottom:'20px'
+                },
+                items:[{
+                    xtype: 'numberfield',                        
+                    name : 'monto_total',
+                    fieldLabel: 'Monto Total de compra',
+                    msgTarget: 'side',
+                    allowBlank: false,
+                    allowDecimals:false,
+                    maxLength: 8,
+                    minValue: 0,
+                    hideTrigger: true,
+                    keyNavEnabled: false,
+                    mouseWheelEnabled: false,
+                    anchor:'95%'
+                },{},{},{},{
+                    xtype:'container',
+                    columnWidth:.45,
+                    layout:'anchor',
+                    items:[{
+                        xtype: 'monedasselector',                
+                        name : 'moneda_id',
+                        fieldLabel: 'Tipo de Moneda',
+                        allowBlank: true,
+                        height: 50
+                    }]
+                }]
             },{
                 xtype:'fieldset',
                 id:'creditocompra',

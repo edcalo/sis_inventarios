@@ -23,7 +23,8 @@ Ext.application({
         'Dosificaciones',
         'Descuentos',
         'Compras',
-        'Items'
+        'Items',
+        'Monedas'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -64,6 +65,10 @@ Ext.application({
     listDescuentos: function(){
         var descuentos = Ext.widget('descuentolist');
         descuentos.show();
+    },
+    listMonedas: function(){
+        var monedas = Ext.widget('monedaslist');
+        monedas.show();
     },
     launch: function() {
         var dashboard = Ext.create('Ext.Panel',{
@@ -168,6 +173,11 @@ Ext.application({
                         text: 'Descuentos',
                         iconCls:'icon-descuentos-32x32',
                         handler: this.listDescuentos
+
+                    },{
+                        text: 'Monedas',
+                        iconCls:'icon-monedas-32x32',
+                        handler: this.listMonedas
 
                     }]
                 }]

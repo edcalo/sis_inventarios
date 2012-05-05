@@ -44,6 +44,13 @@ class Compra extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Moneda' => array(
+			'className' => 'Moneda',
+			'foreignKey' => 'moneda_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
