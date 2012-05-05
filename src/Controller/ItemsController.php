@@ -154,7 +154,7 @@ class ItemsController extends AppController {
             //ya que en el grupo id esta llegando el nombre del grupo y no su id
             //se esta buscando en al bd el id por elnombre
             $grupo = $this->Item->Grupo->find('first', array('conditions' => array(
-                    'Grupo.nombre_grupo' => $datos->grupo_id
+                    'Grupo.nombre_grupo' => $datos->nombre_grupo
                     )));
             //seteamos con el id del grupo encontrado caso contrario le damos que
             //sea una grupo raiz 
@@ -184,7 +184,7 @@ class ItemsController extends AppController {
         $success = false;
         if (count($datos) == 1) { //verificamos si solo se modifico un registro o varios
             $grupo = $this->Item->Grupo->find('first', array('conditions' => array(
-                    'Grupo.nombre_grupo' => $datos->grupo_id
+                    'Grupo.nombre_grupo' => $datos->nombre_grupo
                     )));
             //seteamos con el id del grupo encontrado caso contrario le damos que
             //sea una grupo raiz 
@@ -200,7 +200,7 @@ class ItemsController extends AppController {
             $resp = array('Item' => array());
             foreach ($datos as $dato_item) {
                 $item = array('Item' => (array) $dato_item);
-                $item->Item->id = $dato_item['Item']['id'];
+                $item->Item->id = $item['Item']['id'];
                 if ($this->Item->save($item)) {
                     $success = true;
                     array_push($resp['Item'], $item['Item']);

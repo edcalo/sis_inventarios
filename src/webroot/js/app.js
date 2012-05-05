@@ -65,79 +65,6 @@ Ext.application({
         var descuentos = Ext.widget('descuentolist');
         descuentos.show();
     },
-    showSelectors: function(){
-        var selectors = Ext.create('Ext.Window', {
-            title: 'Selectores',
-            width: 200,
-            layout: 'fit',
-            buttons : [{
-                text: 'Save',
-                iconCls:'icon-save-16x16',
-                handler: function(){
-                    
-                    var form = selectors.down('#formulario').getForm();
-                    if(form.isValid()){
-                        selectors.close();
-                    }
-                }
-            },{
-                text: 'Cancel',
-                handler: function(){selectors.close()},
-                iconCls:'icon-cancel-16x16'
-            }],
-            items:Ext.create('Ext.form.Panel',{
-                id:'formulario',
-                fieldDefaults: {
-                    labelAlign: 'top'
-                },
-                items:[
-                {
-                    xtype: 'rolselector', 
-                    fieldLabel:'Rol',
-                    allowBlank: false,
-                    name: 'rol'
-                },
-
-                {
-                    xtype:'proveedorselector',
-                    fieldLabel:'Proveedor',
-                    allowBlank: false,
-                    name: 'proveedor'
-                },
-
-                {
-                    xtype:'marcasselector',
-                    fieldLabel:'Marca',
-                    allowBlank: false,
-                    name: 'marca'
-                },
-
-                {
-                    xtype:'industriaselector',
-                    fieldLabel:'Industria',
-                    allowBlank: false,
-                    name: 'industria'
-                },
-
-                {
-                    xtype:'alamacenselector',
-                    fieldLabel:'Almacen',
-                    allowBlank: false,
-                    name: 'almacen'
-                },
-
-                {
-                    xtype:'clienteselector',
-                    fieldLabel:'Clientes',
-                    allowBlank: false,
-                    name: 'cliente'
-                }
-                ] 
-            })
-            
-        });
-        selectors.show();
-    },
     launch: function() {
         var dashboard = Ext.create('Ext.Panel',{
             id: 'home',
@@ -185,54 +112,6 @@ Ext.application({
 
             }],
             tbar:[{
-                title: 'Acciones',
-                xtype: 'buttongroup',
-                columns: 3,
-                items:[{
-                    xtype: 'buttongroup',
-                    items:{
-                        scale: 'large',                        
-                        text: 'Registrar',
-                        action:'addrol',
-                        iconAlign: 'top',
-                        iconCls: 'icon-add-32x32'
-                    }
-                },{
-                    xtype: 'buttongroup',
-                    items:[{
-                        id: 'editar',
-                        text: 'Modificar',
-                        action:'editcompra',
-                        scale: 'large',
-                        iconAlign: 'top',                        
-                        iconCls: 'icon-edit-32x32',
-                        disable:true
-                    },{
-                        id: 'eliminar',
-                        text: 'Eliminar',
-                        action:'deletecompra',
-                        iconCls:'icon-delete-32x32',
-                        scale: 'large',
-                        iconAlign: 'top',
-                        disable:true
-                    }]
-                },{
-                    xtype: 'buttongroup',
-                    defaults:{
-                        scale: 'large',
-                        iconAlign: 'top'
-                    },
-                    items:[{
-                        text: 'Selectores',                        
-                        iconCls: 'icon-search-32x32',
-                        handler: this.showSelectors
-                    },{
-
-                        text: 'Ordenar',
-                        iconCls:'icon-ordenar-aux'
-                    }]
-                }]
-            },'->', {
                 title: 'Catalogos',
                 xtype: 'buttongroup',
                 columns: 4,

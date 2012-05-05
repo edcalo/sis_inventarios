@@ -40,7 +40,7 @@ Ext.define('SisInventarios.view.item.Add', {
                         layout:'anchor',
                         items:[{
                             xtype: 'gruposelector',
-                            name : 'grupo_id',
+                            name : 'nombre_grupo',
                             fieldLabel: 'Grupo Item',
                             allowBlank: false
                         }]
