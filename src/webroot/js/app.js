@@ -12,18 +12,18 @@ Ext.application({
     },
     appFolder: 'js/app',
     controllers: [
-        'Roles',
-        'Proveedores',
-        'Grupos',
-        'Marcas',
-        'Industrias',
-        'Almacenes',
-        'Clientes',
-        'Empleados',
-        'Dosificaciones',
-        'Descuentos',
-        'Compras',
-        'Items'
+    'Roles',
+    'Proveedores',
+    'Grupos',
+    'Marcas',
+    'Industrias',
+    'Almacenes',
+    'Clientes',
+    'Empleados',
+    'Dosificaciones',
+    'Descuentos',
+    'Compras',
+    'Items'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -65,79 +65,6 @@ Ext.application({
         var descuentos = Ext.widget('descuentolist');
         descuentos.show();
     },
-    showSelectors: function(){
-        var selectors = Ext.create('Ext.Window', {
-            title: 'Selectores',
-            width: 200,
-            layout: 'fit',
-            buttons : [{
-                text: 'Save',
-                iconCls:'icon-save-16x16',
-                handler: function(){
-                    
-                    var form = selectors.down('#formulario').getForm();
-                    if(form.isValid()){
-                        selectors.close();
-                    }
-                }
-            },{
-                text: 'Cancel',
-                handler: function(){selectors.close()},
-                iconCls:'icon-cancel-16x16'
-            }],
-            items:Ext.create('Ext.form.Panel',{
-                id:'formulario',
-                fieldDefaults: {
-                    labelAlign: 'top'
-                },
-                items:[
-                {
-                    xtype: 'rolselector', 
-                    fieldLabel:'Rol',
-                    allowBlank: false,
-                    name: 'rol'
-                },
-
-                {
-                    xtype:'proveedorselector',
-                    fieldLabel:'Proveedor',
-                    allowBlank: false,
-                    name: 'proveedor'
-                },
-
-                {
-                    xtype:'marcasselector',
-                    fieldLabel:'Marca',
-                    allowBlank: false,
-                    name: 'marca'
-                },
-
-                {
-                    xtype:'industriaselector',
-                    fieldLabel:'Industria',
-                    allowBlank: false,
-                    name: 'industria'
-                },
-
-                {
-                    xtype:'alamacenselector',
-                    fieldLabel:'Almacen',
-                    allowBlank: false,
-                    name: 'almacen'
-                },
-
-                {
-                    xtype:'clienteselector',
-                    fieldLabel:'Clientes',
-                    allowBlank: false,
-                    name: 'cliente'
-                }
-                ] 
-            })
-            
-        });
-        selectors.show();
-    },
     launch: function() {
         var dashboard = Ext.create('Ext.Panel',{
             id: 'home',
@@ -159,23 +86,23 @@ Ext.application({
                 layout:'fit',
                 bodyStyle:'padding:5px',                
                 items:[{                        
-                        xtype:'panel',                        
-                        layout:'border',                        
-                        items:[{                                
-                                xtype:'compralist',
-                                //itemId:'gridPanelCompra',
-                                region:'north'
+                    xtype:'panel',                        
+                    layout:'border',                        
+                    items:[{                                
+                        xtype:'compralist',
+                        //itemId:'gridPanelCompra',
+                        region:'north'
                                 
-                        },{
-                                xtype:'itemlist',
-                                //itemId:'detallePanelItem',
-                                //title:'Items que corresponden a la compra seleccionada',
-                                //bodyPadding:5,
-                                region:'center'
+                    },{
+                        xtype:'itemlist',
+                        //itemId:'detallePanelItem',
+                        //title:'Items que corresponden a la compra seleccionada',
+                        //bodyPadding:5,
+                        region:'center'
                                 
-                        }]
+                    }]
                 }]
-            },{
+            }/*,{
                 title: 'Detalle del item seleccionado',
                 collapsible: true,
                 region:'east',
@@ -183,7 +110,7 @@ Ext.application({
                 width:400,
                 margins: '0 0 5 5'
 
-            }],
+            }*/],
             tbar:[{
                 title: 'Acciones',
                 xtype: 'buttongroup',
@@ -223,9 +150,8 @@ Ext.application({
                         iconAlign: 'top'
                     },
                     items:[{
-                        text: 'Selectores',                        
-                        iconCls: 'icon-search-32x32',
-                        handler: this.showSelectors
+                        text: 'Buscar',                        
+                        iconCls: 'icon-search-32x32'
                     },{
 
                         text: 'Ordenar',
