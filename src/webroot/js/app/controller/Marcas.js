@@ -93,16 +93,4 @@ Ext.define('SisInventarios.controller.Marcas', {
             this.getMarcasStore().sync();
         }
     }
-    
-/*
-    saveMarcas: function(button){
-        var win    = button.up('window'),
-        form   = win.down('form'),
-        record = form.getRecord(),
-        values = form.getValues();
-
-        record.set(values);
-        win.close();
-
-    }*/
 });

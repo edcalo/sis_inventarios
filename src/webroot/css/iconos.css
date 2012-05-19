@@ -91,6 +91,9 @@
 .icon-descuentos-16x16 {
     background-image:url(../img/icons/application/16x16/descuentos.png) !important;
 }
+.icon-monedas-16x16 {
+    background-image:url(../img/icons/application/16x16/money.png) !important;
+}
 
 /* tools 32x32*/
 .icon-provider-32x32 {
@@ -124,6 +127,9 @@
 }
 .icon-descuentos-32x32 {
     background-image:url(../img/icons/application/32x32/descuentos.png) !important;
+}
+.icon-monedas-32x32 {
+    background-image:url(../img/icons/application/32x32/money.png) !important;
 }
 
 /********************************************************************************/

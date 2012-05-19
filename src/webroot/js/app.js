@@ -12,18 +12,19 @@ Ext.application({
     },
     appFolder: 'js/app',
     controllers: [
-    'Roles',
-    'Proveedores',
-    'Grupos',
-    'Marcas',
-    'Industrias',
-    'Almacenes',
-    'Clientes',
-    'Empleados',
-    'Dosificaciones',
-    'Descuentos',
-    'Compras',
-    'Items'
+        'Roles',
+        'Proveedores',
+        'Grupos',
+        'Marcas',
+        'Industrias',
+        'Almacenes',
+        'Clientes',
+        'Empleados',
+        'Dosificaciones',
+        'Descuentos',
+        'Compras',
+        'Items',
+        'Monedas'
     ],
     listRoles: function(){
         var roles = Ext.widget('rollist');
@@ -65,6 +66,10 @@ Ext.application({
         var descuentos = Ext.widget('descuentolist');
         descuentos.show();
     },
+    listMonedas: function(){
+        var monedas = Ext.widget('monedaslist');
+        monedas.show();
+    },
     launch: function() {
         var dashboard = Ext.create('Ext.Panel',{
             id: 'home',
@@ -86,23 +91,23 @@ Ext.application({
                 layout:'fit',
                 bodyStyle:'padding:5px',                
                 items:[{                        
-                    xtype:'panel',                        
-                    layout:'border',                        
-                    items:[{                                
-                        xtype:'compralist',
-                        //itemId:'gridPanelCompra',
-                        region:'north'
+                        xtype:'panel',                        
+                        layout:'border',                        
+                        items:[{                                
+                                xtype:'compralist',
+                                //itemId:'gridPanelCompra',
+                                region:'north'
                                 
-                    },{
-                        xtype:'itemlist',
-                        //itemId:'detallePanelItem',
-                        //title:'Items que corresponden a la compra seleccionada',
-                        //bodyPadding:5,
-                        region:'center'
+                        },{
+                                xtype:'itemlist',
+                                //itemId:'detallePanelItem',
+                                //title:'Items que corresponden a la compra seleccionada',
+                                //bodyPadding:5,
+                                region:'center'
                                 
-                    }]
+                        }]
                 }]
-            }/*,{
+            },{
                 title: 'Detalle del item seleccionado',
                 collapsible: true,
                 region:'east',
@@ -110,55 +115,8 @@ Ext.application({
                 width:400,
                 margins: '0 0 5 5'
 
-            }*/],
+            }],
             tbar:[{
-                title: 'Acciones',
-                xtype: 'buttongroup',
-                columns: 3,
-                items:[{
-                    xtype: 'buttongroup',
-                    items:{
-                        scale: 'large',                        
-                        text: 'Registrar',
-                        action:'addrol',
-                        iconAlign: 'top',
-                        iconCls: 'icon-add-32x32'
-                    }
-                },{
-                    xtype: 'buttongroup',
-                    items:[{
-                        id: 'editar',
-                        text: 'Modificar',
-                        action:'editcompra',
-                        scale: 'large',
-                        iconAlign: 'top',                        
-                        iconCls: 'icon-edit-32x32',
-                        disable:true
-                    },{
-                        id: 'eliminar',
-                        text: 'Eliminar',
-                        action:'deletecompra',
-                        iconCls:'icon-delete-32x32',
-                        scale: 'large',
-                        iconAlign: 'top',
-                        disable:true
-                    }]
-                },{
-                    xtype: 'buttongroup',
-                    defaults:{
-                        scale: 'large',
-                        iconAlign: 'top'
-                    },
-                    items:[{
-                        text: 'Buscar',                        
-                        iconCls: 'icon-search-32x32'
-                    },{
-
-                        text: 'Ordenar',
-                        iconCls:'icon-ordenar-aux'
-                    }]
-                }]
-            },'->', {
                 title: 'Catalogos',
                 xtype: 'buttongroup',
                 columns: 4,
@@ -215,6 +173,11 @@ Ext.application({
                         text: 'Descuentos',
                         iconCls:'icon-descuentos-32x32',
                         handler: this.listDescuentos
+
+                    },{
+                        text: 'Monedas',
+                        iconCls:'icon-monedas-32x32',
+                        handler: this.listMonedas
 
                     }]
                 }]

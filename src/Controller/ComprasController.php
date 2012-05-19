@@ -121,6 +121,7 @@ class ComprasController extends AppController {
      * @return void
      */
     public function admin_view($id = null) {
+        $this->layout = 'ajax';
         $this->Compra->id = $id;
         if (!$this->Compra->exists()) {
             throw new NotFoundException(__('Invalid compra'));
